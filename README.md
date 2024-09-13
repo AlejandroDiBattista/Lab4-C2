@@ -32,4 +32,4 @@ Estos parciales son los que se conseraran (junto con la asistencia) para la prom
 
 > [!NOTE]
 > Fecha de entrega: 
-> - *Sabado 7 de SEPTIEMBRE hasta las 23:59hs*
+> - *Sabado 14 de SEPTIEMBRE hasta las 23:59hs*
