@@ -2,6 +2,11 @@
 
 # Como regularizar y promocionar la materia.
 
+> ATENCION:
+>   Modificar el archivo que ejercio.ipynb
+>   NO Crear otros archivos, ni carperas ni renombrarlos
+> En caso contrario seran considerados que el trabajo no se entrego
+
 Para regularizar la materia debera tener el 75% de asistencia.
 Para promocionar debera tener el 100% de asistencia y aprobado con 9 o 10 los parciales.
 
@@ -32,4 +37,4 @@ Estos parciales son los que se conseraran (junto con la asistencia) para la prom
 
 > [!NOTE]
 > Fecha de entrega: 
-> - *Sabado 14 de SEPTIEMBRE hasta las 23:59hs*
+> - *Sabado 7 de SEPTIEMBRE hasta las 23:59hs*
