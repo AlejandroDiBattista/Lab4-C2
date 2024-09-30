@@ -4,10 +4,11 @@ Este trabajo cuenta como el `primer parcial`.
 >  
 > Es un `trabajo individual` y puede usar todos los recursos a su disposición, incluyendo el material del curso y búsquedas en internet para resolver dudas. 
 
-> **Debe implementar su solución de manera individual** si comparte codigo con algun compañero invalida el trabajo de ambos.
+> **Debe implementar su solución de manera individual** si comparte código con algún compañero invalida el trabajo de ambos.
 
 > Debe ser presentado hasta las `23:59 del sábado 5 de octubre`.
 > 
+
 ## Enunciado
 
 El trabajo consiste en implementar, usando programación orientada a objetos, un sistema de facturación para una empresa de venta de productos.
