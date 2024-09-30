@@ -1,25 +1,88 @@
-# Simulación de un juego de truco
+# TP5: *1er Parcial*
 
-## Objetivo
-El objetivo de este trabajo práctico es simular un juego de truco entre dos jugadores. Se juega con la baraja española de 40 cartas. El juego se juega con dos jugadores, cada uno recibe tres cartas y se juega por rondas. En cada ronda, cada jugador juega una carta y el que tiene la carta más alta gana la ronda. El ganador de la ronda se lleva un punto. Si las cartas son del mismo valor, no hay ganador. El juego termina cuando se juegan las tres rondas y el que tiene más puntos gana el juego. Si los dos jugadores tienen la misma cantidad de puntos, el juego termina en empate.
+Este trabajo cuenta como el `primer parcial`.
+>  
+> Es un `trabajo individual` y puede usar todos los recursos a su disposición, incluyendo el material del curso y búsquedas en internet para resolver dudas. 
 
-## Implementación
-Para realizar la simulacion del juego se deben implementar las siguientes clases:
-- Carta: Representa una carta de la baraja española. Debe tener un valor y un palo.
-- Mazo: Representa una baraja española. Debe tener 40 cartas, una de cada valor y palo.
-- Jugador: Representa un jugador. Debe tener un nombre y una mano de cartas.
-- Partida: Representa un juego de truco. Debe tener dos jugadores y un mazo de cartas. Debe tener un método jugar que simula el juego de truco.
+> **Debe implementar su solución de manera individual** si comparte codigo con algun compañero invalida el trabajo de ambos.
 
-Para realizar la simulación del juego se debe implementar el siguiente algoritmo:
-1. Se crea una baraja española.
-2. Se baraja el mazo.
-3. Se reparten tres cartas a cada jugador.
-4. Se juegan tres rondas. En cada ronda, cada jugador juega una carta y se determina el ganador de la ronda.
-5. Se determina el ganador del juego.
-6. Se le suma un punto al ganador del juego.
-7. Se repiten los pasos 2 al 6 hasta que un jugador llegue a 15 puntos.
+> Debe ser presentado hasta las `23:59 del sábado 5 de octubre`.
+> 
+## Enunciado
 
-## Entrega
+El trabajo consiste en implementar, usando programación orientada a objetos, un sistema de facturación para una empresa de venta de productos.
 
-> El trabajo se debe presentar hasta
-> **Sabado 29 a las 23:59hs**.
+Asociado a cada clase a implementar tiene los test correspondientes que verifican que la implementación es correcta.
+
+Ademas estos test indican la forma exacta en que debe ser implementada la clase, incluyendo los nombres de los métodos y los parámetros que deben recibir y el comportamiento esperado.
+
+
+### Requerimientos
+
+#### Productos
+
+- Los productos tienen un código único de 4 dígitos, un nombre (1 a 100 caracteres), un precio (entre 10 y 10,000), un tipo (0 a 20 caracteres) y una cantidad en existencia (entre 0 y 1000).
+- Deben mantener la cantidad de productos en existencia y calcular su valor total.
+
+#### Catálogo
+
+- El catálogo se debe leer desde un archivo de texto `catalogo.csv` que tiene el siguiente formato (incluye encabezado):
+
+```text 
+codigo,nombre,precio,tipo,cantidad
+```
+
+- Debe descontar la existencia disponible.
+- Debe agregar un producto.
+- Debe buscar un producto por código.
+- Debe poder analizar que oferta aplica a un producto
+- Debe poder grabar los cambios en el catálogo en un archivo con el mismo formato.
+- Debe poder generar un informe para ser impreso con el siguiente formato:
+
+```text
+INFORME CATALOGO 
+Cantidad de productos:   <cantidad productos>
+Cantidad de unidades:    <cantidad unidades>
+Precio promedio:       $ <precio promedio>
+Valor total:           $ <valor total>
+Tipos de productos: 
+  - <tipo>              :  <unidades>u x $ <precio promedio>
+  - ...
+Ofertas:
+  - <descripción oferta>
+  - ...
+```
+
+#### Ofertas
+
+- La empresa tiene ofertas en algunos productos. Las ofertas pueden aplicarse a productos específicos (por código) o a todos los productos de un tipo determinado.
+- Tipos de ofertas:
+  - **Descuento porcentual**: se aplica un descuento porcentual al precio del producto.
+  - **2x1**: si se compran 2 productos iguales, se cobra solo uno.
+- Las ofertas no son acumulables; si un producto es elegible para múltiples ofertas, se aplica primera registrada. 
+- Las ofertas deben determinar si son aplicables para un producto y cantidad dada.
+- Debe poder calcular el descuento aplicado a un producto.
+
+#### Clientes
+
+- Los clientes tienen un nombre, un apellido y un CUIT de 11 dígitos.
+
+#### Factura
+
+- La factura tiene un número secuencial, una fecha, un cliente y una lista de productos con la cantidad vendida de cada uno.
+- Debe calcular el total de la venta, teniendo en cuenta las ofertas aplicadas.
+- Debe generar texto para imprimir la factura con el siguiente formato:
+```text
+Factura: <numero>
+Fecha  : <fecha>
+Cliente: <nombre cliente> (<CUIT>)
+
+- <cantidad>u <nombre producto>            x $<precio> = $<subtotal>
+      <descripción oferta>                             - $<descuento>
+- ...
+
+                                             Subtotal:   $<subtotal general>
+                                             Descuentos: $<total descuentos>
+                                             -----------------------
+                                             Total:      $<total>
+```

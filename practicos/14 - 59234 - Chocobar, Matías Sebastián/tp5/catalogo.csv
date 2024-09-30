@@ -1,0 +1,31 @@
+codigo,nombre,precio,tipo,cantidad
+0001,Coca Cola,1490,gaseosa,10
+0002,Pepsi Cola,1200,gaseosa,20
+0003,Sonrisa,1200,galleta,30
+0004,Oreo,2300,galleta,40
+0005,Fanta,1400,gaseosa,15
+0006,Sprite,1300,gaseosa,25
+0007,7 Up,1350,gaseosa,18
+0008,Dr Pepper,1600,gaseosa,32
+0009,Chokis,2500,galleta,35
+0010,María,2100,galleta,50
+0011,Principe,2400,galleta,58
+0012,Macma,2200,galleta,42
+0013,Spaghetti,1900,fideo,30
+0014,Fettuccine,1900,fideo,25
+0015,Macaroni,2800,fideo,20
+0016,Penne,1700,fideo,35
+0017,Ravioli,2800,fideo,15
+0018,Danone,2500,yogur,20
+0019,La Serenísima,2400,yogur,25
+0020,Ilolay,2400,yogur,30
+0021,SanCor,2300,yogur,35
+0022,Milkaut,1900,yogur,40
+0023,Evian,3000,agua,50
+0024,Bonafont,2500,agua,60
+0025,Smartwater,3500,agua,40
+0026,Arroz Gallo,1200,arroz,50
+0027,Arroz Dos Hermanos,1100,arroz,30
+0028,Arroz Molinos Ala,1300,arroz,20
+0029,Arroz Lucchetti,1250,arroz,55
+0030,Arroz La Campagnola,1150,arroz,45
