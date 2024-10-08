@@ -1,13 +1,36 @@
 # TP5: *1er Parcial*
 
-Este trabajo cuenta como el `primer parcial`.
+
+Los siguientes alumnos deben recuperar el parcial.
+```
+ 1️⃣2️⃣3️⃣4️⃣5️⃣
+ 🟢🟢🟢🟢🟡  1. 58764  Acuña, Ana Sofía                        
+ 🟢🟢🟢🟢🟡  4. 58952  Almiron, Maicol Leonel                  
+ 🔴🟢🟢🟢🟡  5. 58731  Alvarez, Nicolás                        
+ 🟢🟢🟢🟢🟡  6. 58828  Alvarez, Nicolás Nahuel                 
+ 🟢🟢🟢🟢🟡  8. 58909  Argañaraz, Leonardo Ramiro              
+ 🟢🟢🟢🟢🟡 15. 59268  Cordoba, Pedro Josue                    
+ 🟢🟢🟢🟢🟡 20. 58832  González, Adrián Leonel                 
+ 🔴🟢🟢🟢🟡 22. 55906  González, Ramiro Exequiel               
+ 🔴🔴🔴🔴🟡 24. 55940  Gramajo, Elba Virginia Maria            
+ 🟢🟢🟢🟢🟡 26. 55751  Jérez, Francisco David                  
+ 🟢🟢🟢🔴🔴 30. 59555  Reynoso, Lucas Facundo                  
+ 🟢🟢🟢🟢🟡 36. 59451  Urueña, Karen Florencia                 
+```
+> 
+> Deben corregir el mismo para que pase todos los test y enviarlos antes del 
+> **Miercoles 9 de Octubre a las 23:59hs**.
+> 
+
+------
+------
+
+
+## Este trabajo cuenta como el `primer parcial`.
 >  
 > Es un `trabajo individual` y puede usar todos los recursos a su disposición, incluyendo el material del curso y búsquedas en internet para resolver dudas. 
 
 > **Debe implementar su solución de manera individual** si comparte código con algún compañero invalida el trabajo de ambos.
-
-> Debe ser presentado hasta las `23:59 del sábado 5 de octubre`.
-> 
 
 ## Enunciado
 
@@ -16,7 +39,6 @@ El trabajo consiste en implementar, usando programación orientada a objetos, un
 Asociado a cada clase a implementar tiene los test correspondientes que verifican que la implementación es correcta.
 
 Ademas estos test indican la forma exacta en que debe ser implementada la clase, incluyendo los nombres de los métodos y los parámetros que deben recibir y el comportamiento esperado.
-
 
 ### Requerimientos
 
