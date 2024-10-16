@@ -20,7 +20,7 @@ Los ejercicios son los siguientes:
 4. Cree un Pull Request 
 
 ## Fecha de entrega
-- 20 de octubre de 2021 a las 23:59 hs
+- Sabado 19 de octubre de 2024 a las 23:59 hs
 
 ```
  🟢🟢🟢🟢🟡 22. 55906  González, Ramiro Exequiel               
