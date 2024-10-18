@@ -22,6 +22,16 @@ Los ejercicios son los siguientes:
 ## Fecha de entrega
 - Sabado 19 de octubre de 2024 a las 23:59 hs
 
+
+> **IMPORTANTE:** 
+> 
+> Esta es la clase que es la que se dio el 
+> martes. 
+> Les dejo para repasar la clase 
+> 
+> https://youtu.be/GhUWlk2UbEs
+>
+```
 ```
  🟢🟢🟢🟢🟡 22. 55906  González, Ramiro Exequiel               
  🟢🟢🟢🟢🟡 24. 55940  Gramajo, Elba Virginia Maria            
