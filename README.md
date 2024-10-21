@@ -1,39 +1,11 @@
-# TP6
+Hola a todos!!
 
-Los ejercicios de esta semana están orientados a practicar la utilización de la librería `pandas` para el manejo de datos tabulares y `numpy` para el manejo de arreglos multidimensionales.
+Dada la situación de público conocimiento, las clase de *lunes 21 y martes 22 de octubre* no puede ser dictada en forma presencial por lo que se realizarán de forma virtual a través de la plataforma Google Meet.
 
-Los ejercicios son los siguientes:
-1. Resolver TP3 con pandas.
-2. Resolver TP1 (ejercicio 2) con numpy.
-    En este caso se piden dos soluciones:
-    1. Implementar la misma solución que en el TP1 pero utilizando numpy para facilitar los cálculos.
-    2. Implementar una solución más genérica (en donde los puntos no pasan exactamente por la parábola) utilizando numpy. La idea es generar los coeficientes de la parábola que mejor se ajusta a los puntos. Primero se generan los coeficientes al azar y luego se producen pequeñas perturbaciones a los mismos y si generan un error menor al anterior se actualizan los coeficientes.
+**El horario de clase será el habitual y el link de la reunión es el siguiente: [Link a Google Meet](https://meet.google.com/kgg-bnyv-ivs)**
 
-## Cómo entregar el trabajo
-1. Asegúrese de tener la última versión del repositorio.
-    
-    (Cambie a la rama main y haga un Fetch)
-2. Cree una rama con su nombre.
-    
-    (Con el nombre 'TP6 - Legajo - Nombre y Apellido')
-3. Suba el trabajo a esa rama.
-4. Cree un Pull Request 
+En caso de que no puedan acceder a la plataforma, la clase será grabada y subida a YouTube para que puedan verla en otro momento.
 
-## Fecha de entrega
-- Sabado 19 de octubre de 2024 a las 23:59 hs
-
-
-> **IMPORTANTE:** 
-> 
-> Esta es la clase que es la que se dio el 
-> martes. 
-> Les dejo para repasar la clase 
-> 
-> https://youtu.be/GhUWlk2UbEs
->
-```
-```
- 🟢🟢🟢🟢🟡 22. 55906  González, Ramiro Exequiel               
- 🟢🟢🟢🟢🟡 24. 55940  Gramajo, Elba Virginia Maria            
- 🟢🟢🟢🔴🔴 30. 59555  Reynoso, Lucas Facundo                  
-```
+> Nota: Dada la imposibilidad de realizar la clase en 
+> forma presencial, esta semana no se pedirá
+> el trabajo práctico habitual ya que el mismo actua como control de asistencia.
