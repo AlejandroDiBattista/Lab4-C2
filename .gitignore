@@ -1,3 +1,4 @@
 .DS_Store
 catalogo-prueba.csv
 .venv
+/clase/__pycache__
