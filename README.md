@@ -1,49 +1,48 @@
-# TP7
+# TP8: 2do Parcial.
 
-El ejercicio de esta semana consiste en realizar una aplicación que permita explorar el efecto de la variación de los parámetros de una red neuronal en la clasificación de un conjunto de datos.
+El trabajo practico 8 actual como segundo parcial.
 
----
-Se pide que realice una aplicación usando `Streamlit` que permita ingresar los parámetros de una red neuronal y visualizar el resultado de la clasificación de un conjunto de datos.
+El trabajo es personal y debe ser desarrollado en forma individual.
+De no cumplirse este requisito se calificara con 0 (cero) el trabajo practico.
 
-La aplicación deberá tener en el panel izquierdo la posibilidad de ingresar:
-- Tasa de aprendizaje *(entre 0.0 y 1.0, comenzando en 0.1)*
-- Cantidad de épocas *(entre 10 y 10,000, comenzando en 100)*
-- La cantidad de neuronas en la capa oculta *(entre 1 y 100, comenzando en 5)*
+> Fecha de entrega:
+>
+> 21 de Noviembre de 2024 hasta las 21:00 hs
+> 
 
-Un botón que diga "Entrenar" que, al ser presionado, entrene la red neuronal con los parámetros ingresados y muestre en el panel derecho el resultado de la clasificación.
 
-Durante el entrenamiento deberá mostrar una barra de progreso que indique el avance del entrenamiento.
+## Enunciado
 
-Al finalizar el entrenamiento deberá mostrar un mensaje que indique que se finalizó con éxito y, debajo, el gráfico con la evolución de la función de costo en relación a las épocas.
+El trabajo consiste en realizar una aplicación con Streamlit que permita cargar datos de ventas y mostrarlos.
 
-El conjunto de datos consiste en las ventas realizadas diariamente por una empresa. La red neuronal deberá permitir estimar las ventas que se producen cada día del mes. Se puede obtener del archivo de 'ventas.csv' usando `pandas`.
+Los datos se encuentran en un archivo CSV con el siguiente formato:
 
-El archivo 'ventas.csv' contiene dos columnas:
-- día: que indica el día del mes
-- ventas: que indica la cantidad de ventas realizadas ese día
+```
+Sucursal,Producto,Año,Mes,Unidades_vendidas,Ingreso_total,Costo_total
+```
 
-La red neuronal deberá tener una capa de entrada con una neurona, una capa oculta con la cantidad de neuronas ingresadas por el usuario y una capa de salida con una neurona. Debe ser implementada con `pytorch`.
+Una vez cargados los mismos debe mostrarse para cada producto la siguiente informacion:
+- Precio promedio   (Ingreso total / Unidades vendidas)
+- Margen promedio   (Ingreso total - Costo total) / Ingreso total
+- Unidades vendidas (Suma de unidades vendidas)
 
-En la pantalla principal deberá mostrar un gráfico con los datos de ventas y, una vez que se entrene la red neuronal, deberá mostrar superpuesta la predicción realizada por la red neuronal.
+A la ves se debe poder visualizar en un grafico la evolucion de la venta a lo largo de los meses.
+Este grafico debe incluir una linea de tendencia.
 
-El objetivo de este trabajo es que puedan explorar cómo varía la clasificación de un conjunto de datos en función de los parámetros de la red neuronal.
+Tambien debe permitir elegir si se muestra todos los datos o que se muestra de una sucursar en particular. 
 
-Los gráficos deberán ser realizados con `matplotlib`.
+Por ultimo el programa debe ser publicado para que pueda ser accedido desde cualquier navegador.
 
-### Pantalla de muestra
+![Pantalla 1](pantalla1.png)
 
-![Pantalla de muestra](./pantalla.png)
+<video width="600" controls>
+  <source src="tp8.mp4" type="video/mp4">
+  Tu navegador no soporta la etiqueta de video.
+</video>
 
----
 
-## Cómo entregar el trabajo
-1. Asegúrese de tener la última versión del repositorio.
-    (Cambie a la rama main y haga un Fetch)
-2. Cree una rama con su nombre.  
-    (Con el nombre 'TP7 - Legajo - Nombre y Apellido')
-3. Suba el trabajo a esa rama.
-4. Cree un Pull Request
 
-## Fecha de entrega
-- Sabado 10 de noviembre de 2024 a las 23:59 hs
+
+> Nota: Recomiendo que suban el trabajo a partir de las 20:00 hs.
+
 
