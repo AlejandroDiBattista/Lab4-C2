@@ -33,16 +33,17 @@ Tambien debe permitir elegir si se muestra todos los datos o que se muestra de u
 
 Por ultimo el programa debe ser publicado para que pueda ser accedido desde cualquier navegador.
 
-![Pantalla 1](pantalla1.png)
+![Pantalla Inicial](pantalla0.png)
+![Pantalla Principal](pantalla1.png)
+
 
 <video width="600" controls>
-  <source src="tp8.mp4" type="video/mp4">
+  <source src="video.mp4" type="video/mp4">
   Tu navegador no soporta la etiqueta de video.
 </video>
 
-
-
-
-> Nota: Recomiendo que suban el trabajo a partir de las 20:00 hs.
+>
+> **Nota**: 
+> Recomiendo que suban el trabajo a partir de las 20:00 hs.
 
 
