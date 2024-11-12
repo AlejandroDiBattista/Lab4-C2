@@ -1,2 +1,8 @@
 .DS_Store
+<<<<<<< HEAD
 catalogo-prueba.csv
+=======
+catalogo-prueba.csv
+.venv
+/clase/__pycache__
+>>>>>>> origin/main

@@ -1,4 +1,5 @@
 import streamlit as st
+<<<<<<< HEAD
 import numpy as np
 import plotly.graph_objs as go
 from sklearn.neural_network import MLPRegressor
@@ -60,3 +61,19 @@ if st.sidebar.button("Entrenar"):
 
 
 
+=======
+import pandas as pd
+import numpy as np
+import torch
+import torch.nn as nn
+import matplotlib.pyplot as plt
+
+
+## Crear Red Neuronal
+## Leer Datos
+## Normalizar Datos
+## Entrenar Red Neuronal
+## Guardar Modelo
+## Graficar Predicciones
+st.title('Estimación de Ventas Diarias')
+>>>>>>> origin/main
