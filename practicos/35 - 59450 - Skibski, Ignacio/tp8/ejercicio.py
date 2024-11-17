@@ -10,7 +10,7 @@ def cargar_datos():
     if archivo is not None:
         return pd.read_csv(archivo)
     return None
-
+#
 def calcular_metricas(df):
     """Calcula las métricas requeridas por producto."""
     df['Precio_promedio'] = df['Ingreso_total'] / df['Unidades_vendidas']
