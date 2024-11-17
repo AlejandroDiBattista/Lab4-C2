@@ -29,7 +29,7 @@ def graficar_evolucion(df, producto):
         st.error("Las columnas 'Año' y 'Mes' no están presentes.")
         return
 
-    df_producto['Fecha'] = pd.to_datetime(df_producto['Año'].astype(str) + '-' + df_producto['Mes'].astype(str), errors='coerce')
+    df_producto.loc[:, 'Fecha'] = pd.to_datetime(df_producto['Año'].astype(str) + '-' + df_producto['Mes'].astype(str), errors='coerce')
     df_producto = df_producto.dropna(subset=['Fecha'])
     df_producto = df_producto.sort_values('Fecha')
 
