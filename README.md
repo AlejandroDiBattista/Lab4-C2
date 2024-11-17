@@ -31,11 +31,11 @@ También debe permitir elegir si se muestran todos los datos o los de una sucurs
 
 Por último, el programa debe ser publicado para que pueda ser accedido desde cualquier navegador.
 
-![Pantalla Inicial](pantalla0.png)
-![Pantalla Principal](pantalla1.png)
+![Pantalla Inicial](./practicos/enunciados/pantalla0.png)
+![Pantalla Principal](./practicos/enunciados/pantalla1.png)
 
 <video width="600" controls>
-  <source src="video.mp4" type="video/mp4">
+  <source src="./practicos/enunciados/video.mp4" type="video/mp4">
   Tu navegador no soporta la etiqueta de video.
 </video>
 
