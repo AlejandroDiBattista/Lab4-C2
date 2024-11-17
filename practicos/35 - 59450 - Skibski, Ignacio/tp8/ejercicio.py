@@ -29,8 +29,16 @@ def graficar_evolucion(df, producto):
         st.error("Las columnas 'Año' y 'Mes' no están presentes.")
         return
 
+    # Asegúrate de trabajar con una copia del DataFrame si 'df_producto' es un subset
+    df_producto = df_producto.copy()
+
+    # Modificación del DataFrame
     df_producto.loc[:, 'Fecha'] = pd.to_datetime(df_producto['Año'].astype(str) + '-' + df_producto['Mes'].astype(str), errors='coerce')
+
+    # Eliminar filas con valores NaN en la columna 'Fecha'
     df_producto = df_producto.dropna(subset=['Fecha'])
+
+    # Ordenar los valores según la columna 'Fecha'
     df_producto = df_producto.sort_values('Fecha')
 
     if df_producto.empty:
