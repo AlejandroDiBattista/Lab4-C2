@@ -49,36 +49,36 @@ def graficar_evolucion(df, producto):
     st.pyplot(fig)
 
 def main():
-    st.set_page_config(layout="wide")  # Configuración para un diseño amplio
+    st.set_page_config(layout="wide")  
     st.title("Análisis de Ventas por Sucursal")
 
-    # Información del usuario
+   
     with st.sidebar:
         st.header("Información del Alumno")
         st.write("**Legajo:** 59.450")
         st.write("**Nombre:** Ignacio Skibski")
         st.write("**Comisión:** C2")
         
-        # Subir archivo CSV
+      
         st.subheader("Cargar archivo de datos")
         datos = cargar_datos()
 
-        # Selector de sucursal
+       
         if datos is not None:
             sucursales = ["Todas"] + list(datos['Sucursal'].unique())
             seleccion_sucursal = st.selectbox("Seleccionar Sucursal", sucursales)
 
     if datos is not None:
-        # Filtrar por sucursal
+      
         if seleccion_sucursal != "Todas":
             datos = datos[datos['Sucursal'] == seleccion_sucursal]
 
-        # Panel principal: métricas y gráficas
+   
         st.header("Datos de Todas las Sucursales")
         resumen = calcular_metricas(datos)
 
         for index, row in resumen.iterrows():
-            col1, col2 = st.columns([1, 2])  # Dividir la sección en columnas
+            col1, col2 = st.columns([1, 2])  
             with col1:
                 st.subheader(row['Producto'])
                 st.metric("Precio Promedio", f"${row['Precio_promedio']:.2f}")
