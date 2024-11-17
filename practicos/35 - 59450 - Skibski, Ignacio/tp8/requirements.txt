@@ -1,5 +1,2 @@
 streamlit
-pandas
-numpy
-seaborn
 matplotlib
