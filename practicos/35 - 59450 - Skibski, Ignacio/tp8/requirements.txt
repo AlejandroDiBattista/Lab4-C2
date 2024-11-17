@@ -1,2 +1,5 @@
-streamlit
+streamlit 
+pandas 
+numpy 
+seaborn 
 matplotlib
