@@ -3,3 +3,4 @@ catalogo-prueba.csv
 .venv
 /clase/__pycache__
 /.vscode
+/clase/mongo/node_modules
