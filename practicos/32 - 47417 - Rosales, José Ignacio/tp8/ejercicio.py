@@ -5,7 +5,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.preprocessing import LabelEncoder
 
 # Application URL
-url = ""
+url = "https://rosalesjoseignaciotp8.streamlit.app/"
 
 st.title("Sales Analysis by Producto")
 
