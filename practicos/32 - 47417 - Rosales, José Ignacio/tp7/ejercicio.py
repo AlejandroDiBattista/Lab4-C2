@@ -110,10 +110,5 @@ if train_button:
     ax.legend()
     st.pyplot(fig)
 
-## Crear Red Neuronal
-## Leer Datos
-## Normalizar Datos
-## Entrenar Red Neuronal
-## Guardar Modelo
-## Graficar Predicciones
+
 st.title('Estimación de Ventas Diarias')
