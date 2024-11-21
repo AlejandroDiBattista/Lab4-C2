@@ -3,23 +3,26 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
+
 st.set_page_config(page_title="Ventas por Sucursal", layout="wide")
 
 # Función para calcular estadísticas por producto
-def calcular_estadisticas(df):
+def calculo_Estadisticas(df):
+    # Calcular ingreso total
     estadisticas = df.groupby('Producto').agg(
         Precio_Promedio=('Ingreso_total', lambda x: x.sum() / df['Unidades_vendidas'].sum()),
         Margen_Promedio=('Ingreso_total', lambda x: ((x.sum() - df['Costo_total'].sum()) / x.sum()) * 100),
-        Unidades_Vendidas=('Unidades_vendidas', 'sum')
+        Unidades_Vendidas=('Unidades_vendidas', 'sum') 
     ).reset_index()
     return estadisticas
 
-# Cargar archivo CSV
+# con esto realizo para Cargar archivo CSV
 st.sidebar.title("Cargar archivo de datos")
+# verifico si el archivo es csv
 uploaded_file = st.sidebar.file_uploader("Subir archivo CSV", type="csv")
-
+# Verifico si se subió un archivo
 if uploaded_file:
-    # Leer datos y eliminar espacios en blanco en nombres de columnas
+    # Leeo el  archivo CSV
     df = pd.read_csv(uploaded_file)
     df.columns = df.columns.str.strip()  # Eliminar espacios en blanco en los nombres de las columnas
     
@@ -27,7 +30,7 @@ if uploaded_file:
     if 'Año' not in df.columns or 'Mes' not in df.columns:
         st.error("El archivo CSV debe contener las columnas 'Año' y 'Mes'.")
     else:
-        # Filtrar por sucursal
+        # Filtro por sucursal
         sucursales = ["Todas"] + df["Sucursal"].unique().tolist()
         sucursal_seleccionada = st.sidebar.selectbox("Seleccionar Sucursal", sucursales)
         
@@ -35,7 +38,7 @@ if uploaded_file:
             df = df[df["Sucursal"] == sucursal_seleccionada]
 
         # Calcular estadísticas
-        estadisticas = calcular_estadisticas(df)
+        estadisticas = calculo_Estadisticas(df)
 
         # Mostrar datos por producto
         for _, row in estadisticas.iterrows():
@@ -71,7 +74,7 @@ if uploaded_file:
             st.pyplot(fig)
 
 ## ATENCION: Debe colocar la direccion en la que ha sido publicada la aplicacion en la siguiente linea\
-# url = 'https://tp8-59234.streamlit.app/'
+# url = 'https://tp8-lab-59234.streamlit.app/'
 
 def mostrar_informacion_alumno():
     with st.container(border=True):
