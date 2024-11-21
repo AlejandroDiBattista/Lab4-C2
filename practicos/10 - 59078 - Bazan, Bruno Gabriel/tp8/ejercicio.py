@@ -6,6 +6,11 @@ from streamlit_lottie import st_lottie
 import requests
 from typing import Dict, Any
 
+
+## ATENCION: Debe colocar la direccion en la que ha sido publicada la aplicacion en la siguiente linea\
+# url = 'https://bruno-python.streamlit.app/'
+
+
 def load_lottieurl(url: str):
     r = requests.get(url)
     if r.status_code != 200:
