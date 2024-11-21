@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 ## ATENCION: Debe colocar la direccion en la que ha sido publicada la aplicacion en la siguiente linea\
-# url = 'https://tp8-555555.streamlit.app/'
+# url = 'https://hernansanchezortiz-tp8.streamlit.app/'
 
 def mostrar_informacion_alumno():
     with st.container(border=True):
