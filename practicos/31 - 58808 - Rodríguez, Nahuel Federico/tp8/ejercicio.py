@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 
 # Mostrar información del alumno 
 def mostrar_informacion_alumno():
-    with st.container():
+    with st.container(border=True):
         st.markdown('**Legajo:** 58.808')
         st.markdown('**Nombre:** Nahuel Federico Rodríguez')
         st.markdown('**Comisión:** C2')
