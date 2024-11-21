@@ -8,7 +8,7 @@ from typing import Dict, Any
 
 
 ## ATENCION: Debe colocar la direccion en la que ha sido publicada la aplicacion en la siguiente linea\
-# url = 'https://bruno-python.streamlit.app/'
+# url = 'https://tp8-59078.streamlit.app/'
 
 
 def load_lottieurl(url: str):
