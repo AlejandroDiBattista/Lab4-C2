@@ -1,2 +1,6 @@
 streamlit
-matplotlib
+pandas
+numpy
+plotly
+streamlit-lottie
+requests
