@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 st.set_page_config(page_title="Análisis de ventas", layout="wide")
 
 ## ATENCION: Debe colocar la direccion en la que ha sido publicada la aplicacion en la siguiente linea\
-url = 'https://tp8-55650.streamlit.app/'
+url = 'https://tp8-55650-parcial.streamlit.app/'
 
 def mostrar_informacion_alumno():
     with st.container(border=True):
