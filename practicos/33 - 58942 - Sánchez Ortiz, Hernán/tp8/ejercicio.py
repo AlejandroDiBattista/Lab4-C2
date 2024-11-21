@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from sklearn.linear_model import LinearRegression
 
 ## ATENCION: Debe colocar la direccion en la que ha sido publicada la aplicacion en la siguiente linea\
 # url = 'https://tp8-555555.streamlit.app/'
@@ -49,11 +48,17 @@ def main():
         st.write("Ventas mensuales agrupadas:")
         st.dataframe(ventas_mensuales)
 
-        X = np.arange(len(ventas_mensuales)).reshape(-1, 1)
+        X = np.arange(len(ventas_mensuales))
         y = ventas_mensuales['unidades_vendidas']
-        modelo = LinearRegression()
-        modelo.fit(X, y)
-        tendencia = modelo.predict(X)
+        n = len(X)
+        sum_x = np.sum(X)
+        sum_y = np.sum(y)
+        sum_xx = np.sum(X**2)
+        sum_xy = np.sum(X * y)
+    
+        m = (n * sum_xy - sum_x * sum_y) / (n * sum_xx - sum_x**2)
+        b = (sum_y - m * sum_x) / n
+        tendencia = m * X + b
 
         plt.figure(figsize=(10, 6))
         plt.plot(ventas_mensuales['mes'].astype(str), ventas_mensuales['unidades_vendidas'], label="Ventas", marker="o")
