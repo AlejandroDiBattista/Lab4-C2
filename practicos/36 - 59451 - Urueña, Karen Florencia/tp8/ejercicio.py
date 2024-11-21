@@ -3,6 +3,9 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
+## ATENCION: Debe colocar la direccion en la que ha sido publicada la aplicacion en la siguiente linea\
+# url = 'https://trabajopractico2-5e5uv2pibipgofp5fzz5eh.streamlit.app/'
+
 
 # Configuración de la página
 st.set_page_config(page_title="Análisis de Ventas", layout="wide")
@@ -17,8 +20,6 @@ def mostrar_informacion_alumno():
 
 mostrar_informacion_alumno()
 
-# Título principal
-st.title("Datos de Todas las Sucursales")
 
 # Panel lateral
 st.sidebar.header("Cargar archivo de datos")
@@ -26,6 +27,7 @@ uploaded_file = st.sidebar.file_uploader("Selecciona un archivo CSV", type=["csv
 sucursal_seleccionada = st.sidebar.selectbox("Seleccionar Sucursal", ["Todas", "Sucursal Norte", "Sucursal Centro", "Sucursal Sur"])
 
 if uploaded_file: 
+
     # Cargar archivo CSV
     df = pd.read_csv(uploaded_file)
 
@@ -47,10 +49,12 @@ if uploaded_file:
         # Filtrar por sucursal
         if sucursal_seleccionada != "Todas":
             df = df[df["Sucursal"] == sucursal_seleccionada]
-
+        st.title(f"Datos de {sucursal_seleccionada}")
+        
         # Agrupar datos por producto
         productos = df["Producto"].unique()
         for producto in productos:
+          with st.container(border=True):
             df_producto = df[df["Producto"] == producto]
 
             # Calcular métricas actuales
@@ -67,7 +71,7 @@ if uploaded_file:
                 Ingreso_total=("Ingreso_total", "sum"),
                 Costo_total=("Costo_total", "sum")
             ).reset_index()
-            
+        
             if len(resumen_mensual) > 1:
                 # Variación porcentual entre los dos últimos periodos
                 delta_precio = (
@@ -89,13 +93,13 @@ if uploaded_file:
             else:
                 # No hay suficientes datos para calcular cambios
                 delta_precio = delta_margen = delta_unidades = 0
-
+        
             # Evolución de ventas mensuales
             ventas_mensuales = df_producto.groupby("Fecha")["Unidades_vendidas"].sum().reset_index()
-
+        
             # Crear diseño con columnas
             col_izquierda, col_derecha = st.columns([1, 3])  # Proporción de espacio: 1 para métricas, 3 para gráfico
-
+            
             # Mostrar métricas en la columna izquierda
             with col_izquierda:
                 st.subheader(f" {producto}")
@@ -132,4 +136,6 @@ if uploaded_file:
                 ax.legend()
                 ax.grid(True)
                 st.pyplot(fig)
+                
+                
 
