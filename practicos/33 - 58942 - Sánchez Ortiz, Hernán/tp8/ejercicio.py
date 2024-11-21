@@ -21,31 +21,33 @@ def main():
 
     archivo = st.sidebar.file_uploader("Sube tu archivo CSV", type=["csv"])
 
-    if archivo:
+    if archivo is not None:
         datos = pd.read_csv(archivo)
-        st.write("Datos cargados exitosamente!")
+        st.success("Datos cargados exitosamente!")
         st.dataframe(datos.head())
 
-        sucursales = datos['sucursal'].unique()
+        sucursales = datos['Sucursal'].unique()
         sucursal_seleccionada = st.sidebar.selectbox("Seleccionar sucursal", ["Todas"] + list(sucursales))
 
         if sucursal_seleccionada != "Todas":
-            datos = datos[datos['sucursal'] == sucursal_seleccionada]
+            datos = datos[datos['Sucursal'] == sucursal_seleccionada]
         
-        datos['ingreso_total'] = datos['precio'] * datos['unidades_vendidas']
-        datos['costo_total'] = datos['costo_unitario'] * datos['unidades_vendidas']
+        datos['Precio_promedio'] = datos['Ingreso_total'] / datos['Unidades_vendidas']
+        datos['Costo_total'] = datos['Precio_promedio'] * datos['Unidades_vendidas']
 
-        resumen = datos.groupby('producto').agg(
-            unidades_vendidas=('unidadaes_vendidas', 'sum'),
-            precio_promedio=('ingreso_total', lambda x: x.sum() / datos['unidades_vendidas'].sum()),
-            margen_promedio=('ingreso_total', lambda x: ((x.sum() - datos['costo_total'].sum()) / x.sum()))
+        resumen = datos.groupby('Producto').agg(
+            unidades_vendidas=('Unidades_vendidas', 'sum'),
+            precio_promedio=('Ingreso_total', lambda x: x.sum() / datos['Unidades_vendidas'].sum()),
+            margen_promedio=('Ingreso_total', lambda x: ((x.sum() - datos['Costo_total'].sum()) / x.sum()))
         ).reset_index()
 
         st.write("Resumen por producto:")
         st.dataframe(resumen)
 
-        datos['mes'] = pd.to_datetime(datos['fecha']).dt.to_period('M')
-        ventas_mensuales = datos.groupby('mes').agg(unidades_vendidas=('unidades_vendidas', 'sum')).reset_index()
+        datos['mes'] = pd.to_datetime(datos[['Año', 'Mes']].astype(str).agg('-'.join, axis=1), format='%Y-%m')
+        ventas_mensuales = datos.groupby('mes').agg(unidades_vendidas=('Unidades_vendidas', 'sum')).reset_index()
+        st.write("Ventas mensuales agrupadas:")
+        st.dataframe(ventas_mensuales)
 
         X = np.arange(len(ventas_mensuales)).reshape(-1, 1)
         y = ventas_mensuales['unidades_vendidas']
@@ -56,7 +58,7 @@ def main():
         plt.figure(figsize=(10, 6))
         plt.plot(ventas_mensuales['mes'].astype(str), ventas_mensuales['unidades_vendidas'], label="Ventas", marker="o")
         plt.plot(ventas_mensuales['mes'].astype(str), tendencia, color='red', linestyle="--", label="Tendencia")
-        plt.xtics(rotation=45)
+        plt.xticks(rotation=45)
         plt.title("Evolucion de Ventas")
         plt.xlabel("Mes")
         plt.ylabel("Unidades Vendidas")
