@@ -1,0 +1,901 @@
+Sucursal,Producto,Año,Mes,Unidades_vendidas,Ingreso_total,Costo_total
+Sucursal Norte,Cabernet Sauvignon,2020,1,4884,13213087.37,9312236.29
+Sucursal Norte,Merlot,2020,1,3948,10070996.57,7249458.62
+Sucursal Norte,Pinot Noir,2020,1,2852,10109800.45,7210032.59
+Sucursal Norte,Chardonnay,2020,1,4147,10474326.59,7939433.8
+Sucursal Norte,Sauvignon Blanc,2020,1,3161,9028432.11,6725602.38
+Sucursal Centro,Cabernet Sauvignon,2020,1,4674,14120655.55,9446173.41
+Sucursal Centro,Merlot,2020,1,3951,10008045.08,6056053.43
+Sucursal Centro,Pinot Noir,2020,1,2863,9402571.47,6050151.18
+Sucursal Centro,Chardonnay,2020,1,4370,11547499.8,7999159.52
+Sucursal Centro,Sauvignon Blanc,2020,1,3821,8973486.62,6811607.1
+Sucursal Sur,Cabernet Sauvignon,2020,1,5141,14158880.22,11245033.99
+Sucursal Sur,Merlot,2020,1,4211,9881660.64,6909194.78
+Sucursal Sur,Pinot Noir,2020,1,3231,11202303.26,7055970.13
+Sucursal Sur,Chardonnay,2020,1,4217,11040329.78,7489699.91
+Sucursal Sur,Sauvignon Blanc,2020,1,3175,8949796.93,5797304.24
+Sucursal Norte,Cabernet Sauvignon,2020,2,4719,14938318.67,9600704.94
+Sucursal Norte,Merlot,2020,2,4047,10262794.99,6322677.48
+Sucursal Norte,Pinot Noir,2020,2,3024,11093035.02,8355268.09
+Sucursal Norte,Chardonnay,2020,2,4918,14660018.11,11354723.94
+Sucursal Norte,Sauvignon Blanc,2020,2,3349,8570140.58,6071898.14
+Sucursal Centro,Cabernet Sauvignon,2020,2,4745,13854815.83,8380488.4
+Sucursal Centro,Merlot,2020,2,4182,11272790.52,6838013.11
+Sucursal Centro,Pinot Noir,2020,2,2730,9317713.43,6060163.28
+Sucursal Centro,Chardonnay,2020,2,4359,11336036.54,8436297.45
+Sucursal Centro,Sauvignon Blanc,2020,2,3680,10256504.43,6704093.59
+Sucursal Sur,Cabernet Sauvignon,2020,2,5098,16238094.09,11838989.44
+Sucursal Sur,Merlot,2020,2,4070,10694974.61,8334265.26
+Sucursal Sur,Pinot Noir,2020,2,3299,12684886.38,9649588.03
+Sucursal Sur,Chardonnay,2020,2,4170,12163456.32,8856825.2
+Sucursal Sur,Sauvignon Blanc,2020,2,3788,9622850.87,5822895.81
+Sucursal Norte,Cabernet Sauvignon,2020,3,4894,13300109.73,9381741.86
+Sucursal Norte,Merlot,2020,3,3863,9200560.22,6093658.14
+Sucursal Norte,Pinot Noir,2020,3,3042,11287885.71,7560643.3
+Sucursal Norte,Chardonnay,2020,3,4580,11932452.6,8536363.22
+Sucursal Norte,Sauvignon Blanc,2020,3,3513,9220952.21,6914433.24
+Sucursal Centro,Cabernet Sauvignon,2020,3,4887,15631676.45,11129783.87
+Sucursal Centro,Merlot,2020,3,4191,11398181.25,8376107.35
+Sucursal Centro,Pinot Noir,2020,3,2766,10288015.01,6331564.49
+Sucursal Centro,Chardonnay,2020,3,4907,13766826.92,9548621.47
+Sucursal Centro,Sauvignon Blanc,2020,3,3563,9020478.73,6887767.88
+Sucursal Sur,Cabernet Sauvignon,2020,3,4684,15443367.55,11511249.22
+Sucursal Sur,Merlot,2020,3,4175,10046465.66,6854608.3
+Sucursal Sur,Pinot Noir,2020,3,3049,10726060.35,7750324.8
+Sucursal Sur,Chardonnay,2020,3,4354,11036186.09,8821180.04
+Sucursal Sur,Sauvignon Blanc,2020,3,3212,7722592.55,5814244.75
+Sucursal Norte,Cabernet Sauvignon,2020,4,5281,14892459.58,10056917.91
+Sucursal Norte,Merlot,2020,4,3931,9050733.46,5599336.85
+Sucursal Norte,Pinot Noir,2020,4,3198,10360512.22,7880029.74
+Sucursal Norte,Chardonnay,2020,4,4425,13292371.41,9930659.68
+Sucursal Norte,Sauvignon Blanc,2020,4,3587,8600971.01,5898760.22
+Sucursal Centro,Cabernet Sauvignon,2020,4,4673,13328482.15,10175450.82
+Sucursal Centro,Merlot,2020,4,3711,9289575.33,7114767.33
+Sucursal Centro,Pinot Noir,2020,4,2890,10426030.8,6336420.35
+Sucursal Centro,Chardonnay,2020,4,4286,13126300.22,9194991.44
+Sucursal Centro,Sauvignon Blanc,2020,4,3520,9787596.17,7036413.4
+Sucursal Sur,Cabernet Sauvignon,2020,4,4776,14003052.33,8734516.4
+Sucursal Sur,Merlot,2020,4,3779,8719582.47,5384422.36
+Sucursal Sur,Pinot Noir,2020,4,3124,10624133.19,7663103.5
+Sucursal Sur,Chardonnay,2020,4,4091,10355009.25,6859144.64
+Sucursal Sur,Sauvignon Blanc,2020,4,3603,9012180.89,6186393.24
+Sucursal Norte,Cabernet Sauvignon,2020,5,5150,15618222.0,9543966.0
+Sucursal Norte,Merlot,2020,5,4073,9877257.08,7342162.93
+Sucursal Norte,Pinot Noir,2020,5,3121,11214935.65,8676947.28
+Sucursal Norte,Chardonnay,2020,5,4320,12293742.92,7401654.68
+Sucursal Norte,Sauvignon Blanc,2020,5,3282,8012722.97,5520791.66
+Sucursal Centro,Cabernet Sauvignon,2020,5,4549,14918418.92,10198625.08
+Sucursal Centro,Merlot,2020,5,4327,10732426.68,7856785.98
+Sucursal Centro,Pinot Noir,2020,5,3085,11622756.6,7801599.83
+Sucursal Centro,Chardonnay,2020,5,4332,10946650.34,8369065.56
+Sucursal Centro,Sauvignon Blanc,2020,5,3280,8746733.62,6208103.1
+Sucursal Sur,Cabernet Sauvignon,2020,5,4602,12664185.1,8895980.97
+Sucursal Sur,Merlot,2020,5,4115,9935809.15,6442507.96
+Sucursal Sur,Pinot Noir,2020,5,3254,11924919.29,8853994.68
+Sucursal Sur,Chardonnay,2020,5,4862,14477767.24,9579769.28
+Sucursal Sur,Sauvignon Blanc,2020,5,3203,8966425.38,6622398.59
+Sucursal Norte,Cabernet Sauvignon,2020,6,4751,14010861.13,8605335.35
+Sucursal Norte,Merlot,2020,6,3801,9556177.0,7628342.05
+Sucursal Norte,Pinot Noir,2020,6,2859,10471541.71,8062764.98
+Sucursal Norte,Chardonnay,2020,6,4836,14607248.45,8847256.82
+Sucursal Norte,Sauvignon Blanc,2020,6,3585,10100706.69,7514569.5
+Sucursal Centro,Cabernet Sauvignon,2020,6,5097,15914972.93,9811810.45
+Sucursal Centro,Merlot,2020,6,4392,10198892.11,7435987.25
+Sucursal Centro,Pinot Noir,2020,6,3072,11171827.41,7757883.61
+Sucursal Centro,Chardonnay,2020,6,4179,11338012.31,7432564.37
+Sucursal Centro,Sauvignon Blanc,2020,6,3803,9415204.99,6734744.76
+Sucursal Sur,Cabernet Sauvignon,2020,6,4977,14821093.96,9048260.31
+Sucursal Sur,Merlot,2020,6,3893,10673955.88,7143751.37
+Sucursal Sur,Pinot Noir,2020,6,3184,11311751.82,7897351.96
+Sucursal Sur,Chardonnay,2020,6,4112,11814437.08,7774883.75
+Sucursal Sur,Sauvignon Blanc,2020,6,3169,8008288.06,4937454.08
+Sucursal Norte,Cabernet Sauvignon,2020,7,4836,15057949.57,9965616.72
+Sucursal Norte,Merlot,2020,7,4037,10344893.3,6547149.51
+Sucursal Norte,Pinot Noir,2020,7,2747,9788194.66,5994188.49
+Sucursal Norte,Chardonnay,2020,7,4172,11760717.91,8376811.86
+Sucursal Norte,Sauvignon Blanc,2020,7,3587,8963529.03,5513788.32
+Sucursal Centro,Cabernet Sauvignon,2020,7,5470,17112443.02,10501302.5
+Sucursal Centro,Merlot,2020,7,4026,10443690.57,7296277.97
+Sucursal Centro,Pinot Noir,2020,7,3297,12462400.94,9483444.25
+Sucursal Centro,Chardonnay,2020,7,4186,12041840.27,8582258.1
+Sucursal Centro,Sauvignon Blanc,2020,7,3761,10377921.69,8043598.52
+Sucursal Sur,Cabernet Sauvignon,2020,7,4566,13783934.85,9795301.67
+Sucursal Sur,Merlot,2020,7,3741,9350675.4,6829551.29
+Sucursal Sur,Pinot Noir,2020,7,3098,10740009.88,7889937.05
+Sucursal Sur,Chardonnay,2020,7,4338,11916580.11,8533966.03
+Sucursal Sur,Sauvignon Blanc,2020,7,3784,9579965.43,5855395.49
+Sucursal Norte,Cabernet Sauvignon,2020,8,5107,14149429.22,10469403.49
+Sucursal Norte,Merlot,2020,8,3727,8938104.54,6465924.98
+Sucursal Norte,Pinot Noir,2020,8,3187,11243157.06,8350602.08
+Sucursal Norte,Chardonnay,2020,8,4557,11854341.05,7766132.93
+Sucursal Norte,Sauvignon Blanc,2020,8,3452,9167848.63,6039789.4
+Sucursal Centro,Cabernet Sauvignon,2020,8,4942,13965615.07,11014750.17
+Sucursal Centro,Merlot,2020,8,3715,8963553.51,6382699.62
+Sucursal Centro,Pinot Noir,2020,8,2765,9138113.21,5945412.52
+Sucursal Centro,Chardonnay,2020,8,4579,12638094.93,9409358.46
+Sucursal Centro,Sauvignon Blanc,2020,8,3694,9935626.38,6614606.89
+Sucursal Sur,Cabernet Sauvignon,2020,8,5436,16688411.43,10193765.23
+Sucursal Sur,Merlot,2020,8,3697,10151438.51,7281089.98
+Sucursal Sur,Pinot Noir,2020,8,3105,10115464.38,6376193.84
+Sucursal Sur,Chardonnay,2020,8,4760,14233047.13,9664420.4
+Sucursal Sur,Sauvignon Blanc,2020,8,3540,8937558.9,7074365.8
+Sucursal Norte,Cabernet Sauvignon,2020,9,5428,14951925.35,9359332.47
+Sucursal Norte,Merlot,2020,9,3861,9644188.96,6392985.63
+Sucursal Norte,Pinot Noir,2020,9,3280,10452384.56,7972776.94
+Sucursal Norte,Chardonnay,2020,9,4208,11746041.18,9159114.19
+Sucursal Norte,Sauvignon Blanc,2020,9,3810,10711185.78,8121261.31
+Sucursal Centro,Cabernet Sauvignon,2020,9,4947,15889468.84,10903417.36
+Sucursal Centro,Merlot,2020,9,3955,10644224.4,7507012.17
+Sucursal Centro,Pinot Noir,2020,9,2727,9898896.33,6603041.91
+Sucursal Centro,Chardonnay,2020,9,4578,13894415.96,9526209.95
+Sucursal Centro,Sauvignon Blanc,2020,9,3384,8984680.94,6147854.31
+Sucursal Sur,Cabernet Sauvignon,2020,9,5147,16407539.99,12635492.73
+Sucursal Sur,Merlot,2020,9,4358,10861233.31,8083207.62
+Sucursal Sur,Pinot Noir,2020,9,3098,11537476.35,7375332.26
+Sucursal Sur,Chardonnay,2020,9,4803,14202136.93,10965133.53
+Sucursal Sur,Sauvignon Blanc,2020,9,3404,9398400.4,7356045.42
+Sucursal Norte,Cabernet Sauvignon,2020,10,5455,14952802.81,11868600.59
+Sucursal Norte,Merlot,2020,10,3910,8939406.02,6599334.94
+Sucursal Norte,Pinot Noir,2020,10,2826,10080864.48,6314332.39
+Sucursal Norte,Chardonnay,2020,10,4766,13890753.64,9745493.25
+Sucursal Norte,Sauvignon Blanc,2020,10,3511,9581885.26,6177719.86
+Sucursal Centro,Cabernet Sauvignon,2020,10,4763,13547308.61,8603454.64
+Sucursal Centro,Merlot,2020,10,3954,9130971.45,6556086.63
+Sucursal Centro,Pinot Noir,2020,10,2913,9352037.89,6729244.01
+Sucursal Centro,Chardonnay,2020,10,4750,14314602.5,9660254.81
+Sucursal Centro,Sauvignon Blanc,2020,10,3203,8895499.26,6523227.42
+Sucursal Sur,Cabernet Sauvignon,2020,10,4802,15430283.98,11442156.11
+Sucursal Sur,Merlot,2020,10,3899,10117374.87,6957153.1
+Sucursal Sur,Pinot Noir,2020,10,3086,10146878.26,6495898.69
+Sucursal Sur,Chardonnay,2020,10,4129,12155785.43,9483665.04
+Sucursal Sur,Sauvignon Blanc,2020,10,3493,8684483.04,5788198.31
+Sucursal Norte,Cabernet Sauvignon,2020,11,4510,14516147.91,9536056.96
+Sucursal Norte,Merlot,2020,11,4394,10982393.91,7656005.86
+Sucursal Norte,Pinot Noir,2020,11,3274,10757482.52,6702792.58
+Sucursal Norte,Chardonnay,2020,11,4194,12800599.22,10119764.0
+Sucursal Norte,Sauvignon Blanc,2020,11,3517,9470453.37,6269937.4
+Sucursal Centro,Cabernet Sauvignon,2020,11,5484,15298801.06,10617126.98
+Sucursal Centro,Merlot,2020,11,4125,9282633.58,6831291.81
+Sucursal Centro,Pinot Noir,2020,11,2821,10026096.73,7457928.97
+Sucursal Centro,Chardonnay,2020,11,4788,14066414.91,9385838.01
+Sucursal Centro,Sauvignon Blanc,2020,11,3776,10554604.74,6798471.71
+Sucursal Sur,Cabernet Sauvignon,2020,11,4935,14946677.17,9940582.51
+Sucursal Sur,Merlot,2020,11,3670,8509339.19,6668537.26
+Sucursal Sur,Pinot Noir,2020,11,3038,9659612.82,5940205.12
+Sucursal Sur,Chardonnay,2020,11,4901,13344050.99,10164539.41
+Sucursal Sur,Sauvignon Blanc,2020,11,3552,9579330.07,6056599.46
+Sucursal Norte,Cabernet Sauvignon,2020,12,5422,15603858.37,12269642.78
+Sucursal Norte,Merlot,2020,12,4262,11285309.76,8985824.81
+Sucursal Norte,Pinot Noir,2020,12,3263,10588971.75,8348952.89
+Sucursal Norte,Chardonnay,2020,12,4581,12807750.0,8076398.44
+Sucursal Norte,Sauvignon Blanc,2020,12,3828,10507465.67,7185490.24
+Sucursal Centro,Cabernet Sauvignon,2020,12,4856,15461569.97,10494641.21
+Sucursal Centro,Merlot,2020,12,3890,10256936.59,6193979.65
+Sucursal Centro,Pinot Noir,2020,12,3230,10831792.27,7437092.72
+Sucursal Centro,Chardonnay,2020,12,4680,12771185.78,9246364.36
+Sucursal Centro,Sauvignon Blanc,2020,12,3244,7918322.99,5027107.34
+Sucursal Sur,Cabernet Sauvignon,2020,12,5146,13933707.2,9753833.22
+Sucursal Sur,Merlot,2020,12,3776,9384436.01,6219638.14
+Sucursal Sur,Pinot Noir,2020,12,2968,11102190.55,7851956.33
+Sucursal Sur,Chardonnay,2020,12,4369,12715946.1,7703570.06
+Sucursal Sur,Sauvignon Blanc,2020,12,3828,9456598.7,5693872.18
+Sucursal Norte,Cabernet Sauvignon,2021,1,5484,18961720.54,11424030.3
+Sucursal Norte,Merlot,2021,1,4015,10758837.53,8246611.01
+Sucursal Norte,Pinot Noir,2021,1,3272,15657858.09,10348054.37
+Sucursal Norte,Chardonnay,2021,1,4697,15545432.63,9506571.61
+Sucursal Norte,Sauvignon Blanc,2021,1,3327,9854775.68,6094161.85
+Sucursal Centro,Cabernet Sauvignon,2021,1,5145,16848618.31,11633643.59
+Sucursal Centro,Merlot,2021,1,3641,9708993.53,6653297.45
+Sucursal Centro,Pinot Noir,2021,1,3832,17064180.56,11722207.83
+Sucursal Centro,Chardonnay,2021,1,5309,16433383.33,10148682.25
+Sucursal Centro,Sauvignon Blanc,2021,1,3522,10612414.22,6369180.05
+Sucursal Sur,Cabernet Sauvignon,2021,1,5329,18296677.15,11805877.4
+Sucursal Sur,Merlot,2021,1,4303,11930628.31,9532029.09
+Sucursal Sur,Pinot Noir,2021,1,3582,17338301.0,13458331.73
+Sucursal Sur,Chardonnay,2021,1,4708,15063587.92,11998134.94
+Sucursal Sur,Sauvignon Blanc,2021,1,3838,11745370.53,7370453.37
+Sucursal Norte,Cabernet Sauvignon,2021,2,5499,20941980.82,15533539.72
+Sucursal Norte,Merlot,2021,2,4218,10590835.58,8207205.22
+Sucursal Norte,Pinot Noir,2021,2,3696,16329353.99,9854419.21
+Sucursal Norte,Chardonnay,2021,2,4594,16031512.09,12741543.49
+Sucursal Norte,Sauvignon Blanc,2021,2,3430,9528679.33,7384829.87
+Sucursal Centro,Cabernet Sauvignon,2021,2,5574,20502711.27,12914262.52
+Sucursal Centro,Merlot,2021,2,3810,9951333.45,6402574.71
+Sucursal Centro,Pinot Noir,2021,2,3261,16175288.78,10301979.28
+Sucursal Centro,Chardonnay,2021,2,4743,16667191.11,10668170.26
+Sucursal Centro,Sauvignon Blanc,2021,2,3521,10133820.96,7546844.77
+Sucursal Sur,Cabernet Sauvignon,2021,2,5892,19675008.61,13768857.22
+Sucursal Sur,Merlot,2021,2,4316,12320775.73,9441872.83
+Sucursal Sur,Pinot Noir,2021,2,3947,16584039.17,11772892.98
+Sucursal Sur,Chardonnay,2021,2,4783,15065634.7,10642352.27
+Sucursal Sur,Sauvignon Blanc,2021,2,3504,10533178.81,7404626.77
+Sucursal Norte,Cabernet Sauvignon,2021,3,5325,18807604.98,14528905.85
+Sucursal Norte,Merlot,2021,3,3817,10913794.45,7904421.62
+Sucursal Norte,Pinot Noir,2021,3,3687,15222955.14,10026398.64
+Sucursal Norte,Chardonnay,2021,3,4500,14896951.72,9063757.26
+Sucursal Norte,Sauvignon Blanc,2021,3,3461,9670634.22,6446843.55
+Sucursal Centro,Cabernet Sauvignon,2021,3,5982,22176660.22,17435097.83
+Sucursal Centro,Merlot,2021,3,3709,10734763.32,7309499.42
+Sucursal Centro,Pinot Noir,2021,3,3541,15818325.41,11694151.26
+Sucursal Centro,Chardonnay,2021,3,4464,14461527.84,9900073.14
+Sucursal Centro,Sauvignon Blanc,2021,3,3287,8774282.45,6285433.05
+Sucursal Sur,Cabernet Sauvignon,2021,3,5305,20836669.13,12580815.47
+Sucursal Sur,Merlot,2021,3,3825,10093608.73,6671687.74
+Sucursal Sur,Pinot Noir,2021,3,3303,13588464.43,10699180.2
+Sucursal Sur,Chardonnay,2021,3,4971,18262354.41,11452438.65
+Sucursal Sur,Sauvignon Blanc,2021,3,3358,8862754.05,5662412.7
+Sucursal Norte,Cabernet Sauvignon,2021,4,5389,17527739.02,13930714.94
+Sucursal Norte,Merlot,2021,4,4382,12761139.84,9024987.57
+Sucursal Norte,Pinot Noir,2021,4,3931,18939401.81,13153504.23
+Sucursal Norte,Chardonnay,2021,4,4850,17779103.56,12004890.73
+Sucursal Norte,Sauvignon Blanc,2021,4,3458,9466457.7,7299215.02
+Sucursal Centro,Cabernet Sauvignon,2021,4,5801,18972733.77,11664695.85
+Sucursal Centro,Merlot,2021,4,3603,9964745.17,6390169.31
+Sucursal Centro,Pinot Noir,2021,4,3529,17619740.28,12053130.56
+Sucursal Centro,Chardonnay,2021,4,4931,15652341.92,11634493.77
+Sucursal Centro,Sauvignon Blanc,2021,4,3212,9435955.53,6309656.51
+Sucursal Sur,Cabernet Sauvignon,2021,4,5251,19169981.02,14678714.98
+Sucursal Sur,Merlot,2021,4,4076,11298878.98,8783449.6
+Sucursal Sur,Pinot Noir,2021,4,3650,16506193.89,10572614.68
+Sucursal Sur,Chardonnay,2021,4,4610,15422915.98,11794056.96
+Sucursal Sur,Sauvignon Blanc,2021,4,3840,10810090.11,7713506.92
+Sucursal Norte,Cabernet Sauvignon,2021,5,5826,21567216.99,15703985.26
+Sucursal Norte,Merlot,2021,5,4177,11415722.36,8246469.15
+Sucursal Norte,Pinot Noir,2021,5,3444,16015051.78,12676624.1
+Sucursal Norte,Chardonnay,2021,5,4931,14965973.27,11262776.64
+Sucursal Norte,Sauvignon Blanc,2021,5,3545,10573321.32,6824088.28
+Sucursal Centro,Cabernet Sauvignon,2021,5,5189,19848556.16,12223479.63
+Sucursal Centro,Merlot,2021,5,4244,10922474.01,8255280.72
+Sucursal Centro,Pinot Noir,2021,5,3891,17812299.49,11092946.18
+Sucursal Centro,Chardonnay,2021,5,4528,13921298.38,9880848.67
+Sucursal Centro,Sauvignon Blanc,2021,5,3548,10491504.76,6461093.11
+Sucursal Sur,Cabernet Sauvignon,2021,5,5910,19758581.93,14157224.68
+Sucursal Sur,Merlot,2021,5,3954,10774543.88,6596533.09
+Sucursal Sur,Pinot Noir,2021,5,3560,17452181.35,12779799.96
+Sucursal Sur,Chardonnay,2021,5,4665,15423032.41,11125377.05
+Sucursal Sur,Sauvignon Blanc,2021,5,3654,10847990.0,7911336.8
+Sucursal Norte,Cabernet Sauvignon,2021,6,5490,21101504.82,16109121.56
+Sucursal Norte,Merlot,2021,6,3720,9252833.43,7166100.26
+Sucursal Norte,Pinot Noir,2021,6,3876,17674459.88,13529536.37
+Sucursal Norte,Chardonnay,2021,6,5147,15885160.36,12103798.45
+Sucursal Norte,Sauvignon Blanc,2021,6,3325,9227443.86,7381014.72
+Sucursal Centro,Cabernet Sauvignon,2021,6,5658,19464564.1,12943061.69
+Sucursal Centro,Merlot,2021,6,3881,9966153.23,7001682.83
+Sucursal Centro,Pinot Noir,2021,6,3753,18752644.52,14052744.2
+Sucursal Centro,Chardonnay,2021,6,4996,15192417.29,10556798.93
+Sucursal Centro,Sauvignon Blanc,2021,6,3688,10058308.61,6848483.48
+Sucursal Sur,Cabernet Sauvignon,2021,6,5782,20696232.64,14532783.59
+Sucursal Sur,Merlot,2021,6,4217,11078038.82,7571928.33
+Sucursal Sur,Pinot Noir,2021,6,3438,16466631.82,10938457.39
+Sucursal Sur,Chardonnay,2021,6,5224,16144944.5,10113089.34
+Sucursal Sur,Sauvignon Blanc,2021,6,3285,9195540.05,6554488.84
+Sucursal Norte,Cabernet Sauvignon,2021,7,5873,20444476.2,14053334.82
+Sucursal Norte,Merlot,2021,7,3730,10965571.37,7650311.98
+Sucursal Norte,Pinot Noir,2021,7,3757,17304533.1,10482047.65
+Sucursal Norte,Chardonnay,2021,7,4609,14984646.05,11247905.24
+Sucursal Norte,Sauvignon Blanc,2021,7,3489,10165678.68,6987321.04
+Sucursal Centro,Cabernet Sauvignon,2021,7,5024,19504758.74,12595320.13
+Sucursal Centro,Merlot,2021,7,4022,10881214.84,8380156.34
+Sucursal Centro,Pinot Noir,2021,7,3766,18077460.01,11080132.31
+Sucursal Centro,Chardonnay,2021,7,4602,15274234.35,10704251.0
+Sucursal Centro,Sauvignon Blanc,2021,7,3841,10114309.83,7774230.69
+Sucursal Sur,Cabernet Sauvignon,2021,7,5276,19834288.44,12797792.04
+Sucursal Sur,Merlot,2021,7,3825,10955833.24,7300226.84
+Sucursal Sur,Pinot Noir,2021,7,3719,17230229.04,11649326.7
+Sucursal Sur,Chardonnay,2021,7,5355,18099892.59,12765027.92
+Sucursal Sur,Sauvignon Blanc,2021,7,3702,9945308.0,6976867.02
+Sucursal Norte,Cabernet Sauvignon,2021,8,5452,19701777.75,15554676.24
+Sucursal Norte,Merlot,2021,8,4176,12000074.61,9457445.32
+Sucursal Norte,Pinot Noir,2021,8,3468,16773665.2,10181599.32
+Sucursal Norte,Chardonnay,2021,8,5064,18109552.67,14408538.9
+Sucursal Norte,Sauvignon Blanc,2021,8,3234,8935285.18,6654667.3
+Sucursal Centro,Cabernet Sauvignon,2021,8,6004,21850957.62,14671292.46
+Sucursal Centro,Merlot,2021,8,4102,11018364.21,7255936.09
+Sucursal Centro,Pinot Noir,2021,8,3599,16415031.56,11516004.88
+Sucursal Centro,Chardonnay,2021,8,4783,17018631.49,11930840.08
+Sucursal Centro,Sauvignon Blanc,2021,8,3670,9743338.98,5934886.37
+Sucursal Sur,Cabernet Sauvignon,2021,8,5475,19988368.57,14443280.9
+Sucursal Sur,Merlot,2021,8,3792,9599334.95,6240019.81
+Sucursal Sur,Pinot Noir,2021,8,3351,14570852.08,11177431.85
+Sucursal Sur,Chardonnay,2021,8,4823,14905849.71,10767848.13
+Sucursal Sur,Sauvignon Blanc,2021,8,3436,9299914.65,7072304.42
+Sucursal Norte,Cabernet Sauvignon,2021,9,5303,17696574.72,12287772.67
+Sucursal Norte,Merlot,2021,9,3888,11229804.71,7182613.26
+Sucursal Norte,Pinot Noir,2021,9,3465,14231139.3,9144940.67
+Sucursal Norte,Chardonnay,2021,9,5133,17653913.04,10799096.34
+Sucursal Norte,Sauvignon Blanc,2021,9,3469,9477159.76,6492917.26
+Sucursal Centro,Cabernet Sauvignon,2021,9,5402,19490909.96,14408074.68
+Sucursal Centro,Merlot,2021,9,3958,10770320.14,8162378.42
+Sucursal Centro,Pinot Noir,2021,9,3805,17646865.49,12606383.37
+Sucursal Centro,Chardonnay,2021,9,5114,17460164.1,12112739.92
+Sucursal Centro,Sauvignon Blanc,2021,9,3527,10792963.21,7455430.14
+Sucursal Sur,Cabernet Sauvignon,2021,9,5118,17076279.1,12107752.86
+Sucursal Sur,Merlot,2021,9,3964,10687663.02,7254072.1
+Sucursal Sur,Pinot Noir,2021,9,3570,16352624.44,11980596.25
+Sucursal Sur,Chardonnay,2021,9,4642,15028196.85,11591257.05
+Sucursal Sur,Sauvignon Blanc,2021,9,3446,9641437.47,6574976.27
+Sucursal Norte,Cabernet Sauvignon,2021,10,5122,18976253.78,14339823.08
+Sucursal Norte,Merlot,2021,10,3602,9389440.09,6697028.58
+Sucursal Norte,Pinot Noir,2021,10,3688,16277826.97,10526658.44
+Sucursal Norte,Chardonnay,2021,10,4830,17493315.67,10738570.55
+Sucursal Norte,Sauvignon Blanc,2021,10,3177,9048803.13,6292904.41
+Sucursal Centro,Cabernet Sauvignon,2021,10,5804,21803035.4,16072028.46
+Sucursal Centro,Merlot,2021,10,3701,10893613.2,7831953.28
+Sucursal Centro,Pinot Noir,2021,10,3430,16378917.79,12038066.03
+Sucursal Centro,Chardonnay,2021,10,4884,17499608.15,10890899.3
+Sucursal Centro,Sauvignon Blanc,2021,10,3642,9756744.53,7799070.96
+Sucursal Sur,Cabernet Sauvignon,2021,10,5681,20281274.1,12304594.61
+Sucursal Sur,Merlot,2021,10,4388,11427398.83,8560164.53
+Sucursal Sur,Pinot Noir,2021,10,3666,15652471.53,11686399.07
+Sucursal Sur,Chardonnay,2021,10,4904,17680912.03,11193180.17
+Sucursal Sur,Sauvignon Blanc,2021,10,3161,9055694.84,5523874.21
+Sucursal Norte,Cabernet Sauvignon,2021,11,5590,18841298.68,13845498.58
+Sucursal Norte,Merlot,2021,11,3607,10878310.72,7810737.91
+Sucursal Norte,Pinot Noir,2021,11,3894,16015238.42,11073344.21
+Sucursal Norte,Chardonnay,2021,11,4764,16552005.62,10291596.04
+Sucursal Norte,Sauvignon Blanc,2021,11,3265,9311613.95,6470791.17
+Sucursal Centro,Cabernet Sauvignon,2021,11,5912,22185339.77,17562909.59
+Sucursal Centro,Merlot,2021,11,3780,10999200.13,7041863.51
+Sucursal Centro,Pinot Noir,2021,11,3721,17314692.48,12862809.51
+Sucursal Centro,Chardonnay,2021,11,4837,16589901.2,12600225.85
+Sucursal Centro,Sauvignon Blanc,2021,11,3420,9425233.83,5802381.21
+Sucursal Sur,Cabernet Sauvignon,2021,11,5465,20566365.71,14523807.55
+Sucursal Sur,Merlot,2021,11,3867,11240451.01,6853874.73
+Sucursal Sur,Pinot Noir,2021,11,3667,15134552.45,11516005.03
+Sucursal Sur,Chardonnay,2021,11,4994,18243242.42,13143960.13
+Sucursal Sur,Sauvignon Blanc,2021,11,3341,8785594.33,5974716.04
+Sucursal Norte,Cabernet Sauvignon,2021,12,5848,22034883.14,14105650.82
+Sucursal Norte,Merlot,2021,12,4248,12104055.54,8989839.02
+Sucursal Norte,Pinot Noir,2021,12,3520,16395788.05,11593730.66
+Sucursal Norte,Chardonnay,2021,12,4879,16942175.82,12133632.55
+Sucursal Norte,Sauvignon Blanc,2021,12,3304,9773063.85,6121232.35
+Sucursal Centro,Cabernet Sauvignon,2021,12,5195,20092162.84,14917781.41
+Sucursal Centro,Merlot,2021,12,4291,11045020.99,6751594.65
+Sucursal Centro,Pinot Noir,2021,12,3352,15913218.76,10076351.24
+Sucursal Centro,Chardonnay,2021,12,5177,16870583.22,12505056.8
+Sucursal Centro,Sauvignon Blanc,2021,12,3433,9782123.42,6879588.78
+Sucursal Sur,Cabernet Sauvignon,2021,12,5254,19695855.81,14966536.98
+Sucursal Sur,Merlot,2021,12,4349,11811713.8,8883788.65
+Sucursal Sur,Pinot Noir,2021,12,3287,15621758.66,11579621.01
+Sucursal Sur,Chardonnay,2021,12,4494,13848451.74,10338033.62
+Sucursal Sur,Sauvignon Blanc,2021,12,3602,10007539.53,7037558.05
+Sucursal Norte,Cabernet Sauvignon,2022,1,6379,25527705.21,18042652.05
+Sucursal Norte,Merlot,2022,1,3827,11219133.98,7181347.62
+Sucursal Norte,Pinot Noir,2022,1,4709,26224848.51,20082876.11
+Sucursal Norte,Chardonnay,2022,1,5942,22430365.67,17772370.12
+Sucursal Norte,Sauvignon Blanc,2022,1,3367,10812739.57,7830320.61
+Sucursal Centro,Cabernet Sauvignon,2022,1,5685,24213041.81,15401250.25
+Sucursal Centro,Merlot,2022,1,4326,11984338.76,7428760.68
+Sucursal Centro,Pinot Noir,2022,1,4644,28170669.51,21650524.81
+Sucursal Centro,Chardonnay,2022,1,5576,23290493.88,17610413.58
+Sucursal Centro,Sauvignon Blanc,2022,1,3473,10829352.87,7404255.98
+Sucursal Sur,Cabernet Sauvignon,2022,1,6352,29501304.27,19203895.9
+Sucursal Sur,Merlot,2022,1,3790,10581742.71,7202257.66
+Sucursal Sur,Pinot Noir,2022,1,4629,26664432.2,19661674.62
+Sucursal Sur,Chardonnay,2022,1,5085,22084168.93,14869083.55
+Sucursal Sur,Sauvignon Blanc,2022,1,3501,11053266.38,8600945.68
+Sucursal Norte,Cabernet Sauvignon,2022,2,5554,22457956.51,13881193.33
+Sucursal Norte,Merlot,2022,2,3666,11993525.7,7889480.33
+Sucursal Norte,Pinot Noir,2022,2,4389,23720050.66,16430885.91
+Sucursal Norte,Chardonnay,2022,2,5243,20678478.22,15173243.01
+Sucursal Norte,Sauvignon Blanc,2022,2,3275,10611515.66,7015045.61
+Sucursal Centro,Cabernet Sauvignon,2022,2,6470,29404094.25,20256278.98
+Sucursal Centro,Merlot,2022,2,3916,11629939.57,9042344.13
+Sucursal Centro,Pinot Noir,2022,2,4113,22692764.64,18076745.37
+Sucursal Centro,Chardonnay,2022,2,5767,25554321.66,17471942.93
+Sucursal Centro,Sauvignon Blanc,2022,2,3793,11943032.09,8674441.36
+Sucursal Sur,Cabernet Sauvignon,2022,2,6398,30232981.64,23890279.35
+Sucursal Sur,Merlot,2022,2,3726,11983492.86,9045047.64
+Sucursal Sur,Pinot Noir,2022,2,4176,22411520.44,17781346.6
+Sucursal Sur,Chardonnay,2022,2,5867,24386913.56,15776608.05
+Sucursal Sur,Sauvignon Blanc,2022,2,3721,11887806.94,9196416.43
+Sucursal Norte,Cabernet Sauvignon,2022,3,6325,25736206.84,20203484.06
+Sucursal Norte,Merlot,2022,3,3602,10346635.26,7801846.85
+Sucursal Norte,Pinot Noir,2022,3,4667,29054803.33,19549747.75
+Sucursal Norte,Chardonnay,2022,3,5910,24505054.96,16157250.65
+Sucursal Norte,Sauvignon Blanc,2022,3,3245,9589845.32,7299179.62
+Sucursal Centro,Cabernet Sauvignon,2022,3,5643,23475884.97,14309129.29
+Sucursal Centro,Merlot,2022,3,3668,10066808.17,7507337.93
+Sucursal Centro,Pinot Noir,2022,3,4580,26214645.55,16368381.15
+Sucursal Centro,Chardonnay,2022,3,5970,22427070.4,17827085.67
+Sucursal Centro,Sauvignon Blanc,2022,3,3748,10974714.79,8589452.55
+Sucursal Sur,Cabernet Sauvignon,2022,3,5550,22703723.36,18035573.21
+Sucursal Sur,Merlot,2022,3,4326,13619723.44,8787389.73
+Sucursal Sur,Pinot Noir,2022,3,4343,27311374.59,18295512.53
+Sucursal Sur,Chardonnay,2022,3,5878,25039557.33,19438695.22
+Sucursal Sur,Sauvignon Blanc,2022,3,3510,10607501.39,6378000.06
+Sucursal Norte,Cabernet Sauvignon,2022,4,6062,25008405.07,18212110.68
+Sucursal Norte,Merlot,2022,4,3835,12014403.25,7215256.27
+Sucursal Norte,Pinot Noir,2022,4,4118,26758376.21,16445031.22
+Sucursal Norte,Chardonnay,2022,4,5390,21123898.1,16654608.38
+Sucursal Norte,Sauvignon Blanc,2022,4,3679,12448777.8,8988602.68
+Sucursal Centro,Cabernet Sauvignon,2022,4,5763,23495538.61,15771392.34
+Sucursal Centro,Merlot,2022,4,4070,12490705.77,8632246.14
+Sucursal Centro,Pinot Noir,2022,4,4228,27071425.0,18125548.79
+Sucursal Centro,Chardonnay,2022,4,4964,20912886.25,16104794.17
+Sucursal Centro,Sauvignon Blanc,2022,4,3702,12235313.05,8186192.21
+Sucursal Sur,Cabernet Sauvignon,2022,4,5896,24632333.72,16130313.95
+Sucursal Sur,Merlot,2022,4,4146,11402445.37,8133010.65
+Sucursal Sur,Pinot Noir,2022,4,4451,25846358.44,20279097.39
+Sucursal Sur,Chardonnay,2022,4,5648,23851148.36,16290359.5
+Sucursal Sur,Sauvignon Blanc,2022,4,3499,10780449.86,6795885.81
+Sucursal Norte,Cabernet Sauvignon,2022,5,5803,26893766.87,16599566.29
+Sucursal Norte,Merlot,2022,5,3610,11043723.17,6811711.84
+Sucursal Norte,Pinot Noir,2022,5,4681,29651133.68,22205765.64
+Sucursal Norte,Chardonnay,2022,5,5107,21628671.6,15579292.03
+Sucursal Norte,Sauvignon Blanc,2022,5,3341,9470305.2,6797362.19
+Sucursal Centro,Cabernet Sauvignon,2022,5,6554,30656673.59,18682747.19
+Sucursal Centro,Merlot,2022,5,3783,10548092.63,7428348.67
+Sucursal Centro,Pinot Noir,2022,5,4292,26417082.33,20490323.05
+Sucursal Centro,Chardonnay,2022,5,5776,25031541.66,16457514.72
+Sucursal Centro,Sauvignon Blanc,2022,5,3222,10043364.29,6509814.43
+Sucursal Sur,Cabernet Sauvignon,2022,5,5879,26549664.69,19841120.09
+Sucursal Sur,Merlot,2022,5,3696,11021896.0,7631062.61
+Sucursal Sur,Pinot Noir,2022,5,4687,30413437.21,21484185.26
+Sucursal Sur,Chardonnay,2022,5,5128,22224817.62,13699630.52
+Sucursal Sur,Sauvignon Blanc,2022,5,3364,9563755.31,7090208.82
+Sucursal Norte,Cabernet Sauvignon,2022,6,5773,25492480.37,17682220.43
+Sucursal Norte,Merlot,2022,6,3613,11183099.0,7478619.69
+Sucursal Norte,Pinot Noir,2022,6,4348,26916738.42,18748797.92
+Sucursal Norte,Chardonnay,2022,6,5066,20841246.36,16428115.46
+Sucursal Norte,Sauvignon Blanc,2022,6,3414,9890518.42,7795909.41
+Sucursal Centro,Cabernet Sauvignon,2022,6,6415,28163542.72,22274262.89
+Sucursal Centro,Merlot,2022,6,4060,12522206.57,8091422.53
+Sucursal Centro,Pinot Noir,2022,6,4473,26081149.91,16189070.38
+Sucursal Centro,Chardonnay,2022,6,4949,21018319.89,14175328.65
+Sucursal Centro,Sauvignon Blanc,2022,6,3295,11210235.07,8436073.15
+Sucursal Sur,Cabernet Sauvignon,2022,6,5730,24143207.19,14839607.76
+Sucursal Sur,Merlot,2022,6,4262,11994308.29,8246459.64
+Sucursal Sur,Pinot Noir,2022,6,4326,23599477.93,15327950.48
+Sucursal Sur,Chardonnay,2022,6,5166,21670951.96,15000598.43
+Sucursal Sur,Sauvignon Blanc,2022,6,3151,9194158.39,7139958.49
+Sucursal Norte,Cabernet Sauvignon,2022,7,6173,25073163.08,17849447.15
+Sucursal Norte,Merlot,2022,7,4347,12715967.59,9301456.64
+Sucursal Norte,Pinot Noir,2022,7,3941,25307558.63,15400300.26
+Sucursal Norte,Chardonnay,2022,7,5148,21872250.86,16219190.68
+Sucursal Norte,Sauvignon Blanc,2022,7,3509,11593444.47,7350411.07
+Sucursal Centro,Cabernet Sauvignon,2022,7,6571,27935499.45,18737212.02
+Sucursal Centro,Merlot,2022,7,3669,10897033.86,8487789.23
+Sucursal Centro,Pinot Noir,2022,7,4175,26757876.16,17437655.13
+Sucursal Centro,Chardonnay,2022,7,5469,23955095.68,15199278.33
+Sucursal Centro,Sauvignon Blanc,2022,7,3222,10262132.48,7633162.51
+Sucursal Sur,Cabernet Sauvignon,2022,7,5974,24750354.54,17815072.21
+Sucursal Sur,Merlot,2022,7,4109,13366276.8,9921485.64
+Sucursal Sur,Pinot Noir,2022,7,3981,22653642.36,15986375.83
+Sucursal Sur,Chardonnay,2022,7,5205,19416935.92,12083239.38
+Sucursal Sur,Sauvignon Blanc,2022,7,3249,10030367.77,7162263.87
+Sucursal Norte,Cabernet Sauvignon,2022,8,5972,28275567.62,21551534.19
+Sucursal Norte,Merlot,2022,8,3974,11915790.13,7445603.0
+Sucursal Norte,Pinot Noir,2022,8,3935,23208066.71,17402767.09
+Sucursal Norte,Chardonnay,2022,8,5773,23055836.38,16386999.4
+Sucursal Norte,Sauvignon Blanc,2022,8,3592,11275029.85,8306223.19
+Sucursal Centro,Cabernet Sauvignon,2022,8,6043,24692699.37,19698873.5
+Sucursal Centro,Merlot,2022,8,4376,12316842.72,8746630.67
+Sucursal Centro,Pinot Noir,2022,8,4252,24444830.99,14730676.5
+Sucursal Centro,Chardonnay,2022,8,4963,18311066.64,14094240.89
+Sucursal Centro,Sauvignon Blanc,2022,8,3738,11725433.54,7601453.28
+Sucursal Sur,Cabernet Sauvignon,2022,8,5959,26281937.61,18920533.88
+Sucursal Sur,Merlot,2022,8,4012,13180813.02,9629977.32
+Sucursal Sur,Pinot Noir,2022,8,4680,28137542.78,21261258.48
+Sucursal Sur,Chardonnay,2022,8,5181,22897739.59,16218828.61
+Sucursal Sur,Sauvignon Blanc,2022,8,3610,12483558.14,7725934.97
+Sucursal Norte,Cabernet Sauvignon,2022,9,5577,23697110.56,16965138.9
+Sucursal Norte,Merlot,2022,9,4176,12399866.68,8507244.54
+Sucursal Norte,Pinot Noir,2022,9,4413,24273214.85,16535666.13
+Sucursal Norte,Chardonnay,2022,9,5713,22364483.53,13573164.83
+Sucursal Norte,Sauvignon Blanc,2022,9,3543,11673840.43,7020812.84
+Sucursal Centro,Cabernet Sauvignon,2022,9,6349,28269483.66,17981690.03
+Sucursal Centro,Merlot,2022,9,4287,14076001.68,9924741.66
+Sucursal Centro,Pinot Noir,2022,9,4695,30219023.84,18754566.61
+Sucursal Centro,Chardonnay,2022,9,5449,19850606.89,15366592.31
+Sucursal Centro,Sauvignon Blanc,2022,9,3613,12345217.79,8732815.17
+Sucursal Sur,Cabernet Sauvignon,2022,9,6389,25065774.44,16859056.35
+Sucursal Sur,Merlot,2022,9,3756,10696003.01,8376683.84
+Sucursal Sur,Pinot Noir,2022,9,4144,24189243.45,14547969.62
+Sucursal Sur,Chardonnay,2022,9,5366,20439181.75,12484179.98
+Sucursal Sur,Sauvignon Blanc,2022,9,3466,11817676.09,7458044.36
+Sucursal Norte,Cabernet Sauvignon,2022,10,6642,28216883.52,17226035.92
+Sucursal Norte,Merlot,2022,10,4261,12854799.95,8045234.36
+Sucursal Norte,Pinot Noir,2022,10,4068,25417600.76,16001333.85
+Sucursal Norte,Chardonnay,2022,10,5682,23024157.1,17503227.28
+Sucursal Norte,Sauvignon Blanc,2022,10,3547,11807018.62,7735556.05
+Sucursal Centro,Cabernet Sauvignon,2022,10,5774,24146551.39,17851769.12
+Sucursal Centro,Merlot,2022,10,3703,10236733.99,7478852.56
+Sucursal Centro,Pinot Noir,2022,10,4448,24666828.35,18427750.66
+Sucursal Centro,Chardonnay,2022,10,5553,21308699.87,16558366.99
+Sucursal Centro,Sauvignon Blanc,2022,10,3448,10676328.94,7982050.89
+Sucursal Sur,Cabernet Sauvignon,2022,10,6276,27467047.03,20185130.58
+Sucursal Sur,Merlot,2022,10,3873,10992112.45,8527769.02
+Sucursal Sur,Pinot Noir,2022,10,4702,25238211.63,18677411.79
+Sucursal Sur,Chardonnay,2022,10,5456,23080133.94,14386412.16
+Sucursal Sur,Sauvignon Blanc,2022,10,3478,10189013.21,6406225.93
+Sucursal Norte,Cabernet Sauvignon,2022,11,5554,24672989.26,17913666.32
+Sucursal Norte,Merlot,2022,11,4323,12279936.59,9482199.18
+Sucursal Norte,Pinot Noir,2022,11,4119,23920584.78,18633488.65
+Sucursal Norte,Chardonnay,2022,11,5876,22669471.07,17432220.75
+Sucursal Norte,Sauvignon Blanc,2022,11,3538,10879403.39,8578075.39
+Sucursal Centro,Cabernet Sauvignon,2022,11,6532,29857264.71,18833501.09
+Sucursal Centro,Merlot,2022,11,3850,10678709.46,7331396.59
+Sucursal Centro,Pinot Noir,2022,11,4582,28010539.85,22139313.26
+Sucursal Centro,Chardonnay,2022,11,5825,23473366.48,17368011.79
+Sucursal Centro,Sauvignon Blanc,2022,11,3276,9620832.79,7582235.43
+Sucursal Sur,Cabernet Sauvignon,2022,11,6228,26123668.61,18049988.11
+Sucursal Sur,Merlot,2022,11,4243,13192676.95,8935624.85
+Sucursal Sur,Pinot Noir,2022,11,3976,25762402.52,15798634.03
+Sucursal Sur,Chardonnay,2022,11,5951,25881881.67,18000513.73
+Sucursal Sur,Sauvignon Blanc,2022,11,3255,9613367.18,7621466.3
+Sucursal Norte,Cabernet Sauvignon,2022,12,5690,25338661.46,19027550.94
+Sucursal Norte,Merlot,2022,12,3839,11918507.83,8578942.4
+Sucursal Norte,Pinot Noir,2022,12,3963,22426721.47,17286969.93
+Sucursal Norte,Chardonnay,2022,12,5869,23855221.45,18984814.52
+Sucursal Norte,Sauvignon Blanc,2022,12,3834,11377540.03,7537759.93
+Sucursal Centro,Cabernet Sauvignon,2022,12,5551,25756741.64,15706759.56
+Sucursal Centro,Merlot,2022,12,4195,12936656.39,8755117.98
+Sucursal Centro,Pinot Noir,2022,12,4559,25900447.36,19854328.22
+Sucursal Centro,Chardonnay,2022,12,5620,22741716.99,15997399.66
+Sucursal Centro,Sauvignon Blanc,2022,12,3370,10974495.39,7475103.9
+Sucursal Sur,Cabernet Sauvignon,2022,12,6441,26477075.36,19090037.93
+Sucursal Sur,Merlot,2022,12,4001,11778074.31,7670539.79
+Sucursal Sur,Pinot Noir,2022,12,4463,26968941.35,17570861.43
+Sucursal Sur,Chardonnay,2022,12,5235,19505988.35,12704176.9
+Sucursal Sur,Sauvignon Blanc,2022,12,3800,11534457.72,8953270.77
+Sucursal Norte,Cabernet Sauvignon,2023,1,6308,34068816.7,20854723.0
+Sucursal Norte,Merlot,2023,1,4228,14369006.54,8815103.83
+Sucursal Norte,Pinot Noir,2023,1,4771,37279489.74,22454691.34
+Sucursal Norte,Chardonnay,2023,1,5630,29879180.54,19553577.59
+Sucursal Norte,Sauvignon Blanc,2023,1,3431,11723586.4,9086139.76
+Sucursal Centro,Cabernet Sauvignon,2023,1,6215,31553507.5,23341685.91
+Sucursal Centro,Merlot,2023,1,3804,13763008.45,8399079.19
+Sucursal Centro,Pinot Noir,2023,1,5322,42733883.3,32478717.5
+Sucursal Centro,Chardonnay,2023,1,5893,30120020.53,22838688.92
+Sucursal Centro,Sauvignon Blanc,2023,1,3277,11928658.51,7800386.08
+Sucursal Sur,Cabernet Sauvignon,2023,1,7062,33154951.49,23414076.19
+Sucursal Sur,Merlot,2023,1,4203,14731660.24,11017061.99
+Sucursal Sur,Pinot Noir,2023,1,5369,44700325.88,30837572.16
+Sucursal Sur,Chardonnay,2023,1,5762,30117585.49,23709906.27
+Sucursal Sur,Sauvignon Blanc,2023,1,3731,12968245.34,9250959.4
+Sucursal Norte,Cabernet Sauvignon,2023,2,7106,39493198.18,31334668.08
+Sucursal Norte,Merlot,2023,2,3631,12235186.38,7801613.57
+Sucursal Norte,Pinot Noir,2023,2,5201,38002153.12,28043227.88
+Sucursal Norte,Chardonnay,2023,2,5950,26757123.72,18492541.51
+Sucursal Norte,Sauvignon Blanc,2023,2,3455,12126941.46,7856630.01
+Sucursal Centro,Cabernet Sauvignon,2023,2,7088,33079635.6,23543009.55
+Sucursal Centro,Merlot,2023,2,3743,13552013.77,9997028.33
+Sucursal Centro,Pinot Noir,2023,2,5311,43571112.47,27259745.53
+Sucursal Centro,Chardonnay,2023,2,5487,27508174.04,18300174.33
+Sucursal Centro,Sauvignon Blanc,2023,2,3796,14094269.07,10990854.53
+Sucursal Sur,Cabernet Sauvignon,2023,2,6023,30291046.25,22462625.33
+Sucursal Sur,Merlot,2023,2,3938,12142931.93,7353536.53
+Sucursal Sur,Pinot Noir,2023,2,5496,39986585.5,25037594.12
+Sucursal Sur,Chardonnay,2023,2,6255,29012169.87,21311312.58
+Sucursal Sur,Sauvignon Blanc,2023,2,3358,12541918.84,8205150.78
+Sucursal Norte,Cabernet Sauvignon,2023,3,7232,33935934.63,23690151.41
+Sucursal Norte,Merlot,2023,3,3609,12942702.67,8371114.84
+Sucursal Norte,Pinot Noir,2023,3,4676,34464683.08,24856045.2
+Sucursal Norte,Chardonnay,2023,3,5568,29104983.58,21841592.8
+Sucursal Norte,Sauvignon Blanc,2023,3,3486,11209849.96,6920733.85
+Sucursal Centro,Cabernet Sauvignon,2023,3,6577,36160802.29,24010920.69
+Sucursal Centro,Merlot,2023,3,4036,13767575.21,9801667.02
+Sucursal Centro,Pinot Noir,2023,3,5664,44305332.72,27454956.27
+Sucursal Centro,Chardonnay,2023,3,5795,27227834.54,21132339.46
+Sucursal Centro,Sauvignon Blanc,2023,3,3803,12948846.65,8276210.28
+Sucursal Sur,Cabernet Sauvignon,2023,3,6730,36937273.88,22571706.11
+Sucursal Sur,Merlot,2023,3,4084,12480047.18,9778835.7
+Sucursal Sur,Pinot Noir,2023,3,4735,32899336.44,25411359.24
+Sucursal Sur,Chardonnay,2023,3,5629,25318426.47,16660385.39
+Sucursal Sur,Sauvignon Blanc,2023,3,3730,12031426.56,8276236.47
+Sucursal Norte,Cabernet Sauvignon,2023,4,6157,34514591.84,26501593.18
+Sucursal Norte,Merlot,2023,4,4332,13012693.48,10354002.63
+Sucursal Norte,Pinot Noir,2023,4,5145,39112782.03,24254299.13
+Sucursal Norte,Chardonnay,2023,4,5994,26957414.11,17422132.75
+Sucursal Norte,Sauvignon Blanc,2023,4,3569,11219268.21,8866199.59
+Sucursal Centro,Cabernet Sauvignon,2023,4,6416,35212171.64,21177103.58
+Sucursal Centro,Merlot,2023,4,3934,14211510.93,8705129.82
+Sucursal Centro,Pinot Noir,2023,4,5221,38401962.66,24124989.57
+Sucursal Centro,Chardonnay,2023,4,5573,29618700.65,21659511.65
+Sucursal Centro,Sauvignon Blanc,2023,4,3482,11172830.2,8499305.49
+Sucursal Sur,Cabernet Sauvignon,2023,4,6518,36332711.85,25574558.61
+Sucursal Sur,Merlot,2023,4,4291,15429982.3,10994329.3
+Sucursal Sur,Pinot Noir,2023,4,5625,44216780.98,27319380.09
+Sucursal Sur,Chardonnay,2023,4,6421,28174789.46,20964894.74
+Sucursal Sur,Sauvignon Blanc,2023,4,3613,13555386.0,8856005.53
+Sucursal Norte,Cabernet Sauvignon,2023,5,6210,34739675.71,21230579.33
+Sucursal Norte,Merlot,2023,5,4276,14396809.48,10138198.0
+Sucursal Norte,Pinot Noir,2023,5,5613,43828751.85,29850076.78
+Sucursal Norte,Chardonnay,2023,5,5628,27781503.51,17431580.13
+Sucursal Norte,Sauvignon Blanc,2023,5,3739,12432164.63,8682510.65
+Sucursal Centro,Cabernet Sauvignon,2023,5,7167,34001951.79,27024273.13
+Sucursal Centro,Merlot,2023,5,4365,13242095.83,8963814.49
+Sucursal Centro,Pinot Noir,2023,5,4781,39432559.95,28748816.64
+Sucursal Centro,Chardonnay,2023,5,6044,27374667.62,18794622.26
+Sucursal Centro,Sauvignon Blanc,2023,5,3338,11463004.18,8295628.97
+Sucursal Sur,Cabernet Sauvignon,2023,5,6693,32055098.68,23373875.28
+Sucursal Sur,Merlot,2023,5,4070,14185605.23,9895645.56
+Sucursal Sur,Pinot Noir,2023,5,4738,33278780.13,22044895.7
+Sucursal Sur,Chardonnay,2023,5,6423,32655180.53,24635844.26
+Sucursal Sur,Sauvignon Blanc,2023,5,3322,12566117.69,9937428.12
+Sucursal Norte,Cabernet Sauvignon,2023,6,6320,35565291.7,21365440.11
+Sucursal Norte,Merlot,2023,6,3623,10851346.1,7093491.87
+Sucursal Norte,Pinot Noir,2023,6,5306,42996298.4,32731806.27
+Sucursal Norte,Chardonnay,2023,6,5390,26183340.53,20601457.1
+Sucursal Norte,Sauvignon Blanc,2023,6,3398,12251487.33,8514963.8
+Sucursal Centro,Cabernet Sauvignon,2023,6,6919,37128724.87,26016295.69
+Sucursal Centro,Merlot,2023,6,3690,11620816.92,7934299.45
+Sucursal Centro,Pinot Noir,2023,6,4813,34939701.22,26419571.23
+Sucursal Centro,Chardonnay,2023,6,6437,32009757.53,22507779.6
+Sucursal Centro,Sauvignon Blanc,2023,6,3668,13226920.78,7952357.69
+Sucursal Sur,Cabernet Sauvignon,2023,6,6881,37060518.91,24428879.77
+Sucursal Sur,Merlot,2023,6,3650,12961749.38,8288314.15
+Sucursal Sur,Pinot Noir,2023,6,4724,35347801.61,21660777.73
+Sucursal Sur,Chardonnay,2023,6,6068,30495816.19,20986213.45
+Sucursal Sur,Sauvignon Blanc,2023,6,3206,12105312.08,9620916.59
+Sucursal Norte,Cabernet Sauvignon,2023,7,6726,33771412.09,20777295.84
+Sucursal Norte,Merlot,2023,7,3622,11921086.14,8633648.15
+Sucursal Norte,Pinot Noir,2023,7,4966,34368443.18,26967414.93
+Sucursal Norte,Chardonnay,2023,7,5569,28881389.26,19720789.15
+Sucursal Norte,Sauvignon Blanc,2023,7,3729,14000522.03,10894891.09
+Sucursal Centro,Cabernet Sauvignon,2023,7,6506,34104741.58,21880612.84
+Sucursal Centro,Merlot,2023,7,3958,12941299.89,8671624.74
+Sucursal Centro,Pinot Noir,2023,7,5590,46127326.96,32114036.48
+Sucursal Centro,Chardonnay,2023,7,5985,26197790.32,18197434.81
+Sucursal Centro,Sauvignon Blanc,2023,7,3457,11974882.42,9487527.67
+Sucursal Sur,Cabernet Sauvignon,2023,7,6021,29193737.07,19668100.51
+Sucursal Sur,Merlot,2023,7,3685,11178543.81,8020793.32
+Sucursal Sur,Pinot Noir,2023,7,5037,35569409.48,22449236.47
+Sucursal Sur,Chardonnay,2023,7,6376,29320553.62,18474947.51
+Sucursal Sur,Sauvignon Blanc,2023,7,3561,13280277.01,10449986.52
+Sucursal Norte,Cabernet Sauvignon,2023,8,6626,36665528.11,26741856.37
+Sucursal Norte,Merlot,2023,8,4190,13567702.81,9340014.31
+Sucursal Norte,Pinot Noir,2023,8,5570,44945249.87,31980709.59
+Sucursal Norte,Chardonnay,2023,8,6145,30847620.93,18664851.47
+Sucursal Norte,Sauvignon Blanc,2023,8,3784,13274067.16,9731714.72
+Sucursal Centro,Cabernet Sauvignon,2023,8,6857,34116667.53,26543593.33
+Sucursal Centro,Merlot,2023,8,3739,13604830.2,10273818.39
+Sucursal Centro,Pinot Noir,2023,8,5160,37686443.25,25084877.53
+Sucursal Centro,Chardonnay,2023,8,6198,32366277.32,20226122.5
+Sucursal Centro,Sauvignon Blanc,2023,8,3321,10531288.33,7607752.22
+Sucursal Sur,Cabernet Sauvignon,2023,8,7195,36495267.89,25343786.79
+Sucursal Sur,Merlot,2023,8,4108,13198685.75,10174498.59
+Sucursal Sur,Pinot Noir,2023,8,5079,38814966.92,27961197.6
+Sucursal Sur,Chardonnay,2023,8,6521,28842416.38,21419462.36
+Sucursal Sur,Sauvignon Blanc,2023,8,3440,11881022.33,9462542.11
+Sucursal Norte,Cabernet Sauvignon,2023,9,6408,29922000.35,21101224.62
+Sucursal Norte,Merlot,2023,9,3997,12499127.67,7845688.02
+Sucursal Norte,Pinot Noir,2023,9,5692,47669434.7,35276031.44
+Sucursal Norte,Chardonnay,2023,9,5452,26166400.97,16027852.93
+Sucursal Norte,Sauvignon Blanc,2023,9,3629,13380023.53,8323144.56
+Sucursal Centro,Cabernet Sauvignon,2023,9,7016,38554228.17,29738748.0
+Sucursal Centro,Merlot,2023,9,3917,13324320.33,9651289.35
+Sucursal Centro,Pinot Noir,2023,9,5290,38565872.8,24472933.1
+Sucursal Centro,Chardonnay,2023,9,5766,28845704.83,18262822.28
+Sucursal Centro,Sauvignon Blanc,2023,9,3367,12511845.36,8326646.42
+Sucursal Sur,Cabernet Sauvignon,2023,9,6888,35985732.88,22374789.69
+Sucursal Sur,Merlot,2023,9,3662,13266540.54,8604973.91
+Sucursal Sur,Pinot Noir,2023,9,4832,35257450.48,24088274.84
+Sucursal Sur,Chardonnay,2023,9,6454,31363010.01,19504786.84
+Sucursal Sur,Sauvignon Blanc,2023,9,3805,12263586.85,8558744.74
+Sucursal Norte,Cabernet Sauvignon,2023,10,7188,39925287.62,27569585.67
+Sucursal Norte,Merlot,2023,10,4293,15237092.78,9586714.36
+Sucursal Norte,Pinot Noir,2023,10,5104,41526093.11,29481347.68
+Sucursal Norte,Chardonnay,2023,10,6257,29285380.51,22167552.35
+Sucursal Norte,Sauvignon Blanc,2023,10,3195,10563692.95,7201903.97
+Sucursal Centro,Cabernet Sauvignon,2023,10,6758,37502637.83,23446887.34
+Sucursal Centro,Merlot,2023,10,3747,11865467.51,7660671.56
+Sucursal Centro,Pinot Noir,2023,10,5419,38914325.96,26522919.41
+Sucursal Centro,Chardonnay,2023,10,5963,28824571.34,18375950.47
+Sucursal Centro,Sauvignon Blanc,2023,10,3676,13086795.29,10293817.08
+Sucursal Sur,Cabernet Sauvignon,2023,10,6647,36670174.61,22464400.32
+Sucursal Sur,Merlot,2023,10,4338,14925732.51,9283231.92
+Sucursal Sur,Pinot Noir,2023,10,5073,41197616.78,32191042.48
+Sucursal Sur,Chardonnay,2023,10,6401,28032527.06,19300039.22
+Sucursal Sur,Sauvignon Blanc,2023,10,3483,12791632.5,7881568.14
+Sucursal Norte,Cabernet Sauvignon,2023,11,6668,31593215.77,25155453.89
+Sucursal Norte,Merlot,2023,11,3823,13126038.19,9952964.51
+Sucursal Norte,Pinot Noir,2023,11,5591,46184514.01,32097271.35
+Sucursal Norte,Chardonnay,2023,11,6334,29445386.93,18617364.46
+Sucursal Norte,Sauvignon Blanc,2023,11,3376,12337111.04,9270245.82
+Sucursal Centro,Cabernet Sauvignon,2023,11,6470,32476977.3,22696801.23
+Sucursal Centro,Merlot,2023,11,3601,13086110.57,8222254.26
+Sucursal Centro,Pinot Noir,2023,11,5460,40741091.63,27349427.17
+Sucursal Centro,Chardonnay,2023,11,5438,24615501.1,15825926.8
+Sucursal Centro,Sauvignon Blanc,2023,11,3577,11523910.32,8831945.87
+Sucursal Sur,Cabernet Sauvignon,2023,11,6687,34453239.57,24669238.39
+Sucursal Sur,Merlot,2023,11,3799,13243525.87,7953424.12
+Sucursal Sur,Pinot Noir,2023,11,5074,42273971.4,30142298.2
+Sucursal Sur,Chardonnay,2023,11,5742,30381192.19,19264172.38
+Sucursal Sur,Sauvignon Blanc,2023,11,3654,11962126.71,9140664.02
+Sucursal Norte,Cabernet Sauvignon,2023,12,6831,33303048.22,21214697.54
+Sucursal Norte,Merlot,2023,12,4339,13461355.04,9527052.88
+Sucursal Norte,Pinot Noir,2023,12,5354,43813602.64,29735739.47
+Sucursal Norte,Chardonnay,2023,12,5978,31373029.6,19636362.95
+Sucursal Norte,Sauvignon Blanc,2023,12,3437,10995831.17,6765565.85
+Sucursal Centro,Cabernet Sauvignon,2023,12,7038,36625036.19,23180512.7
+Sucursal Centro,Merlot,2023,12,3696,11962823.93,7405055.77
+Sucursal Centro,Pinot Noir,2023,12,5658,46528197.84,32910225.3
+Sucursal Centro,Chardonnay,2023,12,6423,29042281.93,18089400.43
+Sucursal Centro,Sauvignon Blanc,2023,12,3698,11649328.92,8730364.42
+Sucursal Sur,Cabernet Sauvignon,2023,12,6205,29239598.34,21697049.54
+Sucursal Sur,Merlot,2023,12,4271,15351543.37,11380501.71
+Sucursal Sur,Pinot Noir,2023,12,5668,47029924.76,31883621.78
+Sucursal Sur,Chardonnay,2023,12,5420,24789047.85,17356426.89
+Sucursal Sur,Sauvignon Blanc,2023,12,3311,10920068.09,7201778.25
+Sucursal Norte,Cabernet Sauvignon,2024,1,6831,45993569.74,35933621.46
+Sucursal Norte,Merlot,2024,1,3758,15080025.69,9998069.44
+Sucursal Norte,Pinot Noir,2024,1,6673,67621507.32,41062521.11
+Sucursal Norte,Chardonnay,2024,1,6487,34855412.91,23124400.07
+Sucursal Norte,Sauvignon Blanc,2024,1,3552,14232293.6,9599055.43
+Sucursal Centro,Cabernet Sauvignon,2024,1,7073,44854589.98,34567047.26
+Sucursal Centro,Merlot,2024,1,3877,15122488.42,11228270.57
+Sucursal Centro,Pinot Noir,2024,1,5802,63087304.78,49711895.48
+Sucursal Centro,Chardonnay,2024,1,6051,34980297.19,24056648.11
+Sucursal Centro,Sauvignon Blanc,2024,1,3227,12634642.92,7754193.66
+Sucursal Sur,Cabernet Sauvignon,2024,1,7601,46696272.57,33910091.64
+Sucursal Sur,Merlot,2024,1,3931,12962682.59,8667075.04
+Sucursal Sur,Pinot Noir,2024,1,5960,58844967.97,36612800.35
+Sucursal Sur,Chardonnay,2024,1,6262,34221942.47,22587792.71
+Sucursal Sur,Sauvignon Blanc,2024,1,3183,10979003.88,6697327.35
+Sucursal Norte,Cabernet Sauvignon,2024,2,7120,46419020.82,37021286.19
+Sucursal Norte,Merlot,2024,2,4025,14594314.8,10858460.31
+Sucursal Norte,Pinot Noir,2024,2,6248,60097678.26,41428918.45
+Sucursal Norte,Chardonnay,2024,2,7116,37788707.53,28513337.33
+Sucursal Norte,Sauvignon Blanc,2024,2,3360,13081907.71,8548965.5
+Sucursal Centro,Cabernet Sauvignon,2024,2,7662,45619589.48,28659643.93
+Sucursal Centro,Merlot,2024,2,4231,16517144.41,11091149.34
+Sucursal Centro,Pinot Noir,2024,2,5949,59450629.42,36867245.09
+Sucursal Centro,Chardonnay,2024,2,6924,43496709.76,28689108.67
+Sucursal Centro,Sauvignon Blanc,2024,2,3218,11705141.27,8731918.33
+Sucursal Sur,Cabernet Sauvignon,2024,2,7292,41822884.83,25632344.19
+Sucursal Sur,Merlot,2024,2,4385,16076945.43,12294460.34
+Sucursal Sur,Pinot Noir,2024,2,5734,53565539.79,37012424.34
+Sucursal Sur,Chardonnay,2024,2,7222,40253231.99,31090050.12
+Sucursal Sur,Sauvignon Blanc,2024,2,3220,12179567.2,8207099.37
+Sucursal Norte,Cabernet Sauvignon,2024,3,7069,45824154.15,32470073.46
+Sucursal Norte,Merlot,2024,3,3664,14127947.91,10890715.6
+Sucursal Norte,Pinot Noir,2024,3,6512,67080323.23,48430647.22
+Sucursal Norte,Chardonnay,2024,3,6230,32687479.34,26036267.44
+Sucursal Norte,Sauvignon Blanc,2024,3,3392,11962148.34,8083475.7
+Sucursal Centro,Cabernet Sauvignon,2024,3,6745,45249339.95,35817256.41
+Sucursal Centro,Merlot,2024,3,3693,14182378.23,10972141.62
+Sucursal Centro,Pinot Noir,2024,3,6696,64386799.08,44236758.27
+Sucursal Centro,Chardonnay,2024,3,7156,40417687.09,28847190.16
+Sucursal Centro,Sauvignon Blanc,2024,3,3687,15351634.54,12146398.23
+Sucursal Sur,Cabernet Sauvignon,2024,3,7188,49144096.16,37396876.84
+Sucursal Sur,Merlot,2024,3,3812,14185436.48,8938280.03
+Sucursal Sur,Pinot Noir,2024,3,6799,61275858.57,43005691.61
+Sucursal Sur,Chardonnay,2024,3,6821,38940505.84,29158868.01
+Sucursal Sur,Sauvignon Blanc,2024,3,3484,13277404.03,9679072.85
+Sucursal Norte,Cabernet Sauvignon,2024,4,6820,44287946.41,31485732.34
+Sucursal Norte,Merlot,2024,4,4391,16244383.38,10104338.72
+Sucursal Norte,Pinot Noir,2024,4,6589,65171033.63,41515768.49
+Sucursal Norte,Chardonnay,2024,4,6631,38539399.68,24160035.56
+Sucursal Norte,Sauvignon Blanc,2024,4,3752,15641926.41,10520020.62
+Sucursal Centro,Cabernet Sauvignon,2024,4,6850,46841048.79,33518042.71
+Sucursal Centro,Merlot,2024,4,3668,14684994.81,9744421.27
+Sucursal Centro,Pinot Noir,2024,4,6712,71571767.38,51977859.04
+Sucursal Centro,Chardonnay,2024,4,7227,39168510.74,31306944.49
+Sucursal Centro,Sauvignon Blanc,2024,4,3706,15284634.62,9987041.67
+Sucursal Sur,Cabernet Sauvignon,2024,4,7064,41744850.66,32714174.96
+Sucursal Sur,Merlot,2024,4,4162,14684911.51,11738691.71
+Sucursal Sur,Pinot Noir,2024,4,6176,60033315.33,42009051.18
+Sucursal Sur,Chardonnay,2024,4,6886,38703286.55,29812802.64
+Sucursal Sur,Sauvignon Blanc,2024,4,3342,13260195.25,8028002.86
+Sucursal Norte,Cabernet Sauvignon,2024,5,6725,40840438.92,30410008.27
+Sucursal Norte,Merlot,2024,5,4087,15153559.91,10099280.55
+Sucursal Norte,Pinot Noir,2024,5,6755,65164369.59,41589887.86
+Sucursal Norte,Chardonnay,2024,5,6038,36901922.91,28122516.33
+Sucursal Norte,Sauvignon Blanc,2024,5,3433,13794711.76,8583236.33
+Sucursal Centro,Cabernet Sauvignon,2024,5,7251,40889034.21,29578228.23
+Sucursal Centro,Merlot,2024,5,4182,15285590.49,10238678.19
+Sucursal Centro,Pinot Noir,2024,5,5748,54091091.81,40719668.38
+Sucursal Centro,Chardonnay,2024,5,6107,33329814.84,25689688.43
+Sucursal Centro,Sauvignon Blanc,2024,5,3539,12721254.54,9923392.59
+Sucursal Sur,Cabernet Sauvignon,2024,5,6879,44117152.48,28455063.54
+Sucursal Sur,Merlot,2024,5,3728,13584471.42,10751750.24
+Sucursal Sur,Pinot Noir,2024,5,6339,59889192.19,42167201.42
+Sucursal Sur,Chardonnay,2024,5,6063,33289989.95,22327962.98
+Sucursal Sur,Sauvignon Blanc,2024,5,3806,13485463.41,9002837.0
+Sucursal Norte,Cabernet Sauvignon,2024,6,7297,49123265.08,35610108.54
+Sucursal Norte,Merlot,2024,6,4182,15066393.97,11689300.12
+Sucursal Norte,Pinot Noir,2024,6,6134,61358302.9,41184302.29
+Sucursal Norte,Chardonnay,2024,6,6711,37653973.16,28998111.73
+Sucursal Norte,Sauvignon Blanc,2024,6,3201,13006025.91,10023227.6
+Sucursal Centro,Cabernet Sauvignon,2024,6,7961,48370209.72,36350134.08
+Sucursal Centro,Merlot,2024,6,3713,13003283.09,10284056.57
+Sucursal Centro,Pinot Noir,2024,6,6365,62055057.12,45226705.14
+Sucursal Centro,Chardonnay,2024,6,6744,41412914.46,33027166.17
+Sucursal Centro,Sauvignon Blanc,2024,6,3428,12350649.67,8805319.49
+Sucursal Sur,Cabernet Sauvignon,2024,6,7280,47228806.4,32113685.62
+Sucursal Sur,Merlot,2024,6,3607,12995152.51,9442152.18
+Sucursal Sur,Pinot Noir,2024,6,6709,70414342.15,53835527.2
+Sucursal Sur,Chardonnay,2024,6,6516,40801680.94,27765977.41
+Sucursal Sur,Sauvignon Blanc,2024,6,3243,11808497.05,9177675.75
+Sucursal Norte,Cabernet Sauvignon,2024,7,6638,39666249.46,26851978.9
+Sucursal Norte,Merlot,2024,7,4300,16790203.99,10521551.62
+Sucursal Norte,Pinot Noir,2024,7,6347,60968571.84,39947385.65
+Sucursal Norte,Chardonnay,2024,7,7088,38406470.71,25599661.52
+Sucursal Norte,Sauvignon Blanc,2024,7,3430,13638131.11,8502183.99
+Sucursal Centro,Cabernet Sauvignon,2024,7,7872,44473159.84,35384841.79
+Sucursal Centro,Merlot,2024,7,4102,15051912.52,11162878.84
+Sucursal Centro,Pinot Noir,2024,7,6337,60674767.85,41971119.16
+Sucursal Centro,Chardonnay,2024,7,6340,34134176.08,22662880.54
+Sucursal Centro,Sauvignon Blanc,2024,7,3839,14330700.35,9497477.52
+Sucursal Sur,Cabernet Sauvignon,2024,7,7536,43860875.47,28030232.39
+Sucursal Sur,Merlot,2024,7,3997,14101267.25,10205960.66
+Sucursal Sur,Pinot Noir,2024,7,6288,67634136.17,49639432.88
+Sucursal Sur,Chardonnay,2024,7,6242,37127222.01,26629495.45
+Sucursal Sur,Sauvignon Blanc,2024,7,3673,13211554.59,10169809.1
+Sucursal Norte,Cabernet Sauvignon,2024,8,7492,47759979.08,30851805.67
+Sucursal Norte,Merlot,2024,8,4163,16235757.23,11458076.63
+Sucursal Norte,Pinot Noir,2024,8,6580,62451065.91,49579385.8
+Sucursal Norte,Chardonnay,2024,8,6256,36255807.45,24542857.39
+Sucursal Norte,Sauvignon Blanc,2024,8,3194,10961913.76,6883117.68
+Sucursal Centro,Cabernet Sauvignon,2024,8,8042,52166476.32,36800794.86
+Sucursal Centro,Merlot,2024,8,4271,16853557.36,13001277.81
+Sucursal Centro,Pinot Noir,2024,8,6242,60847605.78,39922404.11
+Sucursal Centro,Chardonnay,2024,8,6858,41468789.25,25647426.55
+Sucursal Centro,Sauvignon Blanc,2024,8,3752,14022850.61,9527953.73
+Sucursal Sur,Cabernet Sauvignon,2024,8,7016,44172894.97,27367879.34
+Sucursal Sur,Merlot,2024,8,4047,13706862.74,8356771.42
+Sucursal Sur,Pinot Noir,2024,8,5793,57240780.32,42347899.52
+Sucursal Sur,Chardonnay,2024,8,6207,36494809.68,27073954.49
+Sucursal Sur,Sauvignon Blanc,2024,8,3565,12255270.52,7365011.62
+Sucursal Norte,Cabernet Sauvignon,2024,9,6611,41028605.39,27032808.92
+Sucursal Norte,Merlot,2024,9,3916,14283615.54,9944705.04
+Sucursal Norte,Pinot Noir,2024,9,6740,70623897.86,53703287.89
+Sucursal Norte,Chardonnay,2024,9,6794,40882357.44,32199692.59
+Sucursal Norte,Sauvignon Blanc,2024,9,3536,13707500.63,10866181.04
+Sucursal Centro,Cabernet Sauvignon,2024,9,7536,49254590.66,29561006.34
+Sucursal Centro,Merlot,2024,9,3784,13935238.49,9875469.28
+Sucursal Centro,Pinot Noir,2024,9,6069,57939534.68,35900479.85
+Sucursal Centro,Chardonnay,2024,9,6036,37682866.44,24178117.72
+Sucursal Centro,Sauvignon Blanc,2024,9,3520,13398836.87,8898069.57
+Sucursal Sur,Cabernet Sauvignon,2024,9,7288,43366836.38,30523989.0
+Sucursal Sur,Merlot,2024,9,3953,14069158.92,10681686.34
+Sucursal Sur,Pinot Noir,2024,9,6140,65005258.71,48516703.14
+Sucursal Sur,Chardonnay,2024,9,6683,37787227.09,26456768.01
+Sucursal Sur,Sauvignon Blanc,2024,9,3755,15534244.48,12050197.02
+Sucursal Norte,Cabernet Sauvignon,2024,10,7668,49544231.05,37125236.94
+Sucursal Norte,Merlot,2024,10,4253,16210444.71,12093765.15
+Sucursal Norte,Pinot Noir,2024,10,6583,66082327.49,45143281.22
+Sucursal Norte,Chardonnay,2024,10,6604,38176370.85,24802120.38
+Sucursal Norte,Sauvignon Blanc,2024,10,3551,13536144.29,9523742.59
+Sucursal Centro,Cabernet Sauvignon,2024,10,7587,48211849.66,36725642.2
+Sucursal Centro,Merlot,2024,10,4154,13724025.06,8408261.47
+Sucursal Centro,Pinot Noir,2024,10,5874,60374015.17,38524038.49
+Sucursal Centro,Chardonnay,2024,10,6458,36982221.78,23047724.3
+Sucursal Centro,Sauvignon Blanc,2024,10,3722,13467022.82,9099192.3
+Sucursal Sur,Cabernet Sauvignon,2024,10,7219,42544487.64,30627982.69
+Sucursal Sur,Merlot,2024,10,3867,14897654.23,10184329.38
+Sucursal Sur,Pinot Noir,2024,10,6747,68387912.32,53881250.61
+Sucursal Sur,Chardonnay,2024,10,6201,35448067.63,26094705.2
+Sucursal Sur,Sauvignon Blanc,2024,10,3378,13696766.71,9144421.38
+Sucursal Norte,Cabernet Sauvignon,2024,11,7725,46506980.35,28894302.11
+Sucursal Norte,Merlot,2024,11,4293,14180440.07,11178004.32
+Sucursal Norte,Pinot Noir,2024,11,5844,59047807.97,45411580.9
+Sucursal Norte,Chardonnay,2024,11,6334,38211332.14,23393141.85
+Sucursal Norte,Sauvignon Blanc,2024,11,3268,12592214.67,9371763.49
+Sucursal Centro,Cabernet Sauvignon,2024,11,7318,44172536.94,32806012.52
+Sucursal Centro,Merlot,2024,11,3874,15196500.5,9880031.05
+Sucursal Centro,Pinot Noir,2024,11,6089,64648438.19,47845056.13
+Sucursal Centro,Chardonnay,2024,11,5964,36471704.59,22056774.75
+Sucursal Centro,Sauvignon Blanc,2024,11,3474,13020064.43,8712129.89
+Sucursal Sur,Cabernet Sauvignon,2024,11,7429,47023556.57,29763687.24
+Sucursal Sur,Merlot,2024,11,4045,13872077.1,10907703.45
+Sucursal Sur,Pinot Noir,2024,11,5995,54334692.14,43333311.6
+Sucursal Sur,Chardonnay,2024,11,6831,38351940.15,27371534.88
+Sucursal Sur,Sauvignon Blanc,2024,11,3291,12598208.36,9032466.49
+Sucursal Norte,Cabernet Sauvignon,2024,12,7472,50296179.11,38756135.39
+Sucursal Norte,Merlot,2024,12,3902,13287180.22,9736850.7
+Sucursal Norte,Pinot Noir,2024,12,6219,65446353.27,50404327.74
+Sucursal Norte,Chardonnay,2024,12,7035,39179261.81,27567426.96
+Sucursal Norte,Sauvignon Blanc,2024,12,3628,14545518.02,11053718.99
+Sucursal Centro,Cabernet Sauvignon,2024,12,7287,42256344.75,30348381.07
+Sucursal Centro,Merlot,2024,12,4332,14626284.5,9049899.63
+Sucursal Centro,Pinot Noir,2024,12,5632,54253934.71,40434597.56
+Sucursal Centro,Chardonnay,2024,12,6605,41818342.65,30584712.02
+Sucursal Centro,Sauvignon Blanc,2024,12,3195,12310010.86,8384573.57
+Sucursal Sur,Cabernet Sauvignon,2024,12,7888,47792436.36,29166713.21
+Sucursal Sur,Merlot,2024,12,3905,13810259.6,9464827.9
+Sucursal Sur,Pinot Noir,2024,12,6292,64067910.45,48044789.25
+Sucursal Sur,Chardonnay,2024,12,6315,37585452.59,25525730.35
+Sucursal Sur,Sauvignon Blanc,2024,12,3312,12264219.7,8647284.73
