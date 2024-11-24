@@ -5,6 +5,11 @@ import numpy as np
 import requests
 from streamlit_lottie import st_lottie
 
+# Evaluación: 7 | Recuperar para promocionar 
+# 1. Usa el mismo codigo que C2-10
+# 2. No respeta el diseño (métricas y gráfico a la par) (-1)
+# 3. Calcula mal el precio promedio (-1)
+
 ## ATENCION: Debe colocar la direccion en la que ha sido publicada la aplicacion en la siguiente linea\
 # url = 'https://tp8-58828.streamlit.app/'
 

@@ -3,13 +3,16 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import streamlit as st
 
+
+# Evaluación: 5 | Recuperar para promocionar
+# 1. Calcula mal precio y margenes promedio (-3)
+# 2. No muestra las metricas a la par de los graficos (-1) 
+# 3. No indica si esta mostrando todo o solo los datos de una sucursal (-1)
+
+
 st.set_page_config(page_title="Ventas por Sucursal", layout="wide")
 
-
-
 ## URL https://tp8-59277.streamlit.app/
-
-
 
 def mostrar_informacion_alumno():
     with st.container():
@@ -45,8 +48,8 @@ if uploaded_file:
 
         for _, row in estadisticas.iterrows():
             st.subheader(row["Producto"])
-            st.metric("Precio Promedio", f"${row['Precio_Promedio']:.2f}")
-            st.metric("Margen Promedio", f"{row['Margen_Promedio']:.2f}%")
+            st.metric("Precio Promedio",   f"${row['Precio_Promedio']:.2f}")
+            st.metric("Margen Promedio",   f"{row['Margen_Promedio']:.2f}%")
             st.metric("Unidades Vendidas", f"{row['Unidades_Vendidas']:,}")
 
             datos_producto = df[df["Producto"] == row["Producto"]]

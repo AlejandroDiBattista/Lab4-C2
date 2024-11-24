@@ -5,6 +5,15 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import plotly.express as px
 
+
+# Evaluación: 6 | Recuperar para promocionar 
+# 1. Muestra los datos en tabla que no se pide (-1)
+# 2. No usa el sidebar correctamente (carga datos y seleccionar sucursal) (-1)
+# 3. No muestra las métricas ni los gráficos por productos (-1)
+# 4. Usa un estilo personalizado en lugar del pedido (sacar css)
+# 5. No muestra línea de tendencia (-1)
+
+
 ## ATENCION: Debe colocar la direccion en la que ha sido publicada la aplicacion en la siguiente linea\
 # url = "https://tp8-almiron.streamlit.app/"
 

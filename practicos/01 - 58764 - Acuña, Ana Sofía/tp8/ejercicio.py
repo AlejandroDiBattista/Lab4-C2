@@ -3,9 +3,16 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
+
+# Evaluación: 6 | Recuperar para promocionar
+# 1. No implementa mostrar métricas, muestra una tabla general (ver st.metric) (-1)
+# 2. No muestra las gráficas y las métricas para cada producto (-1)
+# 3. Muestra una tabla con los datos que no se pide (-1)
+# 4. No implementa el estilo pedido (un CSS innecesario) (ver st.container) (-1)
+
+
 # URL = 'https://tp8-58764.streamlit.app/'
 
-# Estilos CSS personalizados
 def agregar_estilos():
     st.markdown(
         """

@@ -3,6 +3,12 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
+# Evaluación: 7 | Recuperar para promocionar 
+# 1. No publica la aplicación (-1)
+# 2. No respeta el diseño (métricas y gráfico a la par) (-1)
+# 3. Calcula mal el precio promedio (-1)
+
+
 # Configuración de la página
 st.set_page_config(page_title="Cargar archivo de datos", layout="wide")
 
