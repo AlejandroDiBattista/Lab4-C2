@@ -87,7 +87,7 @@ def main():
         
         if sucursal_seleccionada != "Todas":
             datos = datos[datos['Sucursal'] == sucursal_seleccionada]
-            st.title(f"Ventas - {sucursal_seleccionada}")
+            st.title(f"Ventas-{sucursal_seleccionada}")
         else:
             st.title("Datos de todas las sucursales")
             
