@@ -39,17 +39,17 @@ if archivo_csv:
     for producto in productos:      
         datosProductos = df[df["Producto"] == producto]
         
-        df_grouped = datosProductos.groupby(["Año", "Mes"]).agg({"Ingreso_total": 'sum', "Costo_total": 'sum', "Unidades_vendidas": 'sum'}).reset_index()
+        df_grouped = datosProductos.groupby("Año").agg({"Ingreso_total": 'sum', "Costo_total": 'sum', "Unidades_vendidas": 'sum'}).reset_index()
         df_grouped["Precio_promedio"] = df_grouped["Ingreso_total"] / df_grouped["Unidades_vendidas"]
         df_grouped["Margen_promedio"] = (df_grouped["Ingreso_total"] - df_grouped["Costo_total"]) / df_grouped["Ingreso_total"] * 100
 
         # Calcular los porcentajes de variación (ejemplo: respecto al mes anterior)
-        df_grouped['Variacion_Precio_Promedio'] = df_grouped['Precio_promedio'].pct_change() * 100
-        df_grouped['Variacion_Margen_Promedio'] = df_grouped['Margen_promedio'].pct_change() * 1000
-        df_grouped['Variacion_Unidades_Vendidas'] = df_grouped['Unidades_vendidas'].pct_change() * 1000
+        df_grouped['Variacion_Precio_Promedio'] = df_grouped['Precio_promedio'].pct_change().mean() * 100
+        df_grouped['Variacion_Margen_Promedio'] = df_grouped['Margen_promedio'].pct_change() * 100
+        df_grouped['Variacion_Unidades_Vendidas'] = df_grouped['Unidades_vendidas'].pct_change() * 100
 
         # Rellenar los NaN (primer mes) con 0
-        df_grouped.fillna(0, inplace=True)
+        #df_grouped.fillna(0, inplace=True)
 
         precio_promedio = df_grouped["Precio_promedio"].mean()
         margen_promedio = df_grouped["Margen_promedio"]
@@ -80,7 +80,7 @@ if archivo_csv:
             col1, col2 = st.columns([1,3])
 
             with col1:
-                st.metric("Precio Promedio",f"${precio_promedio:,.2f}".replace(",", "."), f"{variacion_precio_promedio:.2f}%")
+                st.metric("Precio Promedio",f"${precio_promedio:,.0f}".replace(",", "."), f"{variacion_precio_promedio:.2f}%")
                 st.metric("Margen Promedio", f"{margen_promedio.mean():.0f}%", f"{variacion_margen_promedio:.2f}%")
                 st.metric("Unidades Vendidas", f"{unidades_vendidas:,.0f}".replace(",", "."), f"{variacion_unidades_vendidas:.2f}%")
 
@@ -97,6 +97,7 @@ if archivo_csv:
                 ax.set_xlabel("Año-Mes")
                 ax.set_ylabel("Unidades Vendidas")
                 ax.legend(title="Producto")
+                ax.set_ylim(0, None)
                 ax.set_ylim(bottom=0)
                 ax.set_title("Evolución de Ventas Mensual")
                 st.pyplot(fig)
