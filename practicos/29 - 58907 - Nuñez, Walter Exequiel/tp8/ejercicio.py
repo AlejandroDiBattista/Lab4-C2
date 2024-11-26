@@ -1,7 +1,10 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
+from scipy.stats import linregress
+from matplotlib.ticker import AutoMinorLocator
 import seaborn as sns
+import numpy as np
 from io import StringIO
 
 ## ATENCION: Debe colocar la direccion en la que ha sido publicada la aplicacion en la siguiente linea\
@@ -17,25 +20,17 @@ def mostrar_informacion_alumno():
 
 mostrar_informacion_alumno()
 
-import streamlit as st
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-import numpy as np
-
 # Título de la aplicación
 st.subheader("Por favor, sube un archivo CSV desde la barra lateral izquierda")
 
-# Subir archivo CSV (en la barra lateral)
-uploaded_file = st.sidebar.file_uploader("Sube un archivo CSV con los datos de ventas", type="csv")
 
-if uploaded_file is not None:
-    # Cargar los datos
-    data = pd.read_csv(uploaded_file)
+# Subir archivo CSV (en la barra lateral)
+uploaded_files = st.sidebar.file_uploader("Sube un archivo CSV con los datos de ventas", type=["csv"])
+
+if uploaded_files:
+    sucursal = st.sidebar.selectbox("Seleccionar sucursal", ('Todas', 'Sucursal Norte', 'Sucursal Centro', 'Sucursal Sur'), index = 0)
     
-    # Filtrar por Sucursal
-    sucursal = st.sidebar.selectbox("Selecciona una sucursal (o muestra todas):", 
-                                    options=["Todas"] + data['Sucursal'].unique().tolist())
+    data = pd.read_csv(uploaded_files)
     
     if sucursal != "Todas":
         data = data[data['Sucursal'] == sucursal]
@@ -45,65 +40,70 @@ if uploaded_file is not None:
         st.header("Información Detallada de Todas las Sucursales")
     else:
         st.title(f"Datos de {sucursal}")
-
-    # Calcular estadísticas por producto
-    with st.container(border=True):  
-        stats = data.groupby('Producto').agg({
-            'Unidades_vendidas': 'sum',
-            'Ingreso_total': 'sum',
-            'Costo_total': 'sum'
-        }).reset_index()
-
-        # Cálculo del precio promedio y margen
-        stats['Precio_promedio'] = stats['Ingreso_total'] / stats['Unidades_vendidas']
-        stats['Margen_promedio'] = (stats['Ingreso_total'] - stats['Costo_total']) / stats['Ingreso_total']
-
-        # Mostrar información y gráficos de cada producto
         
-        for index, row in stats.iterrows():
-            # Crear dos columnas: información a la izquierda, gráfico a la derecha
-            col1, col2 = st.columns([1, 3])
+    productos = data["Producto"].unique()
 
-            # Columna 1: Información del producto
+    for producto in productos:      
+        datosProductos = data[data["Producto"] == producto]
+        
+        df_grouped = datosProductos.groupby(["Año", "Mes"]).agg({"Ingreso_total": 'sum', "Costo_total": 'sum', "Unidades_vendidas": 'sum'}).reset_index()
+        df_grouped["Precio_promedio"] = df_grouped["Ingreso_total"] / df_grouped["Unidades_vendidas"]
+        df_grouped["Margen_promedio"] = (df_grouped["Ingreso_total"] - df_grouped["Costo_total"]) / df_grouped["Ingreso_total"] * 100
+
+        # Calcular los porcentajes de variación (ejemplo: respecto al mes anterior)
+        df_grouped['Variacion_Precio_Promedio'] = df_grouped['Precio_promedio'].pct_change() * 100
+        df_grouped['Variacion_Margen_Promedio'] = df_grouped['Margen_promedio'].pct_change() * 1000
+        df_grouped['Variacion_Unidades_Vendidas'] = df_grouped['Unidades_vendidas'].pct_change() * 1000
+
+        # Rellenar los NaN (primer mes) con 0
+        df_grouped.fillna(0, inplace=True)
+
+        precio_promedio = df_grouped["Precio_promedio"].mean()
+        margen_promedio = df_grouped["Margen_promedio"]
+        unidades_vendidas = datosProductos["Unidades_vendidas"].sum()
+
+        variacion_precio_promedio = df_grouped["Variacion_Precio_Promedio"].mean()
+        variacion_margen_promedio = df_grouped["Variacion_Margen_Promedio"].mean()
+        variacion_unidades_vendidas = df_grouped["Variacion_Unidades_Vendidas"].mean()
+
+        datosProductos.rename(columns = {"Año": "Year", "Mes": "Month"}, inplace = True)
+        datosProductos["Fecha"] = pd.to_datetime(datosProductos[["Year", "Month"]].assign(Day=1))
+        datosProductos = datosProductos.sort_values('Fecha')
+
+        ventas_por_mes = datosProductos.groupby(["Year", "Month"])["Unidades_vendidas"].sum().reset_index()
+        ventas_por_mes["Fecha"] = pd.to_datetime(ventas_por_mes[["Year", "Month"]].assign(Day=1))
+        
+        fechas_ordinales = ventas_por_mes["Fecha"].map(lambda x: x.toordinal())  # Convertir fechas a números ordinales
+        slope, intercept, r_value, p_value, std_err = linregress(fechas_ordinales, ventas_por_mes["Unidades_vendidas"])
+    
+        # Línea de tendencia
+        ventas_por_mes["Tendencia"] = slope * fechas_ordinales + intercept
+
+        fig, ax = plt.subplots()
+
+        with st.container(border=True):
+            st.subheader(f"{producto}")
+
+            col1, col2 = st.columns([1,3])
+
             with col1:
-                st.subheader(f"{row['Producto']}")
-                st.markdown("**Precio Promedio**")
-                st.write(f"${row['Precio_promedio']:.2f}")
+                st.metric("Precio Promedio",f"${precio_promedio:,.2f}".replace(",", "."), f"{variacion_precio_promedio:.2f}%")
+                st.metric("Margen Promedio", f"{margen_promedio.mean():.0f}%", f"{variacion_margen_promedio:.2f}%")
+                st.metric("Unidades Vendidas", f"{unidades_vendidas:,.0f}".replace(",", "."), f"{variacion_unidades_vendidas:.2f}%")
 
-                st.markdown("**Margen Promedio**")
-                st.write(f"{row['Margen_promedio']:.2%}")
-
-                st.markdown("**Unidades Vendidas**")
-                st.write(f"{row['Unidades_vendidas']}")
-
-            # Columna 2: Gráfico de evolución de ventas
             with col2:
-                producto_data = data[data['Producto'] == row['Producto']]
-                producto_data['Periodo'] = producto_data['Año'].astype(str) + "-" + producto_data['Mes'].astype(str).str.zfill(2)
-                ventas_mensuales = producto_data.groupby('Periodo')['Unidades_vendidas'].sum().reset_index()
+                fig.set_size_inches(10,5)
+                ax.plot(ventas_por_mes['Fecha'], ventas_por_mes["Unidades_vendidas"],label=producto)
+                ax.plot(ventas_por_mes['Fecha'], ventas_por_mes["Tendencia"], label='Tendencia', color='red', linestyle = '--' )
+                
+                ax.xaxis.set_minor_locator(AutoMinorLocator(15))
 
-                # Crear el gráfico
-                fig, ax = plt.subplots(figsize=(10, 6))
-                sns.lineplot(data=ventas_mensuales, x='Periodo', y='Unidades_vendidas', ax=ax, label=row['Producto'])
+                ax.grid(which = "major", alpha = 1)
+                ax.grid(which = "minor", alpha = 0.5)
 
-                # Añadir línea de tendencia
-                x = np.arange(len(ventas_mensuales))  # Crear un eje numérico para los meses
-                z = np.polyfit(x, ventas_mensuales['Unidades_vendidas'], 1)  # Ajuste lineal
-                p = np.poly1d(z)  # Crear la función de tendencia
-                ax.plot(ventas_mensuales['Periodo'], p(x), linestyle="--", color="red", label="Tendencia")
-
-                # Líneas horizontales para cada mes y cada año
-                ax.grid(True, which='both', axis='y', linestyle='--', color='gray', alpha=0.5)  # Líneas horizontales
-                ax.grid(True, which='both', axis='x', linestyle='--', color='gray', alpha=0.5)  # Líneas verticales
-
-                # Configurar el eje X para mostrar solo los años
-                ventas_mensuales['Año'] = ventas_mensuales['Periodo'].str[:4]  # Extraer solo el año
-                ax.set_xticks(range(0, len(ventas_mensuales), 12))  # Cada 12 meses (cada año)
-                ax.set_xticklabels(ventas_mensuales['Año'][::12])  # Solo mostrar el año
-
-                # Título y etiquetas
-                ax.set_title(f"Evolución de Ventas")
+                ax.set_xlabel("Año-Mes")
                 ax.set_ylabel("Unidades Vendidas")
-                ax.legend()
-
+                ax.legend(title="Producto")
+                ax.set_ylim(bottom=0)
+                ax.set_title("Evolución de Ventas Mensual")
                 st.pyplot(fig)
