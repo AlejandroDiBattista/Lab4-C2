@@ -1,139 +1,96 @@
-import streamlit as st
 import pandas as pd
+import numpy as np
 import matplotlib.pyplot as plt
-from sklearn.linear_model import LinearRegression
-from sklearn.preprocessing import LabelEncoder
+import streamlit as st
 
-# Application URL
-url = "https://parcial2tp8-gb3vponvosdgjtsjgknk4n.streamlit.app/"
+URL = 'https://parcial2tp8-gb3vponvosdgjtsjgknk4n.streamlit.app/'
 
-st.title("Sales Analysis by Producto")
+@st.cache_data
+def load_data(file):
+    return pd.read_csv(file)
 
-uploaded_file = st.sidebar.file_uploader("Select a CSV file", type=["csv"])
+st.title("Análisis de Ventas por Producto")
 
-if uploaded_file is not None:
-    data = pd.read_csv(uploaded_file)
-    
-    st.subheader("Preview of Uploaded Data")
-    st.write(data.head())
+def show_student_info():
+    with st.container():
+        st.markdown("**Comisión:** C2")
+        st.markdown("**Legajo:** 47.417")
+        st.markdown("**Nombre:** Rosales José Ignacio")
 
-    required_columns = ['Sucursal', 'Producto', 'Año', 'Unidades_vendidas', 'Ingreso_total', 'Costo_total']
-    if not all(col in data.columns for col in required_columns):
-        st.error("The file must contain the columns: Sucursal, Producto, Año, Unidades_vendidas, Ingreso_total, Costo_total")
-    else:
-        Sucursal_option = st.sidebar.selectbox("Select a Sucursal (or 'All' to view all)", data['Sucursal'].unique().tolist() + ['All'])
-        if Sucursal_option != 'All':
-            data = data[data['Sucursal'] == Sucursal_option]
+show_student_info()
 
-        Productos = data['Producto'].unique()
+st.sidebar.header("Carga de archivo")
+sales_file = st.sidebar.file_uploader("Selecciona un archivo CSV", type=["csv"])
 
-        grouped_data = data.groupby('Producto').agg(
-            Average_price=('Ingreso_total', lambda x: x.sum() / data.loc[x.index, 'Unidades_vendidas'].sum()),
-            Average_margin=('Ingreso_total', lambda x: (x.sum() - data.loc[x.index, 'Costo_total'].sum()) / x.sum()),
-            Unidades_vendidas=('Unidades_vendidas', 'sum')
-        ).reset_index()
+if sales_file:
+    data = load_data(sales_file)
 
-        last_Mes = data[['Año', 'Mes']].max()  
-        last_Año, last_Mes = last_Mes['Año'], last_Mes['Mes']
-        if last_Mes == 1:
-            previous_Mes = 12
-            previous_Año = last_Año - 1
+    if data is not None:
+        required_columns = ['Sucursal', 'Producto', 'Año', 'Mes', 'Unidades_vendidas', 'Ingreso_total', 'Costo_total']
+        if not all(col in data.columns for col in required_columns):
+            st.error("El archivo debe contener las columnas: " + ", ".join(required_columns))
         else:
-            previous_Mes = last_Mes - 1
-            previous_Año = last_Año
+            selected_branch = st.sidebar.selectbox(
+                "Selecciona una sucursal (o 'Todas' para ver todas)",
+                ['Todas'] + data['Sucursal'].unique().tolist()
+            )
+            if selected_branch != 'Todas':
+                data = data[data['Sucursal'] == selected_branch]
 
-        filtered_data = data[(data['Año'] < last_Año) | ((data['Año'] == last_Año) & (data['Mes'] < last_Mes))]
-        
-        filtered_grouped_data = filtered_data.groupby('Producto').agg(
-            Average_price=('Ingreso_total', lambda x: x.sum() / filtered_data.loc[x.index, 'Unidades_vendidas'].sum()),
-            Average_margin=('Ingreso_total', lambda x: (x.sum() - filtered_data.loc[x.index, 'Costo_total'].sum()) / x.sum()),
-            Unidades_vendidas=('Unidades_vendidas', 'sum')
-        ).reset_index()
-    
-        st.subheader("Summary by Producto")
-        st.write(grouped_data)
-        
-        st.subheader("Sales Evolution by Mes")
-        
-        last_Mes_data = data[(data['Año'] == last_Año) & (data['Mes'] == last_Mes)]
-        
-        previous_Mes_data = data[(data['Año'] == previous_Año) & (data['Mes'] == previous_Mes)]
-        
-        units_last_Mes = last_Mes_data[['Producto', 'Unidades_vendidas']]
-        
-        units_previous_Mes = previous_Mes_data[['Producto', 'Unidades_vendidas']]
+            data['Fecha'] = pd.to_datetime(
+                data['Año'].astype(str) + "-" + data['Mes'].astype(str) + "-01", 
+                errors='coerce'
+            )
+            data['average_price'] = np.where(
+                data['Unidades_vendidas'] > 0, 
+                data['Ingreso_total'] / data['Unidades_vendidas'], 
+                0
+            )
+            data['average_margin'] = np.where(
+                data['Ingreso_total'] > 0,
+                (data['Ingreso_total'] - data['Costo_total']) / data['Ingreso_total'] * 100,
+                0
+            )
 
-        for Producto in Productos:
+            summary = data.groupby('Producto').agg({
+                'average_price': 'mean',
+                'average_margin': 'mean',
+                'Unidades_vendidas': 'sum'
+            }).reset_index()
 
-            model = LinearRegression()
-            label_encoder = LabelEncoder()
-            
-            with st.container():
-                col1, col2 = st.columns([1, 2])
-                with col1:
-                    Producto_info = grouped_data[grouped_data['Producto'] == Producto].iloc[0]
-                    Producto_info_last = filtered_grouped_data[filtered_grouped_data['Producto'] == Producto].iloc[0]
-                    
-                    ulm = units_last_Mes[units_last_Mes['Producto'] == Producto].values[0][1]
-                    upm = units_previous_Mes[units_previous_Mes['Producto'] == Producto].values[0][1]
-                    unit_change_percentage = (ulm - upm) / upm * 100 
-                    margin_change_percentage = (Producto_info['Average_margin'] - Producto_info_last['Average_margin']) / Producto_info_last['Average_margin'] * 100
-                    price_change_percentage = (Producto_info['Average_price'] - Producto_info_last['Average_price']) / Producto_info_last['Average_price'] * 100
+            st.header(f"Datos de {'Todas las Sucursales' if selected_branch == 'Todas' else selected_branch}")
 
-                    st.title(Producto)
-                    st.write(f"**Units Sold**: {Producto_info['Unidades_vendidas']:,d}")
-                    if unit_change_percentage > 0:
-                        st.markdown(f'<span style="color:green">⬆{unit_change_percentage:.2f}%</span>', unsafe_allow_html=True)
-                    else:
-                        st.markdown(f'<span style="color:red">⬇{unit_change_percentage:.2f}%</span>', unsafe_allow_html=True)
+            for _, row in summary.iterrows():
+                st.subheader(f"{row['Producto']}")
 
-                    st.write(f"**Average Margin**: {Producto_info['Average_margin']*100:.2f}%")
-                    if margin_change_percentage > 0:
-                        st.markdown(f'<span style="color:green">⬆{margin_change_percentage:.2f}%</span>', unsafe_allow_html=True)
-                    else:
-                        st.markdown(f'<span style="color:red">⬇{margin_change_percentage:.2f}%</span>', unsafe_allow_html=True)
+                col1, col2, col3 = st.columns(3)
+                col1.metric("Precio Promedio", f"${row['average_price']:.2f}")
+                col2.metric("Margen Promedio", f"{row['average_margin']:.2f}%")
+                col3.metric("Unidades Vendidas", f"{int(row['Unidades_vendidas']):,}")
 
-                    st.write(f"**Average Price**: ${Producto_info['Average_price']:,.2f}")
-                    if price_change_percentage > 0:
-                        st.markdown(f'<span style="color:green">⬆{price_change_percentage:.2f}%</span>', unsafe_allow_html=True)
-                    else:
-                        st.markdown(f'<span style="color:red">⬇{price_change_percentage:.2f}%</span>', unsafe_allow_html=True)
+                product_data = data[data['Producto'] == row['Producto']]
 
-                with col2:   
-                    fig, ax1 = plt.subplots(figsize=(12, 15))
-
-                    Producto_sales = data.groupby(['Año', 'Mes', 'Producto'])['Unidades_vendidas'].sum().reset_index()
-                    chart_data = Producto_sales[Producto_sales['Producto'] == Producto]
-                    chart_data['Period'] = chart_data['Año'].astype(str) + '-' + chart_data['Mes'].astype(str)
-
-                    chart_data['Period_encoded'] = label_encoder.fit_transform(chart_data['Period'])
-
-                    X = chart_data['Period_encoded'].values.reshape(-1, 1)
-                    y = chart_data['Unidades_vendidas']
-
-                    model.fit(X, y)
-                    y_pred = model.predict(X)
-
-                    ax1.grid(True)
-                    ax1.plot(chart_data['Period'], y, label=Producto)
-                    ax1.plot(X, y_pred, label='Trend (Linear Regression)', color='red', linestyle='--')
-
-                    ax1.set_title('Sales by Producto')
-                    ax1.set_xlabel('Period (Año-Mes)')
-                    ax1.set_ylabel('Units Sold')
-
-                    ax1.legend()
-                    plt.xticks(rotation=90)
-                    st.pyplot(plt)
-            
-    def mostrar_informacion_alumno():
-        with st.container():
-            st.markdown('**Student ID:** 47.417')
-            st.markdown('**Name:** Rosales José Ignacio')
-            st.markdown('**Group:** C2')
-
-    mostrar_informacion_alumno()
-
+                fig, ax = plt.subplots(figsize=(8, 4))
+                ax.plot(
+                    product_data['Fecha'], 
+                    product_data['Unidades_vendidas'], 
+                    label=row['Producto'], 
+                    color='blue'
+                )
+                ax.plot(
+                    product_data['Fecha'], 
+                    product_data['Unidades_vendidas'].rolling(3).mean(), 
+                    label='Tendencia', 
+                    color='green', 
+                    linestyle='--'
+                )
+                ax.set_title("Evolución de Ventas Mensual")
+                ax.set_xlabel("Fecha")
+                ax.set_ylabel("Unidades Vendidas")
+                ax.legend()
+                plt.xticks(rotation=45)
+                st.pyplot(fig)
+    else:
+        st.warning("No se encontraron data")
 else:
-    st.subheader("Upload your sales CSV file")
-    st.info("Please upload a CSV file to begin.")
+    st.info("Por favor, sube un archivo CSV para continuar")
