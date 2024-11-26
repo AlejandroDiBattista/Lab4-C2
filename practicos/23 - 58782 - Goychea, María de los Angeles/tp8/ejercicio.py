@@ -3,101 +3,97 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-@st.cache
-def cargar_datos(file):
-    return pd.read_csv(file)
-
-st.title("Datos de Todas las Sucursales")
-
 ## ATENCION: Debe colocar la direccion en la que ha sido publicada la aplicacion en la siguiente linea\
-# url = 'http://192.168.100.31:8502'
+# url = 'https://trabajopractico.streamlit.app/'
 
-
-# Información sobre el alumno
 def mostrar_informacion_alumno():
-    with st.sidebar:
-        st.markdown('**Legajo:** 55.940')
-        st.markdown('**Nombre:** Gramjo Elba Virginia Mailen')
+    with st.container(border=True):
+        st.markdown('**Legajo:** 58782')
+        st.markdown('**Nombre:** Maria de los Angeles Goyechea')
         st.markdown('**Comisión:** C2')
+
+
+st.set_page_config(page_title="Datos de Ventas", layout="wide")
+st.title("Datos de Ventas")
 
 mostrar_informacion_alumno()
 
-# Subir archivos CSV
+st.markdown("### Por favor, sube un archivo CSV desde la barra lateral.")
 st.sidebar.header("Cargar archivo de datos")
-archivo_gaseosas = st.sidebar.file_uploader("Sube el archivo de Gaseosas", type=['csv'])
-archivo_vinos = st.sidebar.file_uploader("Sube el archivo de Vinos", type=['csv'])
+archivo = st.sidebar.file_uploader("Subir archivo CSV", type=["csv"])
+sucursal = st.sidebar.selectbox("Seleccionar Sucursal", ["Todas", "Sucursal Norte", "Sucursal Centro", "Sucursal Sur"])
 
-if archivo_gaseosas and archivo_vinos:
-    # Cargar los datos
-    gaseosas = cargar_datos(archivo_gaseosas)
-    vinos = cargar_datos(archivo_vinos)
+if archivo:
+    datos = pd.read_csv(archivo)
 
-    # Selección de tipo de producto
-    tipo_producto = st.sidebar.selectbox("Selecciona el tipo de producto:", ["Gaseosas", "Vinos"])
+    if sucursal != "Todas":
+        datos = datos[datos["Sucursal"] == sucursal]
+        st.title(f"Datos de {sucursal}")
+    else:
+        st.title(f"Datos de Todas las sucursales")    
+    
+    productos = datos["Producto"].unique()
 
-    # Selección de sucursal
-    sucursales = ['Sucursal Norte', 'Sucursal Centro', 'Sucursal Sur']
-    sucursal_seleccionada = st.sidebar.selectbox("Selecciona la sucursal:", ['Todas'] + sucursales)
-
-    # Filtrar los datos
-    df = gaseosas if tipo_producto == "Gaseosas" else vinos
-    if sucursal_seleccionada != 'Todas':
-        df = df[df['Sucursal'] == sucursal_seleccionada]
-
-    # Crear columna de fecha y cálculos con NumPy
-    df['Fecha'] = pd.to_datetime(df['Año'].astype(str) + "-" + df['Mes'].astype(str) + "-01")
-    df['Precio_promedio'] = np.where(df['Unidades_vendidas'] > 0, df['Ingreso_total'] / df['Unidades_vendidas'], 0)
-    df['Margen_promedio'] = np.where(
-        df['Ingreso_total'] > 0,
-        (df['Ingreso_total'] - df['Costo_total']) / df['Ingreso_total'] * 100,
-        0
-    )
-    df['Variacion_precio'] = df.groupby('Producto')['Precio_promedio'].pct_change() * 100
-    df['Variacion_margen'] = df.groupby('Producto')['Margen_promedio'].pct_change() * 100
-
-    resumen = df.groupby('Producto').agg({
-        'Precio_promedio': 'mean',
-        'Margen_promedio': 'mean',
-        'Unidades_vendidas': 'sum',
-        'Variacion_precio': 'mean',
-        'Variacion_margen': 'mean'
-    }).reset_index()
-
-    # Mostrar métricas y gráficos
-    st.header(f"Datos de {'Todas las Sucursales' if sucursal_seleccionada == 'Todas' else sucursal_seleccionada}")
-
-    for _, row in resumen.iterrows():
-        st.subheader(f"{row['Producto']}")
+    for producto in productos:
+        with st.container(border=True):
         
-        # Crear columnas para métricas
-        col1, col2, col3 = st.columns(3)
-        col1.metric("Precio Promedio", f"${row['Precio_promedio']:.2f}", f"{row['Variacion_precio']:.2f}%")
-        col2.metric("Margen Promedio", f"{row['Margen_promedio']:.2f}%", f"{row['Variacion_margen']:.2f}%")
-        col3.metric("Unidades Vendidas", f"{int(row['Unidades_vendidas']):,}")
+            productoActual = datos[datos["Producto"] == producto]            
+            margen_Promedio = np.mean((productoActual["Ingreso_total"] - productoActual["Costo_total"]) / productoActual["Ingreso_total"])
+            
+            
+            resumen_anual = productoActual.groupby("Año").agg(
+                Unidades_vendidas=("Unidades_vendidas", "sum"),
+                Ingreso_total=("Ingreso_total", "sum"),
+                Costo_total=("Costo_total", "sum")
+            ).reset_index()
 
-        # Filtrar los datos por producto
-        producto_df = df[df['Producto'] == row['Producto']]
+            resumen_anual["Precio_promedio"] = resumen_anual["Ingreso_total"] / resumen_anual["Unidades_vendidas"]
+            resumen_anual["Margen_Promedio"] = (resumen_anual["Ingreso_total"] - resumen_anual["Costo_total"]) / resumen_anual["Ingreso_total"]
+            resumen_anual["Unidades_Promedio"] = resumen_anual["Unidades_vendidas"]           
+            if len(resumen_anual) > 1:              
+                
+                variacion_precio = resumen_anual["Precio_promedio"].diff().iloc[1:] / resumen_anual["Precio_promedio"].iloc[:-1].values
+                variacion_precio_Promedio = variacion_precio.mean() * 100
 
-        # Crear gráfico de evolución de ventas
-        fig, ax = plt.subplots(figsize=(8, 4))
-        ax.plot(producto_df['Fecha'], producto_df['Unidades_vendidas'], label=row['Producto'], color='blue')
-        ax.plot(
-            producto_df['Fecha'], 
-            producto_df['Unidades_vendidas'].rolling(3).mean(), 
-            label='Tendencia', 
-            color='red', 
-            linestyle='--'
-        )
-        ax.set_title("Evolución de Ventas Mensual")
-        ax.set_xlabel("Año-Mes")
-        ax.set_ylabel("Unidades Vendidas")
-        ax.legend()
+                variacion_margen = resumen_anual["Margen_Promedio"].diff().iloc[1:] / resumen_anual["Margen_Promedio"].iloc[:-1].values
+                variacion_margen_Promedio = variacion_margen.mean() * 100
 
-        # Formatear eje x
-        ax.xaxis.set_major_locator(plt.MaxNLocator(8))  # Mostrar menos etiquetas en el eje x
-        plt.xticks(rotation=45)
-        plt.tight_layout()
-        st.pyplot(fig)
+                variacion_unidades = resumen_anual["Unidades_Promedio"].diff().iloc[1:] / resumen_anual["Unidades_Promedio"].iloc[:-1].values
+                variacion_unidades_vendidas_Promedio = variacion_unidades.mean() *100
+            else:                
+                variacion_precio_Promedio = variacion_margen_Promedio = variacion_unidades_vendidas_Promedio = 0
 
-else:
-    st.warning("Por favor, sube ambos archivos CSV para continuar.")
+            metricaA , metricaB = st.columns([1, 3])
+
+            with metricaA :
+                st.subheader(f" {producto}")
+                st.metric("Precio Promedio", f"${resumen_anual["Precio_promedio"].mean():,.0f}", f"{variacion_precio_Promedio:.2f}%")
+                st.metric("Margen Promedio", f"{margen_Promedio*100:.0f} %", f"{variacion_margen_Promedio:.2f}%")
+                st.metric("Unidades Vendidas", f"{resumen_anual["Unidades_Promedio"].sum():,}", f"{variacion_unidades_vendidas_Promedio:.2f}%")
+            
+            ventas_mensuales = productoActual.groupby(['Año', 'Mes'])['Unidades_vendidas'].sum().reset_index()
+            x = np.arange(len(ventas_mensuales))
+            y = ventas_mensuales['Unidades_vendidas']
+
+            fig, ax = plt.subplots(figsize=(12, 7))
+
+            ax.plot(x, y, label=producto)
+
+            Coeficiente = np.polyfit(x, y, 1)
+            p = np.poly1d(Coeficiente)
+            ax.plot(x, p(x), linestyle='--', color='red',label='Tendencia')
+            ax.set_xticks(x)   
+            ax.set_xticklabels([f"{row.Año}" if row.Mes == 1 else "" for row in ventas_mensuales.itertuples()])
+            ax.set_ylim(0, None)   
+            ax.set_title("Evolución de Ventas")            
+            ax.set_ylabel("Unidades Vendidas")
+            ax.set_xlabel("Año-Mes")
+            ax.grid(linestyle='--')
+            ax.legend(loc='best', frameon=True,facecolor='white', edgecolor='lightgray')
+
+            for spine in ax.spines.values():
+                spine.set_edgecolor('#cccccc')
+            
+            with metricaB:                
+                st.pyplot(fig)
+
