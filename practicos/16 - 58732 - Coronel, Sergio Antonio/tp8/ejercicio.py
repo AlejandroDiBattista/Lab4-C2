@@ -1,82 +1,84 @@
-import streamlit as st 
+import streamlit as st
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-def main():
+def crear_grafico(df_producto, producto):
+    ventas_mensuales = df_producto.groupby(['Año', 'Mes'])['Unidades_vendidas'].sum().reset_index()
+    fig, ax = plt.subplots(figsize=(10, 6))
+    ax.plot(ventas_mensuales.index, ventas_mensuales['Unidades_vendidas'], label=producto)
 
-    st.markdown("<h1 style='text-align: center; color: #FF4B4B;'>Análisis Detallado de Ventas</h1>", unsafe_allow_html=True)
+    x_vals = ventas_mensuales.index
+    y_vals = ventas_mensuales['Unidades_vendidas']
+    coeficientes = np.polyfit(x_vals, y_vals, 1)
+    tendencia = np.poly1d(coeficientes)
+    ax.plot(x_vals, tendencia(x_vals), linestyle='--', color='red', label='Tendencia')
 
-    st.sidebar.header('Cargar archivo de datos')
-    uploaded_file = st.sidebar.file_uploader("Subir archivo CSV", type=['csv'])
+    ax.set_title('Evolución Mensual de Ventas')
+    ax.set_xlabel('Año-Mes')
+    ax.set_xticks(ventas_mensuales.index)
+    etiquetas = [f"{fila.Año}" if fila.Mes == 1 else "" for fila in ventas_mensuales.itertuples()]
+    ax.set_xticklabels(etiquetas)
+    ax.set_ylabel('Unidades Vendidas')
+    ax.set_ylim(0, None)
+    ax.legend(title='Producto')
+    ax.grid(True)
+    return fig
 
-    if uploaded_file is not None:
-        df = pd.read_csv(uploaded_file)
-        
-        sucursales = ['Todas'] + df['Sucursal'].unique().tolist()
-        sucursal_seleccionada = st.sidebar.selectbox("Seleccionar Sucursal", sucursales)
+def mostrar_metricas(df_producto):
+    df_producto['Precio_Promedio'] = df_producto['Ingreso_total'] / df_producto['Unidades_vendidas']
+    promedio_precio = df_producto['Precio_Promedio'].mean()
+    precio_anual = df_producto.groupby('Año')['Precio_Promedio'].mean()
+    variacion_precio = precio_anual.pct_change().mean() * 100
 
-        if sucursal_seleccionada != 'Todas':
-            df = df[df['Sucursal'] == sucursal_seleccionada]
+    df_producto['Ganancia'] = df_producto['Ingreso_total'] - df_producto['Costo_total']
+    df_producto['Margen'] = (df_producto['Ganancia'] / df_producto['Ingreso_total']) * 100
+    promedio_margen = df_producto['Margen'].mean()
+    margen_anual = df_producto.groupby('Año')['Margen'].mean()
+    variacion_margen = margen_anual.pct_change().mean() * 100
 
-        st.markdown(f"<h2 style='color: #FF4B4B;'>Datos de {'Todas las Sucursales' if sucursal_seleccionada == 'Todas' else sucursal_seleccionada}</h2>", unsafe_allow_html=True)
+    total_unidades = df_producto['Unidades_vendidas'].sum()
+    unidades_anuales = df_producto.groupby('Año')['Unidades_vendidas'].sum()
+    variacion_unidades = unidades_anuales.pct_change().mean() * 100
 
-        productos = df['Producto'].unique()
+    col1, col2 = st.columns([0.3, 0.7])
+    with col1:
+        st.metric("Precio Promedio", f"${promedio_precio:,.0f}".replace(",", "."), f"{variacion_precio:.2f}%")
+        st.metric("Margen Promedio", f"{promedio_margen:.0f}%".replace(",", "."), f"{variacion_margen:.2f}%")
+        st.metric("Unidades Vendidas", f"{total_unidades:,.0f}".replace(",", "."), f"{variacion_unidades:.2f}%")
+    with col2:
+        fig = crear_grafico(df_producto, df_producto['Producto'].iloc[0])
+        st.pyplot(fig)
 
-        for producto in productos:
-            st.markdown(f"<h3 style='color: #5F9EA0;'>{producto}</h3>", unsafe_allow_html=True)
-            
-            df_producto = df[df['Producto'] == producto]
-            
-            ingreso_total = df_producto['Ingreso_total'].sum()
-            unidades_vendidas = df_producto['Unidades_vendidas'].sum()
-            costo_total = df_producto['Costo_total'].sum()
-            precio_promedio = ingreso_total / unidades_vendidas if unidades_vendidas != 0 else 0
-            margen_promedio = ((ingreso_total - costo_total) / ingreso_total) * 100 if ingreso_total != 0 else 0
-            delta_precio = np.random.uniform(-5, 5) 
-            delta_unidades = np.random.uniform(-10, 10)
-            
-            col1, col2, col3 = st.columns(3)
-            col1.metric("Precio Promedio", f"${precio_promedio:.2f}", f"{delta_precio:.2f}%")
-            col2.metric("Margen Promedio", f"{margen_promedio:.2f}%", "0.00%")
-            col3.metric("Unidades Vendidas", f"{int(unidades_vendidas):,}", f"{delta_unidades:.2f}%")
-            
-            df_producto['Fecha'] = pd.to_datetime(df_producto['Año'].astype(str) + '-' + df_producto['Mes'].astype(str))
-            df_ventas = df_producto.groupby('Fecha').agg({'Unidades_vendidas': 'sum', 'Ingreso_total': 'sum'}).reset_index()
-            
-            fig, ax = plt.subplots(figsize=(10, 5))
-            ax.plot(df_ventas['Fecha'], df_ventas['Unidades_vendidas'], marker='o', label='Unidades Vendidas', color='blue')
-            
-            z = np.polyfit(df_ventas.index, df_ventas['Unidades_vendidas'], 1)
-            p = np.poly1d(z)
-            ax.plot(df_ventas['Fecha'], p(df_ventas.index), "r--", label='Tendencia Unidades')
+st.sidebar.header("Cargar Datos")
+archivo_cargado = st.sidebar.file_uploader("Subir archivo CSV", type=["csv"])
 
-            ax.set_title(f"Evolución Mensual de Ventas - {producto}")
-            ax.set_xlabel("Fecha")
-            ax.set_ylabel("Unidades Vendidas")
-            ax.legend()
-            ax.grid(True)
-            plt.xticks(rotation=45)
-            
-            st.pyplot(fig)
-                
-            st.dataframe(df_producto[['Fecha', 'Unidades_vendidas', 'Ingreso_total']].sort_values('Fecha'))
+if archivo_cargado is not None:
+    df = pd.read_csv(archivo_cargado)
+    sucursales = ["Todas"] + df['Sucursal'].unique().tolist()
+    sucursal = st.sidebar.selectbox("Seleccionar Sucursal", sucursales)
 
-            st.markdown("<hr>", unsafe_allow_html=True)
-                
+    if sucursal != "Todas":
+        df = df[df['Sucursal'] == sucursal]
+        st.title(f"Datos de {sucursal}")
     else:
-        st.info("Por favor, suba un archivo CSV para comenzar.")
+        st.title("Datos de Todas las Sucursales")
 
-if __name__ == '__main__':
-    main()
+    productos = df['Producto'].unique()
+    for producto in productos:
+         with st.container(border=True):
+            st.subheader(producto)
+            df_producto = df[df['Producto'] == producto]
+            mostrar_metricas(df_producto)
+else:
+    st.subheader("Por favor, sube un archivo CSV desde la barra lateral.")
 
-## ATENCION: Debe colocar la direccion en la que ha sido publicada la aplicacion en la siguiente linea
 # url = 'https://tp8-58732.streamlit.app/'
 
-def mostrar_informacion_alumno():
-    with st.container():
+def mostrar_datos_alumno():
+     with st.container(border=True):
         st.markdown('**Legajo:** 58.732')
-        st.markdown('**Nombre:** Sergio Antonio Coronel')
+        st.markdown('**Nombre:** Coronel Sergio Antonio')
         st.markdown('**Comisión:** C2')
 
-mostrar_informacion_alumno()
+mostrar_datos_alumno()
