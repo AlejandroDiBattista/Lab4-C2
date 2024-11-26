@@ -1,3 +1,5 @@
+
+# url = ' http://192.168.100.31:8501'
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -7,21 +9,19 @@ import matplotlib.pyplot as plt
 def cargar_datos(file):
     return pd.read_csv(file)
 
+# Título principal
+st.title("Cargar archivo de datos")
 
-st.title("Datos de Todas las Sucursales")
-
-## ATENCION: Debe colocar la direccion en la que ha sido publicada la aplicacion en la siguiente linea\
-# url = ' http://192.168.100.31:8501'
-# Información sobre el alumno
+# Información del alumno
 def mostrar_informacion_alumno():
-    with st.sidebar:
-        st.markdown('**Legajo:** 55.940')
-        st.markdown('**Nombre:** Gramjo Elba Virginia Mailen')
-        st.markdown('**Comisión:** C2')
+    st.markdown("### Por favor, sube un archivo CSV desde la barra lateral.")
+    st.text("Legajo: 55.940")
+    st.text("Nombre: Gramajo Elba Virginia Mailen")
+    st.text("Comisión: C2")
 
 mostrar_informacion_alumno()
 
-# Subir archivos CSV
+# Configuración de barra lateral
 st.sidebar.header("Cargar archivo de datos")
 archivo_gaseosas = st.sidebar.file_uploader("Sube el archivo de Gaseosas", type=['csv'])
 archivo_vinos = st.sidebar.file_uploader("Sube el archivo de Vinos", type=['csv'])
@@ -66,37 +66,41 @@ if archivo_gaseosas and archivo_vinos:
     st.header(f"Datos de {'Todas las Sucursales' if sucursal_seleccionada == 'Todas' else sucursal_seleccionada}")
 
     for _, row in resumen.iterrows():
-        st.subheader(f"{row['Producto']}")
-        
-        # Crear columnas para métricas
-        col1, col2, col3 = st.columns(3)
-        col1.metric("Precio Promedio", f"${row['Precio_promedio']:.2f}", f"{row['Variacion_precio']:.2f}%")
-        col2.metric("Margen Promedio", f"{row['Margen_promedio']:.2f}%", f"{row['Variacion_margen']:.2f}%")
-        col3.metric("Unidades Vendidas", f"{int(row['Unidades_vendidas']):,}")
+        st.divider()
+        col1, col2 = st.columns([1, 3])  # Configurar proporción de columnas
 
-        # Filtrar los datos por producto
-        producto_df = df[df['Producto'] == row['Producto']]
+        with col1:
+            st.subheader(f"{row['Producto']}")
+            st.metric("Precio Promedio", f"${row['Precio_promedio']:.2f}", f"{row['Variacion_precio']:.2f}%")
+            st.metric("Margen Promedio", f"{row['Margen_promedio']:.2f}%", f"{row['Variacion_margen']:.2f}%")
+            st.metric("Unidades Vendidas", f"{int(row['Unidades_vendidas']):,}")
 
-        # Crear gráfico de evolución de ventas
-        fig, ax = plt.subplots(figsize=(8, 4))
-        ax.plot(producto_df['Fecha'], producto_df['Unidades_vendidas'], label=row['Producto'], color='blue')
-        ax.plot(
-            producto_df['Fecha'], 
-            producto_df['Unidades_vendidas'].rolling(3).mean(), 
-            label='Tendencia', 
-            color='red', 
-            linestyle='--'
-        )
-        ax.set_title("Evolución de Ventas Mensual")
-        ax.set_xlabel("Año-Mes")
-        ax.set_ylabel("Unidades Vendidas")
-        ax.legend()
+        with col2:
+            # Filtrar los datos por producto
+            producto_df = df[df['Producto'] == row['Producto']]
 
-        # Formatear eje x
-        ax.xaxis.set_major_locator(plt.MaxNLocator(8))  # Mostrar menos etiquetas en el eje x
-        plt.xticks(rotation=45)
-        plt.tight_layout()
-        st.pyplot(fig)
+            # Crear gráfico de evolución de ventas
+            fig, ax = plt.subplots(figsize=(8, 4))
+            ax.plot(producto_df['Fecha'], producto_df['Unidades_vendidas'], label=row['Producto'], color='blue')
+            ax.plot(
+                producto_df['Fecha'],
+                producto_df['Unidades_vendidas'].rolling(3).mean(),
+                label='Tendencia',
+                color='red',
+                linestyle='--'
+            )
+            ax.set_title("Evolución de Ventas Mensual")
+            ax.set_xlabel("Año-Mes")
+            ax.set_ylabel("Unidades Vendidas")
+            ax.legend()
+
+            # Formatear eje x
+            ax.xaxis.set_major_locator(plt.MaxNLocator(8))  # Mostrar menos etiquetas en el eje x
+            plt.xticks(rotation=45)
+            plt.tight_layout()
+            st.pyplot(fig)
 
 else:
     st.warning("Por favor, sube ambos archivos CSV para continuar.")
+
+ 
