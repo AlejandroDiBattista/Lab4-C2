@@ -3,10 +3,6 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-## ATENCION: Debe colocar la direccion en la que ha sido publicada la aplicacion en la siguiente linea\
-# url = 'https://trabajopractico2-5e5uv2pibipgofp5fzz5eh.streamlit.app/'
-
-
 # Configuración de la página
 st.set_page_config(page_title="Análisis de Ventas", layout="wide")
 
@@ -20,14 +16,12 @@ def mostrar_informacion_alumno():
 
 mostrar_informacion_alumno()
 
-
 # Panel lateral
 st.sidebar.header("Cargar archivo de datos")
 uploaded_file = st.sidebar.file_uploader("Selecciona un archivo CSV", type=["csv"])
 sucursal_seleccionada = st.sidebar.selectbox("Seleccionar Sucursal", ["Todas", "Sucursal Norte", "Sucursal Centro", "Sucursal Sur"])
 
 if uploaded_file: 
-
     # Cargar archivo CSV
     df = pd.read_csv(uploaded_file)
 
@@ -51,91 +45,83 @@ if uploaded_file:
             df = df[df["Sucursal"] == sucursal_seleccionada]
         st.title(f"Datos de {sucursal_seleccionada}")
         
-        # Agrupar datos por producto
+        # Calcular métricas para cada producto
         productos = df["Producto"].unique()
         for producto in productos:
-          with st.container(border=True):
-            df_producto = df[df["Producto"] == producto]
-
-            # Calcular métricas actuales
-            precio_promedio = np.sum(df_producto["Ingreso_total"]) / np.sum(df_producto["Unidades_vendidas"])
-            margen_promedio = np.mean(
-                (df_producto["Ingreso_total"] - df_producto["Costo_total"]) / df_producto["Ingreso_total"]
-            )
-            unidades_totales = np.sum(df_producto["Unidades_vendidas"])
-
-            # Calcular métricas de cambio (último mes vs penúltimo mes)
-            df_producto["Año-Mes"] = df_producto["Fecha"].dt.to_period("M")
-            resumen_mensual = df_producto.groupby("Año-Mes").agg(
-                Unidades_vendidas=("Unidades_vendidas", "sum"),
-                Ingreso_total=("Ingreso_total", "sum"),
-                Costo_total=("Costo_total", "sum")
-            ).reset_index()
-        
-            if len(resumen_mensual) > 1:
-                # Variación porcentual entre los dos últimos periodos
-                delta_precio = (
-                    (resumen_mensual["Ingreso_total"].iloc[-1] / resumen_mensual["Unidades_vendidas"].iloc[-1])
-                    - (resumen_mensual["Ingreso_total"].iloc[-2] / resumen_mensual["Unidades_vendidas"].iloc[-2])
-                ) / (resumen_mensual["Ingreso_total"].iloc[-2] / resumen_mensual["Unidades_vendidas"].iloc[-2]) * 100
+            with st.container(border=True):
+                df_producto = df[df["Producto"] == producto]
                 
-                delta_margen = (
-                    (resumen_mensual["Ingreso_total"].iloc[-1] - resumen_mensual["Costo_total"].iloc[-1])
-                    / resumen_mensual["Ingreso_total"].iloc[-1]
-                    - (resumen_mensual["Ingreso_total"].iloc[-2] - resumen_mensual["Costo_total"].iloc[-2])
-                    / resumen_mensual["Ingreso_total"].iloc[-2]
-                ) * 100
+                # Calcular el precio promedio
+                df_producto["Precio_promedio"] = df_producto["Ingreso_total"] / df_producto["Unidades_vendidas"]
+                precio_promedio = df_producto["Precio_promedio"].mean()
                 
-                delta_unidades = (
-                    (resumen_mensual["Unidades_vendidas"].iloc[-1] - resumen_mensual["Unidades_vendidas"].iloc[-2])
-                    / resumen_mensual["Unidades_vendidas"].iloc[-2]
-                ) * 100
-            else:
-                # No hay suficientes datos para calcular cambios
-                delta_precio = delta_margen = delta_unidades = 0
-        
-            # Evolución de ventas mensuales
-            ventas_mensuales = df_producto.groupby("Fecha")["Unidades_vendidas"].sum().reset_index()
-        
-            # Crear diseño con columnas
-            col_izquierda, col_derecha = st.columns([1, 3])  # Proporción de espacio: 1 para métricas, 3 para gráfico
-            
-            # Mostrar métricas en la columna izquierda
-            with col_izquierda:
-                st.subheader(f" {producto}")
-                st.metric("Precio Promedio", f"${precio_promedio:,.2f}", f"{delta_precio:.2f}%")
-                st.metric("Margen Promedio", f"{margen_promedio * 100:.2f}%", f"{delta_margen:.2f}%")
-                st.metric("Unidades Vendidas", f"{unidades_totales:,.0f}", f"{delta_unidades:.2f}%")
-
-            # Mostrar gráfico en la columna derecha
-            with col_derecha:
-                fig, ax = plt.subplots(figsize=(8, 4))
-                ax.plot(
-                    ventas_mensuales["Fecha"],
-                    ventas_mensuales["Unidades_vendidas"],
-                    label=producto,
-                )
-
-                # Línea de tendencia
-                x_vals = np.arange(len(ventas_mensuales))
-                y_vals = ventas_mensuales["Unidades_vendidas"].values
-                coef = np.polyfit(x_vals, y_vals, 1)
-                tendencia = np.poly1d(coef)(x_vals)
-                ax.plot(
-                    ventas_mensuales["Fecha"],
-                    tendencia,
-                    label="Tendencia",
-                    linestyle="--",
-                    color="red",
-                )
-
-                # Configurar gráfico
-                ax.set_title("Evolución de Ventas Mensual")
-                ax.set_xlabel("Año-Mes")
-                ax.set_ylabel("Unidades Vendidas")
-                ax.legend()
-                ax.grid(True)
-                st.pyplot(fig)
+                # Calcular el margen promedio
+                df_producto["Ganancia"] = df_producto["Ingreso_total"] - df_producto["Costo_total"]
+                df_producto["Margen"] = (df_producto["Ganancia"] / df_producto["Ingreso_total"]) * 100
+                margen_promedio = df_producto["Margen"].mean()
                 
+                # Calcular unidades totales vendidas
+                unidades_totales = df_producto["Unidades_vendidas"].sum()
+                
+                # Agrupar por año-mes y calcular métricas mensuales
+                df_producto["Año-Mes"] = df_producto["Fecha"].dt.to_period("M")
+                resumen_mensual = df_producto.groupby("Año-Mes").agg(
+                    Unidades_vendidas=("Unidades_vendidas", "sum"),
+                    Ingreso_total=("Ingreso_total", "sum"),
+                    Costo_total=("Costo_total", "sum")
+                ).reset_index()
+
+                # Calcular variaciones porcentuales anuales
+                metricas_anuales = df_producto.groupby('Año').agg({
+                    'Precio_promedio': 'mean',
+                    'Margen': 'mean',
+                    'Unidades_vendidas': 'sum'
+                })
+                variacion_precio = metricas_anuales['Precio_promedio'].pct_change().mean() * 100
+                variacion_margen = metricas_anuales['Margen'].pct_change().mean() * 100
+                variacion_unidades = metricas_anuales['Unidades_vendidas'].pct_change().mean() * 100
+                
+                # Gráfico de evolución de ventas mensual
+                ventas_mensuales = df_producto.groupby("Fecha")["Unidades_vendidas"].sum().reset_index()
+                
+                # Crear diseño con columnas
+                col_izquierda, col_derecha = st.columns([1, 3])
+                
+                # Mostrar métricas
+                with col_izquierda:
+                    st.subheader(f"{producto}")
+                    st.metric("Precio Promedio", f"${precio_promedio:,.2f}", f"{variacion_precio:.2f}%")
+                    st.metric("Margen Promedio", f"{margen_promedio:.2f}%", f"{variacion_margen:.2f}%")
+                    st.metric("Unidades Vendidas", f"{unidades_totales:,.0f}", f"{variacion_unidades:.2f}%")
+                
+                # Mostrar gráfico en la columna derecha
+                with col_derecha:
+                    fig, ax = plt.subplots(figsize=(8, 4))
+                    ax.plot(
+                        ventas_mensuales["Fecha"],
+                        ventas_mensuales["Unidades_vendidas"],
+                        label=producto
+                    )
+                    
+                    # Línea de tendencia
+                    x_vals = np.arange(len(ventas_mensuales))
+                    y_vals = ventas_mensuales["Unidades_vendidas"].values
+                    coef = np.polyfit(x_vals, y_vals, 1)
+                    tendencia = np.poly1d(coef)(x_vals)
+                    ax.plot(
+                        ventas_mensuales["Fecha"],
+                        tendencia,
+                        label="Tendencia",
+                        linestyle="--",
+                        color="red"
+                    )
+                    
+                    ax.set_title("Evolución de Ventas Mensual")
+                    ax.set_xlabel("Año-Mes")
+                    ax.set_ylabel("Unidades Vendidas")
+                    ax.legend()
+                    ax.grid(True)
+                    ax.set_ylim(0, None)  # Ajustar el eje Y para comenzar desde 0
+                    st.pyplot(fig)
                 
 
