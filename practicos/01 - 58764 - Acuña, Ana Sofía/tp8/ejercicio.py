@@ -3,147 +3,132 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-
-# Evaluación: 6 | Recuperar para promocionar
-# 1. No implementa mostrar métricas, muestra una tabla general (ver st.metric) (-1)
-# 2. No muestra las gráficas y las métricas para cada producto (-1)
-# 3. Muestra una tabla con los datos que no se pide (-1)
-# 4. No implementa el estilo pedido (un CSS innecesario) (ver st.container) (-1)
+## ATENCION: Debe colocar la direccion en la que ha sido publicada la aplicacion en la siguiente linea\
+# url = 'https://tp8-58764.streamlit.app/'
 
 
-# URL = 'https://tp8-58764.streamlit.app/'
 
-def agregar_estilos():
-    st.markdown(
-        """
-        <style>
-        /* Estilo del sidebar */
-        [data-testid="stSidebar"] {
-            background-color: #1a1a1a; /* Negro */
-            color: #f8c1d1; /* Rosa claro */
-        }
+st.set_page_config(page_title="Ventas por Sucursal", layout="wide")
 
-        [data-testid="stSidebar"] h3 {
-            color: #ff69b4; /* Rosa intenso */
-        }
 
-        /* Fondo principal */
-        .main {
-            background-color: #f2f0f5; /* Fondo gris claro */
-            color: #1a1a1a; /* Negro */
-        }
+def crear_grafico_ventas(datos_producto, producto):
+    ventas_por_producto = datos_producto.groupby(['Año', 'Mes'])['Unidades_vendidas'].sum().reset_index()
 
-        /* Títulos */
-        h1, h2, h3, h4 {
-            color: #d63384; /* Rosa oscuro */
-        }
+    
+    fig, gr = plt.subplots(figsize=(10, 6))
+    gr.plot(range(len(ventas_por_producto)), ventas_por_producto['Unidades_vendidas'], label=producto)
 
-        /* Tablas */
-        .dataframe {
-            border: 2px solid #d63384; /* Borde rosa oscuro */
-            border-radius: 8px;
-        }
+    
+    x = np.arange(len(ventas_por_producto))
+    y = ventas_por_producto['Unidades_vendidas']
+    z = np.polyfit(x, y, 1)
+    tendencia = np.poly1d(z)
 
-        /* Botones */
-        .stButton>button {
-            background-color: #ff69b4; /* Rosa intenso */
-            color: white;
-            border-radius: 8px;
-        }
+    gr.plot(x, tendencia(x), linestyle='--', color='red', label='Tendencia')
 
-        /* SelectBox y FileUploader */
-        .stSelectbox, .stFileUploader {
-            border: 2px solid #d63384; /* Rosa oscuro */
-            border-radius: 8px;
-        }
+   
+    gr.set_title('Evolución de Ventas Mensual', fontsize=16)
+    gr.set_xlabel('Año-Mes')
+    gr.set_xticks(range(len(ventas_por_producto)))
+    etiquetas = [f"{row.Año}" if row.Mes == 1 else "" for row in ventas_por_producto.itertuples()]
+    gr.set_xticklabels(etiquetas)
+    gr.set_ylabel('Unidades Vendidas')
+    gr.set_ylim(0, None)
+    gr.legend(title='Producto')
+    gr.grid(True)
 
-        /* Footer oculto */
-        footer {
-            visibility: hidden;
-        }
-        </style>
-        """,
-        unsafe_allow_html=True,
-    )
+    return fig
+
 
 def mostrar_informacion_alumno():
-    st.sidebar.markdown("### Información del Alumno")
-    st.sidebar.markdown("**Legajo:** 58764")
-    st.sidebar.markdown("**Nombre:** Acuña Ana Sofia")
-    st.sidebar.markdown("**Comisión:** C2")
+    with st.container():
+        st.markdown('*Legajo:* 58764')
+        st.markdown('*Nombre:* Ana Sofia Acuña')
+        st.markdown('*Comisión:* C2')
 
-def main():
-    # Aplicar estilos
-    agregar_estilos()
 
-    # Mostrar información del alumno en el sidebar
-    mostrar_informacion_alumno()
+container_style = """
+                <style>
+                .resize-container {
+                    border-radius: 10px;
+                    padding: 20px;
+                    background-color: #f4f4f4;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                    resize: both;
+                    overflow: auto;
+                    width: 80%;
+                    min-width: 600px;
+                    height: 600px;
+                }
+                </style>
+                """
 
-    # Título en el área principal
-    st.title("Análisis de Ventas")
+st.markdown(container_style, unsafe_allow_html=True)
 
-    # Subir archivo desde el sidebar
-    st.sidebar.subheader("Cargar archivo de datos")
-    archivo = st.sidebar.file_uploader("Sube un archivo CSV", type="csv")
 
-    if archivo is not None:
-        # Cargar los datos
-        df = pd.read_csv(archivo)
+st.sidebar.header("Cargar archivo de datos")
+archivo_cargado = st.sidebar.file_uploader("Subir archivo CSV", type=["csv"])
 
-        # Selección de sucursales en el sidebar
-        st.sidebar.subheader("Filtrar por Sucursal")
-        sucursales = ["Todas"] + list(df['Sucursal'].unique())
-        sucursal_seleccionada = st.sidebar.selectbox("Seleccionar sucursal", sucursales)
+if archivo_cargado is not None:
+    datos = pd.read_csv(archivo_cargado)
 
-        if sucursal_seleccionada != "Todas":
-            df = df[df['Sucursal'] == sucursal_seleccionada]
+  
+    sucursales = ["Todas"] + datos['Sucursal'].unique().tolist()
+    sucursal_seleccionada = st.sidebar.selectbox("Seleccionar Sucursal", sucursales)
 
-        # Mostrar datos filtrados
-        st.subheader(f"Datos cargados: {sucursal_seleccionada}")
-        st.dataframe(df)
+    
+    if sucursal_seleccionada != "Todas":
+        datos = datos[datos['Sucursal'] == sucursal_seleccionada]
+        st.title(f"Datos de Ventas en {sucursal_seleccionada}")
+    else:
+        st.title("Datos de Ventas Totales")
 
-        # Métricas por producto
-        st.subheader("Métricas por producto")
-        if not df.empty:
-            resultados = df.groupby('Producto').agg(
-                Precio_Promedio=("Ingreso_total", lambda x: (x / df.loc[x.index, 'Unidades_vendidas']).mean()),
-                Margen_Promedio=("Ingreso_total", lambda x: ((x - df.loc[x.index, 'Costo_total']) / x).mean()),
-                Unidades_Vendidas=("Unidades_vendidas", "sum")
-            )
-            st.dataframe(resultados)
+    
+    productos = datos['Producto'].unique()
 
-            # Evolución de ventas mensuales
-            st.subheader("Evolución de ventas mensuales")
-            df['Fecha'] = pd.to_datetime({'year': df['Año'], 'month': df['Mes'], 'day': 1})
-            df_ventas_mensuales = df.groupby('Fecha').agg(Ventas_Totales=("Unidades_vendidas", "sum")).reset_index()
+    for producto in productos:
+        st.markdown('<div class="custom-container">', unsafe_allow_html=True)
 
-            # Calcular la tendencia manualmente
-            x = np.arange(len(df_ventas_mensuales))
-            y = df_ventas_mensuales['Ventas_Totales']
-            n = len(x)
+     
+        st.subheader(f"{producto}")
+        datos_producto = datos[datos['Producto'] == producto]
 
-            x_mean = np.mean(x)
-            y_mean = np.mean(y)
+       
+        datos_producto['Precio_promedio'] = datos_producto['Ingreso_total'] / datos_producto['Unidades_vendidas']
+        precio_promedio = datos_producto['Precio_promedio'].mean()
 
-            # Fórmulas de mínimos cuadrados
-            numerator = np.sum((x - x_mean) * (y - y_mean))
-            denominator = np.sum((x - x_mean) ** 2)
-            slope = numerator / denominator
-            intercept = y_mean - slope * x_mean
+        precio_promedio_anual = datos_producto.groupby('Año')['Precio_promedio'].mean()
+        variacion_precio_promedio_anual = precio_promedio_anual.pct_change().mean() * 100
 
-            tendencia = slope * x + intercept
+        datos_producto['Ganancia'] = datos_producto['Ingreso_total'] - datos_producto['Costo_total']
+        datos_producto['Margen'] = (datos_producto['Ganancia'] / datos_producto['Ingreso_total']) * 100
+        margen_promedio = datos_producto['Margen'].mean()
 
-            # Graficar la evolución
-            plt.figure(figsize=(10, 6))
-            plt.plot(df_ventas_mensuales['Fecha'], y, label='Ventas Totales', marker='o', color='#d63384')
-            plt.plot(df_ventas_mensuales['Fecha'], tendencia, label='Tendencia', linestyle='--', color='black')
-            plt.xlabel("Fecha")
-            plt.ylabel("Unidades Vendidas")
-            plt.title(f"Evolución de ventas mensuales: {sucursal_seleccionada}")
-            plt.legend()
-            st.pyplot(plt)
-        else:
-            st.warning("No hay datos para mostrar en esta sucursal.")
+        margen_promedio_anual = datos_producto.groupby('Año')['Margen'].mean()
+        variacion_margen_promedio_anual = margen_promedio_anual.pct_change().mean() * 100
 
-if __name__ == "__main__":
-    main()
+        unidades_promedio = datos_producto['Unidades_vendidas'].mean()
+        unidades_vendidas = datos_producto['Unidades_vendidas'].sum()
+
+        unidades_por_año = datos_producto.groupby('Año')['Unidades_vendidas'].sum()
+        variacion_anual_unidades = unidades_por_año.pct_change().mean() * 100
+
+      
+        with st.expander(f"Ver estadísticas y gráfico de {producto}", expanded=True):
+            col1, col2 = st.columns([1, 2])
+
+            
+            with col1:
+                st.metric(label="Precio Promedio", value=f"${precio_promedio:,.0f}".replace(",", "."), delta=f"{variacion_precio_promedio_anual:.2f}%")
+                st.metric(label="Margen Promedio", value=f"{margen_promedio:.0f}%".replace(",", "."), delta=f"{variacion_margen_promedio_anual:.2f}%")
+                st.metric(label="Unidades Vendidas", value=f"{unidades_vendidas:,.0f}".replace(",", "."), delta=f"{variacion_anual_unidades:.2f}%")
+
+            
+            with col2:
+                fig = crear_grafico_ventas(datos_producto, producto)
+                st.pyplot(fig)
+
+        st.markdown('</div>', unsafe_allow_html=True)
+
+
+mostrar_informacion_alumno()

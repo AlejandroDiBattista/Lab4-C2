@@ -96,4 +96,3 @@ if archivo:
             
             with metricaB:                
                 st.pyplot(fig)
-
