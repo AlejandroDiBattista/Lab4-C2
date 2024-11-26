@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import streamlit as st
 
-URL = 'https://parcial2tp8-gb3vponvosdgjtsjgknk4n.streamlit.app/'
+URL = 'https://parcial2tp8-zq6fapjltdxthu8qiglark.streamlit.app/'
 
 @st.cache_data
 def load_data(file):
