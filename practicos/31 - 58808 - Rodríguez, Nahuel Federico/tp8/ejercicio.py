@@ -13,113 +13,103 @@ def mostrar_informacion_alumno():
         st.markdown('**Nombre:** Nahuel Federico Rodríguez')
         st.markdown('**Comisión:** C2')
 
-# Función para calcular estadísticas y graficar
-def calcular_estadisticas(datos, sucursal=None):
+
+# Función cambiar de sucursal
+def cambiar_sucursal(datos, sucursal=None):
     if sucursal:
         datos = datos[datos["Sucursal"] == sucursal]
-    
-    # Calcular métricas
-    datos['Precio_promedio'] = datos['Ingreso_total'] / datos['Unidades_vendidas']
-    datos['Margen_promedio'] = (datos['Ingreso_total'] - datos['Costo_total']) / datos['Ingreso_total']
-    
-    # Resumir por producto
-    resumen = datos.groupby('Producto').agg({
-        'Unidades_vendidas': 'sum',
-        'Precio_promedio': 'mean',
-        'Margen_promedio': 'mean'
-    }).reset_index()
-    
-    return datos, resumen
+
+    return datos
 
 # Función para graficar la evolución de ventas
-def graficar_evolucion(datos):
-    # Agrupar por año y mes
-    datos['Fecha'] = pd.to_datetime(datos[['Año', 'Mes']].rename(columns={'Año': 'year', 'Mes': 'month'}).assign(day=1))
-    evolucion = datos.groupby('Fecha')['Unidades_vendidas'].sum().reset_index()
-
-    # Crear gráfico
-    fig, ax = plt.subplots(figsize=(10, 6))
-    ax.plot(evolucion['Fecha'], evolucion['Unidades_vendidas'], marker='o', label="Unidades vendidas")
-    
-    # Línea de tendencia
-    z = np.polyfit(range(len(evolucion)), evolucion['Unidades_vendidas'], 1)
-    p = np.poly1d(z)
-    ax.plot(evolucion['Fecha'], p(range(len(evolucion))), linestyle='--', color='orange', label="Tendencia")
-    
-    ax.set_title("Evolución de Ventas")
-    ax.set_xlabel("Fecha")
-    ax.set_ylabel("Unidades Vendidas")
-    ax.legend()
-    
-    # Mostrar información a la izquierda
-    precio_promedio = datos['Ingreso_total'].sum() / datos['Unidades_vendidas'].sum()
-    margen_promedio = (datos['Ingreso_total'].sum() - datos['Costo_total'].sum()) / datos['Ingreso_total'].sum()
-    unidades_vendidas = datos['Unidades_vendidas'].sum()
-    
-    col1, col2 = st.columns([1, 3])
-    with col1:
-        st.markdown(f"**Precio promedio:** {precio_promedio:.2f}")
-        st.markdown(f"**Margen promedio:** {margen_promedio:.2f}")
-        st.markdown(f"**Unidades vendidas:** {unidades_vendidas}")
-    with col2:
-        st.pyplot(fig)
-    
+def graficar_evolucion(datos):   
     # Graficar evolución por producto
+    unidades_vendidas_mensual = datos.groupby(['Año', 'Mes', 'Producto'])['Unidades_vendidas'].sum().reset_index()
     productos = datos['Producto'].unique()
     for producto in productos:
-        datos_producto = datos[datos['Producto'] == producto]
-        evolucion_producto = datos_producto.groupby('Fecha')['Unidades_vendidas'].sum().reset_index()
 
+        datos_producto = unidades_vendidas_mensual[unidades_vendidas_mensual['Producto'] == producto]
+        evolucion_producto = datos_producto.groupby(['Año', 'Mes'])['Unidades_vendidas'].sum().reset_index()
+        evolucion_producto['Fecha'] = pd.to_datetime(evolucion_producto[['Año', 'Mes']].rename(columns={'Año': 'year', 'Mes': 'month'}).assign(day=1))
+        evolucion_producto['Fecha_str'] = evolucion_producto['Fecha'].dt.strftime('%Y-%m')
+
+        datos_filtrados = datos[datos['Producto'] == producto]
+       
+        datos_filtrados['Precio_promedio'] = datos_filtrados['Ingreso_total'] / datos_filtrados['Unidades_vendidas']
+        precio_promedio = datos_filtrados['Precio_promedio'].mean()
+        datos_filtrados['Margen_promedio'] = (datos_filtrados['Ingreso_total'] - datos_filtrados['Costo_total']) / datos_filtrados['Ingreso_total']
+        margen_promedio = datos_filtrados['Margen_promedio'].mean()
+        precio_promedio_anual = datos_filtrados.groupby('Año')['Precio_promedio'].mean()
+        variacion_precio = precio_promedio_anual.pct_change().mean() * 100
+        margen_promedio_anual = datos_filtrados.groupby('Año')['Margen_promedio'].mean()
+        variacion_margen = margen_promedio_anual.pct_change().mean() * 100     
+        unidades_vendidas = datos_filtrados['Unidades_vendidas'].sum()
+        unidades_vendidas_anual = datos_filtrados.groupby('Año')['Unidades_vendidas'].sum()
+        variacion_unidades = unidades_vendidas_anual.pct_change().mean() * 100
+
+               
         fig, ax = plt.subplots(figsize=(10, 6))
-        ax.plot(evolucion_producto['Fecha'], evolucion_producto['Unidades_vendidas'], marker='o', label=f"Unidades vendidas - {producto}")
+        ax.plot(evolucion_producto['Fecha'], evolucion_producto['Unidades_vendidas'], label=f"{producto}")
         
         # Línea de tendencia
         z_producto = np.polyfit(range(len(evolucion_producto)), evolucion_producto['Unidades_vendidas'], 1)
         p_producto = np.poly1d(z_producto)
-        ax.plot(evolucion_producto['Fecha'], p_producto(range(len(evolucion_producto))), linestyle='--', color='orange', label="Tendencia")
+        ax.plot(evolucion_producto['Fecha'], p_producto(range(len(evolucion_producto))), linestyle='--', color='red', label="Tendencia")
+        ax.grid(True, linestyle='--', alpha=0.7)
+
+        ax.set_xticks(evolucion_producto['Fecha'])                  
+
+        etiquetas = []
+        for fecha in evolucion_producto['Fecha']:
+            if fecha.month == 1:
+                etiquetas.append(fecha.strftime('%Y'))
+            else:
+                etiquetas.append('')
         
-        ax.set_title(f"Evolución de Ventas - {producto}")
+        ax.set_xticklabels(etiquetas)
+        
+        max_y = evolucion_producto['Unidades_vendidas'].max()
+        if max_y > 10000:
+            ax.set_yticks(np.arange(0, max_y + 10000, 10000))
+
+        ax.set_title(f"Evolucion de Ventas mensual")
         ax.set_xlabel("Fecha")
-        ax.set_ylabel("Unidades Vendidas")
-        ax.legend()
+        ax.set_ylabel("Unidades vendidas")
+        ax.legend(title="Producto")
         
         # Mostrar información a la izquierda
-        precio_promedio_producto = datos_producto['Ingreso_total'].sum() / datos_producto['Unidades_vendidas'].sum()
-        margen_promedio_producto = (datos_producto['Ingreso_total'].sum() - datos_producto['Costo_total'].sum()) / datos_producto['Ingreso_total'].sum()
-        unidades_vendidas_producto = datos_producto['Unidades_vendidas'].sum()
         
-        col1, col2 = st.columns([1, 3])
-        with col1:
-            st.markdown(f"**Producto:** {producto}")
-            st.markdown(f"**Precio promedio:** {precio_promedio_producto:.2f}")
-            st.markdown(f"**Margen promedio:** {margen_promedio_producto:.2f}")
-            st.markdown(f"**Unidades vendidas:** {unidades_vendidas_producto}")
-        with col2:
-            st.pyplot(fig)
+        with st.container(border=True):
+            col1, col2 = st.columns([1, 3])
+            with col1:
+                st.subheader(f"{producto}")
+                st.metric(label="Precio Promedio", value=f"${int(precio_promedio):,}".replace(',', '.'), delta=f"{variacion_precio:,.2f}%")
+                st.metric(label= "Margen Promedio", value=f"{margen_promedio:,.2f}%", delta = f"{variacion_margen:,.2f}%")
+                st.metric(label="Unidades Vendidas", value=f"{unidades_vendidas:,}".replace(',', '.'), delta=f"{variacion_unidades:,.2f}%")
+            with col2:
+                st.pyplot(fig)
 
 # Carga de datos
-def main():
-    st.title("Análisis de Ventas")
-    mostrar_informacion_alumno()
-    
+def main():        
     st.sidebar.title("Opciones")
     uploaded_file = st.sidebar.file_uploader("Cargar archivo CSV", type="csv")
     
-    if uploaded_file is not None:
-        datos = pd.read_csv(uploaded_file)
-        st.write("Datos cargados:")
-        st.dataframe(datos)
+    if uploaded_file is None:
+            st.title("Por favor, sube un archivo CSV desde la barra lateral.")
+            mostrar_informacion_alumno()
+
+    else:
+        datos = pd.read_csv(uploaded_file)                       
+
 
         sucursal = st.sidebar.selectbox("Seleccionar sucursal", ["Todas"] + list(datos["Sucursal"].unique()))
         if sucursal != "Todas":
-            datos_filtrados, resumen = calcular_estadisticas(datos, sucursal)
+            datos_filtrados = cambiar_sucursal(datos, sucursal)
+            st.title(f"Datos de {sucursal}")
         else:
-            datos_filtrados, resumen = calcular_estadisticas(datos)
+            datos_filtrados = cambiar_sucursal(datos)
+            st.title("Datos de Todas las Sucursales")
 
-        st.subheader("Resumen de Datos")
-        st.dataframe(resumen)
-        
-        st.subheader("Gráfico de Ventas")
         graficar_evolucion(datos_filtrados)
 
 if __name__ == "__main__":
