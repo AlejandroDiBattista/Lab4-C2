@@ -3,80 +3,142 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-st.set_page_config(page_title="Ventas x Sucursal", layout="wide")
 
-# Función para calcular estadísticas por producto 
-def calcular_estadisticas(df):
-    estadisticas = df.groupby('Producto').agg(
-        Precio_Promedio=('Ingreso_total', lambda x: x.sum() / df['Unidades_vendidas'].sum()),
-        Margen_Promedio=('Ingreso_total', lambda x: ((x.sum() - df['Costo_total'].sum()) / x.sum()) * 100),
-        Unidades_Vendidas=('Unidades_vendidas', 'sum')
-    ).reset_index()
-    return estadisticas
+st.set_page_config(page_title="TP8", layout="wide")
 
-# Cargar archivo CSV con datos de ventas
-st.sidebar.title("Cargar archivo de datos")
-uploaded_file = st.sidebar.file_uploader("Subir archivo CSV", type="csv")
+def construir_grafico_evolucion(ventas_producto, titulo_producto):
+    # Organiza los datos de ventas sumando las unidades por cada combinación de año y mes
+    ventas_agrupadas = ventas_producto.pivot_table(index=['Año', 'Mes'], values='Unidades_vendidas', aggfunc='sum').reset_index()
 
-if uploaded_file:
-    # Leer datos y eliminar espacios en blanco en nombres de columnas 
-    df = pd.read_csv(uploaded_file)
-    df.columns = df.columns.str.strip()  
+    # Crear una figura para el gráfico y un espacio para dibujar
+    figura, grafico = plt.subplots(figsize=(10, 6)) 
     
-    # Comprobar que las columnas "Año" y "Mes" existan en el DataFrame 
-    if 'Año' not in df.columns or 'Mes' not in df.columns:
-        st.error("El archivo CSV debe contener 'Año' y 'Mes'.")
+    # Añade una línea principal al gráfico basada en las ventas acumuladas por mes
+    x = np.arange(len(ventas_agrupadas))  # Generar índices para el eje X
+    y = ventas_agrupadas['Unidades_vendidas']
+    grafico.plot(x, y, linewidth=2, label=titulo_producto)
+    
+    # Generar un ajuste polinómico cuadrático para modelar la tendencia de los datos
+    indices = np.arange(len(ventas_agrupadas))
+    valores = ventas_agrupadas['Unidades_vendidas']
+    coeficientes_pol = np.polyfit(indices, valores, 2)
+    curva_tendencia = np.poly1d(coeficientes_pol)
+    
+    # Incorporar la curva de tendencia en el gráfico como una línea segmentada
+    grafico.plot(indices, curva_tendencia(indices), linestyle='--', color='red', linewidth=1.5, label='Curva de Tendencia')
+    
+    # Configuración del título, etiquetas de ejes y leyenda del gráfico
+    grafico.set_title('Evolución de Ventas Mensual', fontsize=16)
+    grafico.set_xlabel('Año-Mes', fontsize=12)
+    grafico.set_ylabel('Unidades Vendidas', fontsize=12)
+
+    # Configurar límites e intervalos del eje Y automáticamente
+    grafico.set_ylim(0)  # Asegurar que el eje Y comienza desde 0
+    grafico.yaxis.set_major_locator(plt.MaxNLocator(integer=True))  # Ajustar automáticamente los valores del eje Y
+
+    # Configurar grilla para que solo se muestre en los valores principales del eje Y
+    grafico.grid(which='major', axis='y', linestyle='-', color='gray', alpha=0.5)  # Grilla solo en valores principales del eje Y
+    
+    # Crear etiquetas para el eje X, mostrando únicamente el año en enero
+    etiquetas = []
+    posiciones = []
+    for i, fila in enumerate(ventas_agrupadas.itertuples()):
+        if fila.Mes == 1:  # Condición para capturar únicamente el inicio de cada año
+            etiquetas.append(str(fila.Año))
+            posiciones.append(i)
+            # Añadir línea sólida vertical en cada inicio de año
+            grafico.axvline(x=i, color='gray', linestyle='-', linewidth=0.8, alpha=0.7)  # Línea sólida para los años
+    
+    # Configurar el gráfico para mostrar etiquetas específicas del eje X
+    grafico.set_xticks(posiciones)
+    grafico.set_xticklabels(etiquetas, fontsize=10)
+
+    # Configurar líneas menores (12 columnas por año, sólidas)
+    grafico.xaxis.set_minor_locator(plt.MultipleLocator(1))  # Cada índice representa un mes
+    grafico.grid(which='minor', axis='x', linestyle='-', color='gray', alpha=0.3)  # Líneas sólidas para los meses
+
+    grafico.legend(title='Producto Destacado')
+
+    return figura
+
+# Configurar la carga de archivos desde la barra lateral
+st.sidebar.title("Importación de Archivos")
+archivo_cargado = st.sidebar.file_uploader("Carga aquí un archivo CSV", type=["csv"])
+
+# Comprobar si el archivo CSV fue cargado
+if archivo_cargado:
+    datos = pd.read_csv(archivo_cargado)
+    
+    # Identificar las sucursales disponibles para filtrar
+    sucursales_disponibles = ["Todas"] + datos['Sucursal'].unique().tolist()
+    
+    # Crear un menú desplegable para seleccionar una sucursal
+    sucursal_seleccionada = st.sidebar.selectbox("Elige una Sucursal", sucursales_disponibles)
+    
+    # Aplicar un filtro para seleccionar los datos de la sucursal elegida
+    if sucursal_seleccionada != "Todas":
+        datos_filtrados = datos[datos['Sucursal'] == sucursal_seleccionada]
+        st.header(f"Informe de Ventas - Sucursal: {sucursal_seleccionada}")
     else:
-        # Filtrar por sucursal y calcular estadísticas
-        sucursales = ["Todas"] + df["Sucursal"].unique().tolist()
-        sucursal_seleccionada = st.sidebar.selectbox("Seleccionar una Sucursal", sucursales)
+        datos_filtrados = datos
+        st.header("Informe Consolidado de Ventas")
+
+    # Listar todos los productos disponibles en los datos filtrados
+    lista_productos = datos_filtrados['Producto'].drop_duplicates().values
+
+    for producto in lista_productos:
+        st.subheader(producto)
+        producto_datos = datos_filtrados[datos_filtrados['Producto'] == producto]
         
-        if sucursal_seleccionada != "Todas":
-            df = df[df["Sucursal"] == sucursal_seleccionada]
+        # Calcular el precio promedio basado en los ingresos y unidades vendidas
+        producto_datos['Costo_promedio'] = producto_datos['Ingreso_total'] / producto_datos['Unidades_vendidas']
+        costo_medio = producto_datos['Costo_promedio'].mean()
 
-        # Calcular estadísticas por producto
-        estadisticas = calcular_estadisticas(df)
+        # Calcular la variación porcentual anual del precio promedio
+        precios_agrupados = producto_datos.groupby('Año')['Costo_promedio'].mean()
+        variacion_precio_anual = precios_agrupados.pct_change().mean() * 100
+        
+        # Calcular las ganancias y márgenes para evaluar rentabilidad
+        producto_datos['Ganancia'] = producto_datos['Ingreso_total'] - producto_datos['Costo_total']
+        producto_datos['Margen_ganancia'] = (producto_datos['Ganancia'] / producto_datos['Ingreso_total']) * 100
+        margen_ganancia_medio = producto_datos['Margen_ganancia'].mean()
 
-        # Mostrar datos por producto en columnas
-        for _, row in estadisticas.iterrows():
-            st.subheader(row["Producto"])
-            st.metric("Precio Promedio", f"${row['Precio_Promedio']:.2f}")
-            st.metric("Margen Promedio", f"{row['Margen_Promedio']:.2f}%")
-            st.metric("Unidades Vendidas", f"{row['Unidades_Vendidas']:,}")
+        margen_anual = producto_datos.groupby('Año')['Margen_ganancia'].mean()
+        variacion_margen_anual = margen_anual.pct_change().mean() * 100
+        
+        # Sumar las ventas totales y calcular la variación anual
+        ventas_totales = producto_datos['Unidades_vendidas'].sum()
+        ventas_promedio = producto_datos['Unidades_vendidas'].mean()
 
-            # Graficar evolución de ventas por producto
-            datos_producto = df[df["Producto"] == row["Producto"]]
-            
-            # Renombrar columnas para que pd.to_datetime las reconozca automáticamente
-            datos_producto = datos_producto.rename(columns={'Año': 'year', 'Mes': 'month'})
-            datos_producto["Fecha"] = pd.to_datetime(datos_producto[["year", "month"]].assign(day=1))
-            datos_producto = datos_producto.sort_values("Fecha")
+        ventas_anuales = producto_datos.groupby('Año')['Unidades_vendidas'].sum()
+        variacion_ventas_anuales = ventas_anuales.pct_change().mean() * 100
+        
+        # Dividir el espacio en dos columnas para mostrar gráficos y estadísticas
+        col_izquierda, col_derecha = st.columns([0.25, 0.75])
+        
+        # Mostrar métricas clave en la columna izquierda
+        with col_izquierda:
+             st.metric("Precio Promedio", f"${costo_medio:,.0f}", f"{variacion_precio_anual:.2f}%")           
+             st.metric("Margen Promedio", f"{margen_ganancia_medio:.0f}%", f"{variacion_margen_anual:.2f}%")
+             st.metric("Total Unidades Vendidas", f"{ventas_totales:,.0f}", f"{variacion_ventas_anuales:.2f}%")
+        
+        # Mostrar el gráfico de ventas en la columna derecha
+        with col_derecha:
+            grafico = construir_grafico_evolucion(producto_datos, producto)
+            st.pyplot(grafico)
+else:
+    # Mostrar información adicional sobre el usuario
+    def mostrar_info_estudiante():
+      st.write("""
+    **Información del Usuario Registrado**  
+    - Legajo: 59130  
+    - Nombre: Luciano Gatti  
+    - Comision: C2 
+    """)
+    ## Direccion en la que ha sido publicada la aplicacion
+    # URL = 'https://tp8-59130.streamlit.app/'
 
-            # Crear gráfico
-            fig, ax = plt.subplots()
-            ax.plot(datos_producto["Fecha"], datos_producto["Unidades_vendidas"], label="Unidades vendidas")
-            
-            # Calcular y graficar línea de tendencia (regresión lineal)
-            z = np.polyfit(
-                np.arange(len(datos_producto)),
-                datos_producto["Unidades_vendidas"],
-                1
-            )
-            p = np.poly1d(z)
-            ax.plot(datos_producto["Fecha"], p(np.arange(len(datos_producto))), "r--", label="Tendencia")
-            
-            ax.set_xlabel("Fecha")
-            ax.set_ylabel("Unidades vendidas")
-            ax.legend()
-            st.pyplot(fig)
+    # Mostrar mensaje cuando no se cargó ningún archivo
+    st.subheader("Por favor, sube un archivo CSV desde la barra lateral.")
 
-## Direccion en la que ha sido publicada la aplicacion
-# URL = 'https://tp8-59130.streamlit.app/'
-
-def mostrar_info_alumno():
-    with st.container(border=True):
-        st.markdown('**Legajo:** 59.130')
-        st.markdown('**Nombre:** Luciano Gatti')
-        st.markdown('**Comisión:** C2')
-
-mostrar_info_alumno()
+    mostrar_info_estudiante()
