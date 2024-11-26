@@ -3,106 +3,102 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-# url: https://tp-58909.streamlit.app/
+# URL de la aplicación en Streamlit
+# https://tp-58909.streamlit.app/
+
+st.set_page_config(page_title="Ventas por Sucursal", layout="wide")
 
 def mostrar_informacion_alumno():
     with st.container(border=True):
         st.markdown('**Legajo:** 58.909')
         st.markdown('**Nombre:** Argañaraz Leonardo Ramiro')
-        st.markdown('**Comisión:** C2')
+        st.markdown('**Comisión:** C2')  
 
-st.set_page_config(page_title="Ventas por Sucursal", layout="wide")
+def crear_grafico_ventas(datos_producto, producto):
+    ventas_por_producto = datos_producto.groupby(['Año', 'Mes'])['Unidades_vendidas'].sum().reset_index()
+    fig, gr = plt.subplots(figsize=(10, 6))
+    gr.plot(range(len(ventas_por_producto)), ventas_por_producto['Unidades_vendidas'], label=producto)
 
-def calcular_estadisticas(df):
-    estadisticas_producto = df.groupby('Producto').agg(
-        Precio_Promedio=('Ingreso_total', lambda x: x.sum() / df['Unidades_vendidas'].sum()),
-        Margen_Promedio=('Ingreso_total', lambda x: ((x.sum() - df['Costo_total'].sum()) / x.sum()) * 100),
-        Unidades_Vendidas=('Unidades_vendidas', 'sum')
-    ).reset_index()
-    return estadisticas_producto
+    x = np.arange(len(ventas_por_producto))
+    y = ventas_por_producto['Unidades_vendidas']
+    z = np.polyfit(x, y, 1)
+    ten = np.poly1d(z)
 
-st.sidebar.title("Cargar archivo de datos")
-uploaded_file = st.sidebar.file_uploader("Subir archivo CSV", type="csv")
-mostrar_informacion_alumno()
+    gr.plot(x, ten(x), linestyle='--', color='red', label='Tendencia')
 
-if uploaded_file:
-    df = pd.read_csv(uploaded_file)
-    df.columns = df.columns.str.strip() 
+    gr.set_title('Evolución de Ventas Mensual', fontsize=16)
+    gr.set_xlabel('Año-Mes')
+    gr.set_xticks(range(len(ventas_por_producto)))
 
-    if 'Año' not in df.columns or 'Mes' not in df.columns:
-        st.error("El archivo CSV debe contener las columnas 'Año' y 'Mes'.")
-    else:
-        sucursales = ["Todas"] + df["Sucursal"].unique().tolist()
-        sucursal_seleccionada = st.sidebar.selectbox("Seleccionar Sucursal", sucursales)
-
-        if sucursal_seleccionada == "Todas":
-            st.title("Datos de Ventas Totales")
+    etiquetas = []
+    for i, row in enumerate(ventas_por_producto.itertuples()):
+        if row.Mes == 1:
+            etiquetas.append(f"{row.Año}")
         else:
-            st.title(f"Datos de Ventas en {sucursal_seleccionada}")
+            etiquetas.append("")
+    gr.set_xticklabels(etiquetas)
+    gr.set_ylabel('Unidades Vendidas')
+    gr.set_ylim(0, None)  
+    gr.legend(title='Producto')
+    gr.grid(True)
 
-        if sucursal_seleccionada != "Todas":
-            df = df[df["Sucursal"] == sucursal_seleccionada]
+    return fig
 
-        estadisticas = calcular_estadisticas(df)
+st.sidebar.header("Cargar archivo de datos")
+archivo_cargado = st.sidebar.file_uploader("Subir archivo CSV", type=["csv"])
 
-        for _, row in estadisticas.iterrows():
-            with st.container():
+if archivo_cargado is not None:
+    datos = pd.read_csv(archivo_cargado)
 
-                container_style = """
-                <style>
-                .resize-container {
-                    border-radius: 10px;
-                    padding: 20px;
-                    background-color: #f4f4f4;
-                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-                    resize: both;
-                    overflow: auto;
-                    width: 80%;
-                    min-width: 600px;
-                    height: 600px;
-                }
-                .resize-handle {
-                    cursor: ew-resize;
-                    width: 10px;
-                    height: 100%;
-                    position: absolute;
-                    right: 0;
-                    top: 0;
-                }
-                </style>
-                """
-                st.markdown(container_style, unsafe_allow_html=True)
+    sucursales = ["Todas"] + datos['Sucursal'].unique().tolist()
 
-                with st.expander(f"Ver Gráfico de {row['Producto']}", expanded=True):
+    sucursal_seleccionada = st.sidebar.selectbox("Seleccionar Sucursal", sucursales)
 
-                    col1, col2 = st.columns([1, 3]) 
+    if sucursal_seleccionada != "Todas":
+        datos = datos[datos['Sucursal'] == sucursal_seleccionada]
+        st.title(f"Datos de Ventas en {sucursal_seleccionada}")
+    else:
+        st.title("Datos de Ventas Totales")
 
-                    with col1:                       
-                        st.markdown(f"### {row['Producto']}")
-                        st.metric("Precio Promedio", f"${row['Precio_Promedio']:.2f}")
-                        st.metric("Margen Promedio", f"{row['Margen_Promedio']:.0f}%")
-                        st.metric("Unidades Vendidas", f"{row['Unidades_Vendidas']:,}")
+    productos = datos['Producto'].unique()
 
-                    with col2:  
-                        datos_producto = df[df["Producto"] == row["Producto"]]                       
-                        datos_producto = datos_producto.rename(columns={'Año': 'year', 'Mes': 'month'})
-                        datos_producto["Fecha"] = pd.to_datetime(datos_producto[["year", "month"]].assign(day=1))
-                        datos_producto = datos_producto.sort_values("Fecha")
+    for producto in productos:
+        st.markdown('<div class="custom-container">', unsafe_allow_html=True)
 
-                        fig, ax = plt.subplots(figsize=(10, 6))
-                        ax.plot(datos_producto["Fecha"], datos_producto["Unidades_vendidas"], label=f"{row['Producto']}")
+        st.subheader(f"{producto}")
+        datos_producto = datos[datos['Producto'] == producto]
 
-                        z = np.polyfit(
-                            np.arange(len(datos_producto)),
-                            datos_producto["Unidades_vendidas"],
-                            1
-                        )
-                        p = np.poly1d(z)
-                        ax.plot(datos_producto["Fecha"], p(np.arange(len(datos_producto))), "r--", label="Tendencia")
+        datos_producto['Precio_promedio'] = datos_producto['Ingreso_total'] / datos_producto['Unidades_vendidas']
+        precio_promedio = datos_producto['Precio_promedio'].mean()
 
-                        ax.set_xlabel("Año-Mes")
-                        ax.set_title(f"Evolución de Ventas Mensual", fontsize=16)
-                        ax.set_ylabel("Unidades vendidas")
-                        ax.legend()
-                        plt.grid(True)
-                        st.pyplot(fig)
+        precio_promedio_anual = datos_producto.groupby('Año')['Precio_promedio'].mean()
+        variacion_precio_promedio_anual = precio_promedio_anual.pct_change().mean() * 100
+
+        datos_producto['Ganancia'] = datos_producto['Ingreso_total'] - datos_producto['Costo_total']
+        datos_producto['Margen'] = (datos_producto['Ganancia'] / datos_producto['Ingreso_total']) * 100
+        margen_promedio = datos_producto['Margen'].mean()
+
+        margen_promedio_anual = datos_producto.groupby('Año')['Margen'].mean()
+        variacion_margen_promedio_anual = margen_promedio_anual.pct_change().mean() * 100
+
+        unidades_promedio = datos_producto['Unidades_vendidas'].mean()
+        unidades_vendidas = datos_producto['Unidades_vendidas'].sum()
+
+        unidades_por_año = datos_producto.groupby('Año')['Unidades_vendidas'].sum()
+        variacion_anual_unidades = unidades_por_año.pct_change().mean() * 100
+
+        with st.expander(f"Ver estadísticas y gráfico de {producto}", expanded=True):
+            col1, col2 = st.columns([1, 2])
+
+            with col1:
+                st.metric(label="Precio Promedioo", value=f"${precio_promedio:,.0f}".replace(",", "."), delta=f"{variacion_precio_promedio_anual:.2f}%")
+                st.metric(label="Margen Promedio", value=f"{margen_promedio:.0f}%".replace(",", "."), delta=f"{variacion_margen_promedio_anual:.2f}%")
+                st.metric(label="Unidades Vendidas", value=f"{unidades_vendidas:,.0f}".replace(",", "."), delta=f"{variacion_anual_unidades:.2f}%")
+
+            with col2:
+                fig = crear_grafico_ventas(datos_producto, producto)
+                st.pyplot(fig)
+
+        st.markdown('</div>', unsafe_allow_html=True)     
+
+mostrar_informacion_alumno()
