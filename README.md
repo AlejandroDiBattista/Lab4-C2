@@ -1,4 +1,4 @@
-## Comisión 2 [37]
+## Comisión 2 (37)
 
 
 #### Resultados de la evaluación del segundo parcial.
