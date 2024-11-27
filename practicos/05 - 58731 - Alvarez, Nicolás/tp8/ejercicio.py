@@ -21,7 +21,6 @@ def informacion_alumno():
 
 informacion_alumno();
 
-# Subir archivos CSV
 st.sidebar.header("Carga de archivo")
 archivo_gaseosas = st.sidebar.file_uploader("Carga el archivo de gaseosas", type=['csv'])
 archivo_vinos = st.sidebar.file_uploader("Carga el archivo de vinos", type=['csv'])

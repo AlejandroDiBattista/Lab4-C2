@@ -8,7 +8,7 @@ import base64
 
 ## ATENCION: Debe colocar la direccion en la que ha sido publicada la aplicacion en la siguiente linea
 # url = 'https://tp8-55533.streamlit.app/'
-
+# url = 'https://tp8-55533.streamlit.app/'
 def mostrar_informacion_alumno():
     st.markdown("# Por favor, sube un archivo CSV desde la barra lateral.")
     st.markdown(

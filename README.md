@@ -17,8 +17,8 @@
 * `08` | **58909**  | Argañaraz, Leonardo Ramiro
 * `09` | **50665**  | Arias Olaiz, Marcos Ignacio
 * `10` | **59078**  | Bazan, Bruno Gabriel
-* `14` | **59234**  | Chocobar, Matías Sebastián
 * `13` | **58865**  | Chávez, Pedro Ismael
+* `14` | **59234**  | Chocobar, Matías Sebastián
 * `15` | **59268**  | Cordoba, Pedro Josue
 * `16` | **58732**  | Coronel, Sergio Antonio
 * `17` | **59423**  | Esper, Rodrigo Fernando
@@ -31,8 +31,9 @@
 * `28` | **55650**  | Moyano, Iván Eduardo
 * `29` | **58907**  | Nuñez, Walter Exequiel
 * `31` | **58808**  | Rodríguez, Nahuel Federico
-* `35` | **59450**  | Skibski, Ignacio
 * `33` | **58942**  | Sánchez Ortiz, Hernán
+* `34` | **59424**  | Selis, Daiana Betsabé
+* `35` | **59450**  | Skibski, Ignacio
 * `36` | **59451**  | Urueña, Karen Florencia
 * `37` | **59160**  | Veneziano, Juan Ignacio
 
@@ -51,7 +52,6 @@
 #### Desaprobados <small>(3)</small>
 * `05` | **58731**  | Alvarez, Nicolás
 * `24` | **55940**  | Gramajo, Elba Virginia Maria
-* `34` | **59424**  | Selis, Daiana Betsabé
 
 #### No presentaron <small>(4)</small>
 * `11` | **49185**  | Bett, Matías Alejandro
@@ -74,8 +74,8 @@ Tomen los siguientes valores como referencia <small>(✦ Valores redondeados)</s
 **Con respecto a la presentación...**
 En la presentación debe reflejar la imagen de referencia.
 - No debe mostrar ninguna tabla de datos.
-- No debe tener ningún HTML o CSS para personalizar la presentación.
 - La informacion de los productos deben estar con borde 
+- No debe tener ningún HTML o CSS para personalizar la presentación.
             `usar st.container(border=True)`.
 - Las estadísticas deben mostrarse como métricas 
             `usar st.metric`.

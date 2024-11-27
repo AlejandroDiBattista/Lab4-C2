@@ -21,7 +21,6 @@ def mostrar_informacion_alumno():
 
 mostrar_informacion_alumno()
 
-# Configuración de barra lateral
 st.sidebar.header("Cargar archivo de datos")
 archivo_gaseosas = st.sidebar.file_uploader("Sube el archivo de Gaseosas", type=['csv'])
 archivo_vinos = st.sidebar.file_uploader("Sube el archivo de Vinos", type=['csv'])
@@ -31,6 +30,7 @@ if archivo_gaseosas and archivo_vinos:
     gaseosas = cargar_datos(archivo_gaseosas)
     vinos = cargar_datos(archivo_vinos)
 
+    
     # Selección de tipo de producto
     tipo_producto = st.sidebar.selectbox("Selecciona el tipo de producto:", ["Gaseosas", "Vinos"])
 
@@ -42,6 +42,7 @@ if archivo_gaseosas and archivo_vinos:
     df = gaseosas if tipo_producto == "Gaseosas" else vinos
     if sucursal_seleccionada != 'Todas':
         df = df[df['Sucursal'] == sucursal_seleccionada]
+
 
     # Crear columna de fecha y cálculos con NumPy
     df['Fecha'] = pd.to_datetime(df['Año'].astype(str) + "-" + df['Mes'].astype(str) + "-01")

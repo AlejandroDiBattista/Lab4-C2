@@ -8,6 +8,12 @@ from sklearn.preprocessing import LabelEncoder
 #url = 'https://tp8-parcial2-daiana-selis.streamlit.app/'
 url = 'https://tp8-parcial2-daiana-selis.streamlit.app/'
 
+def mostrar_informacion_alumno():
+    with st.container(border=True):
+        st.markdown('**Legajo:** 59.424')
+        st.markdown('**Nombre:** Daiana Selis')
+        st.markdown('**Comisión:** C2')
+
 st.title("Análisis de Ventas por Producto")
 
 archivo = st.sidebar.file_uploader("Selecciona un archivo CSV", type=["csv"])
@@ -19,7 +25,7 @@ if archivo is not None:
     if not all (col in df.columns for col in required_columns):
         st.error("El archivo debe contener las columnas : Sucursal , Producto , Año, Unidades_vendiadas, Ingreso_total, Costo_total")
     else:
-        sucursal_opcion = st.sidebar.selectbox("Selecciona la sucursal (o 'Todos' para ver todas)", df['Sucursal'].unique().tolist() + ['Todos'] )
+        sucursal_opcion = st.sidebar.selectbox("Selecciona la sucursal (o 'Todos' para ver todas)", ['Todos'] + df['Sucursal'].unique().tolist()  )
         if sucursal_opcion != 'Todos':
             df = df[df['Sucursal'] == sucursal_opcion]
 
@@ -116,14 +122,10 @@ if archivo is not None:
 
                     st.pyplot(plt)
             
-    def mostrar_informacion_alumno():
-        with st.container(border=True):
-            st.markdown('**Legajo:** 59.424')
-            st.markdown('**Nombre:** Daiana Selis')
-            st.markdown('**Comisión:** C2')
-
-    mostrar_informacion_alumno()
+    
 
 else:
+    mostrar_informacion_alumno()
     st.subheader("Sube tu archivo CSV de ventas")
     st.info("Por favor, sube un archivo CSV para comenzar.")
+
