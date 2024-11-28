@@ -1,96 +1,123 @@
+import streamlit as st
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-import streamlit as st
 
-URL = 'https://parcial2tp8-zq6fapjltdxthu8qiglark.streamlit.app/'
+URL = 'https://parcial2tp8-eappjybq5qchyqdfdnson6d.streamlit.app/'
 
-@st.cache_data
-def load_data(file):
-    return pd.read_csv(file)
+st.set_page_config(page_title="TP8", layout="wide")
 
-st.title("Análisis de Ventas por Producto")
+def construir_grafico_evolucion(ventas_producto, titulo_producto):
+    ventas_agrupadas = ventas_producto.pivot_table(index=['Año', 'Mes'], values='Unidades_vendidas', aggfunc='sum').reset_index()
 
-def show_student_info():
-    with st.container():
-        st.markdown("**Comisión:** C2")
-        st.markdown("**Legajo:** 47.417")
-        st.markdown("**Nombre:** Rosales José Ignacio")
+   
+    figura, grafico = plt.subplots(figsize=(10, 6)) 
+    
+    
+    x = np.arange(len(ventas_agrupadas))  
+    y = ventas_agrupadas['Unidades_vendidas']
+    grafico.plot(x, y, linewidth=2, label=titulo_producto)
+    
+    indices = np.arange(len(ventas_agrupadas))
+    valores = ventas_agrupadas['Unidades_vendidas']
+    coeficientes_pol = np.polyfit(indices, valores, 2)
+    curva_tendencia = np.poly1d(coeficientes_pol)
+    
+    grafico.plot(indices, curva_tendencia(indices), linestyle='--', color='red', linewidth=1.5, label='Curva de Tendencia')
+    
+    grafico.set_title('Evolución de Ventas Mensual', fontsize=16)
+    grafico.set_xlabel('Año-Mes', fontsize=12)
+    grafico.set_ylabel('Unidades Vendidas', fontsize=12)
 
-show_student_info()
+    grafico.set_ylim(0)  
+    grafico.yaxis.set_major_locator(plt.MaxNLocator(integer=True))  
 
-st.sidebar.header("Carga de archivo")
-sales_file = st.sidebar.file_uploader("Selecciona un archivo CSV", type=["csv"])
+    grafico.grid(which='major', axis='y', linestyle='-', color='gray', alpha=0.5)  
+    
+    etiquetas = []
+    posiciones = []
+    for i, fila in enumerate(ventas_agrupadas.itertuples()):
+        if fila.Mes == 1:  
+            etiquetas.append(str(fila.Año))
+            posiciones.append(i)
+            
+            grafico.axvline(x=i, color='gray', linestyle='-', linewidth=0.8, alpha=0.7)  
+     
+    grafico.set_xticks(posiciones)
+    grafico.set_xticklabels(etiquetas, fontsize=10)
 
-if sales_file:
-    data = load_data(sales_file)
+    
+    grafico.xaxis.set_minor_locator(plt.MultipleLocator(1))  
+    grafico.grid(which='minor', axis='x', linestyle='-', color='gray', alpha=0.3)  
 
-    if data is not None:
-        required_columns = ['Sucursal', 'Producto', 'Año', 'Mes', 'Unidades_vendidas', 'Ingreso_total', 'Costo_total']
-        if not all(col in data.columns for col in required_columns):
-            st.error("El archivo debe contener las columnas: " + ", ".join(required_columns))
-        else:
-            selected_branch = st.sidebar.selectbox(
-                "Selecciona una sucursal (o 'Todas' para ver todas)",
-                ['Todas'] + data['Sucursal'].unique().tolist()
-            )
-            if selected_branch != 'Todas':
-                data = data[data['Sucursal'] == selected_branch]
+    grafico.legend(title='Producto Destacado')
 
-            data['Fecha'] = pd.to_datetime(
-                data['Año'].astype(str) + "-" + data['Mes'].astype(str) + "-01", 
-                errors='coerce'
-            )
-            data['average_price'] = np.where(
-                data['Unidades_vendidas'] > 0, 
-                data['Ingreso_total'] / data['Unidades_vendidas'], 
-                0
-            )
-            data['average_margin'] = np.where(
-                data['Ingreso_total'] > 0,
-                (data['Ingreso_total'] - data['Costo_total']) / data['Ingreso_total'] * 100,
-                0
-            )
+    return figura
 
-            summary = data.groupby('Producto').agg({
-                'average_price': 'mean',
-                'average_margin': 'mean',
-                'Unidades_vendidas': 'sum'
-            }).reset_index()
 
-            st.header(f"Datos de {'Todas las Sucursales' if selected_branch == 'Todas' else selected_branch}")
+st.sidebar.title("Importación de Archivos")
+archivo_cargado = st.sidebar.file_uploader("Carga aquí un archivo CSV", type=["csv"])
 
-            for _, row in summary.iterrows():
-                st.subheader(f"{row['Producto']}")
 
-                col1, col2, col3 = st.columns(3)
-                col1.metric("Precio Promedio", f"${row['average_price']:.2f}")
-                col2.metric("Margen Promedio", f"{row['average_margin']:.2f}%")
-                col3.metric("Unidades Vendidas", f"{int(row['Unidades_vendidas']):,}")
-
-                product_data = data[data['Producto'] == row['Producto']]
-
-                fig, ax = plt.subplots(figsize=(8, 4))
-                ax.plot(
-                    product_data['Fecha'], 
-                    product_data['Unidades_vendidas'], 
-                    label=row['Producto'], 
-                    color='blue'
-                )
-                ax.plot(
-                    product_data['Fecha'], 
-                    product_data['Unidades_vendidas'].rolling(3).mean(), 
-                    label='Tendencia', 
-                    color='green', 
-                    linestyle='--'
-                )
-                ax.set_title("Evolución de Ventas Mensual")
-                ax.set_xlabel("Fecha")
-                ax.set_ylabel("Unidades Vendidas")
-                ax.legend()
-                plt.xticks(rotation=45)
-                st.pyplot(fig)
+if archivo_cargado:
+    datos = pd.read_csv(archivo_cargado)
+    
+    sucursales_disponibles = ["Todas"] + datos['Sucursal'].unique().tolist()
+    
+    sucursal_seleccionada = st.sidebar.selectbox("Elige una Sucursal", sucursales_disponibles)
+    
+    if sucursal_seleccionada != "Todas":
+        datos_filtrados = datos[datos['Sucursal'] == sucursal_seleccionada]
+        st.header(f"Informe de Ventas - Sucursal: {sucursal_seleccionada}")
     else:
-        st.warning("No se encontraron data")
+        datos_filtrados = datos
+        st.header("Informe Consolidado de Ventas")
+
+    lista_productos = datos_filtrados['Producto'].drop_duplicates().values
+
+    for producto in lista_productos:
+        st.subheader(producto)
+        producto_datos = datos_filtrados[datos_filtrados['Producto'] == producto]
+    
+        producto_datos['Costo_promedio'] = producto_datos['Ingreso_total'] / producto_datos['Unidades_vendidas']
+        costo_medio = producto_datos['Costo_promedio'].mean()
+
+        precios_agrupados = producto_datos.groupby('Año')['Costo_promedio'].mean()
+        variacion_precio_anual = precios_agrupados.pct_change().mean() * 100
+         
+        producto_datos['Ganancia'] = producto_datos['Ingreso_total'] - producto_datos['Costo_total']
+        producto_datos['Margen_ganancia'] = (producto_datos['Ganancia'] / producto_datos['Ingreso_total']) * 100
+        margen_ganancia_medio = producto_datos['Margen_ganancia'].mean()
+
+        margen_anual = producto_datos.groupby('Año')['Margen_ganancia'].mean()
+        variacion_margen_anual = margen_anual.pct_change().mean() * 100
+        
+        ventas_totales = producto_datos['Unidades_vendidas'].sum()
+        ventas_promedio = producto_datos['Unidades_vendidas'].mean()
+
+        ventas_anuales = producto_datos.groupby('Año')['Unidades_vendidas'].sum()
+        variacion_ventas_anuales = ventas_anuales.pct_change().mean() * 100
+         
+        col_izquierda, col_derecha = st.columns([0.25, 0.75])
+        
+        with col_izquierda:
+             st.metric("Precio Promedio", f"${costo_medio:,.0f}", f"{variacion_precio_anual:.2f}%")           
+             st.metric("Margen Promedio", f"{margen_ganancia_medio:.0f}%", f"{variacion_margen_anual:.2f}%")
+             st.metric("Total Unidades Vendidas", f"{ventas_totales:,.0f}", f"{variacion_ventas_anuales:.2f}%")
+         
+        with col_derecha:
+            grafico = construir_grafico_evolucion(producto_datos, producto)
+            st.pyplot(grafico)
 else:
-    st.info("Por favor, sube un archivo CSV para continuar")
+    
+    def mostrar_info_estudiante():
+      st.write("""
+    *Información del Usuario Registrado*  
+    - Legajo:47417   
+    - Nombre: Rosales José Ignacio  
+    - Comision: C2 
+    """)
+   
+    st.subheader("Por favor, sube un archivo CSV desde la barra lateral.")
+
+    mostrar_info_estudiante()
