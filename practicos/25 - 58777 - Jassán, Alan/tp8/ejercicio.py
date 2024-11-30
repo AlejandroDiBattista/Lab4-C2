@@ -70,11 +70,11 @@ else:
         fig, ax = plt.subplots()
         
         with st.container(border=True):
-            col1, col2 = st.columns([1,3])
+            col1, col2 = st.columns([.25,.75])
 
             with col1:
                 st.markdown(f"### {producto}")
-                st.metric("Precio Promedio",f"${precio_promedio:,.2f}".replace(",", "."), f"{historical_precio_promedio:.2f}%")
+                st.metric("Precio Promedio",f"${precio_promedio:.2f}".replace(",", "."), f"{historical_precio_promedio:.2f}%")
                 st.metric("Margen Promedio", f"{margen_promedio.mean():.0f}%", f"{historical_margen_promedio:.2f}%")
                 st.metric("Unidades Vendidas", f"{unidades_vendidas:,.0f}".replace(",", "."), f"{historical_unidades_vendidas:.2f}%")
 

@@ -120,7 +120,7 @@ if archivo:
         variacion_ventas = ventas_por_año.pct_change().mean() * 100
 
         # Crear columnas para las métricas y el gráfico
-        col_izq, col_der = st.columns([0.10, 0.75])
+        col_izq, col_der = st.columns([0.25, 0.75])
 
         with col_izq:
             # Ajustar el tamaño de letra usando una clase CSS

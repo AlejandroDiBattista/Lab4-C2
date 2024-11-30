@@ -80,9 +80,9 @@ if archivo_csv:
             col1, col2 = st.columns([1,3])
 
             with col1:
-                st.metric("Precio Promedio",f"${precio_promedio:,.0f}".replace(",", "."), f"{variacion_precio_promedio:.2f}%")
+                st.metric("Precio Promedio",f"${precio_promedio:,.2f}", f"{variacion_precio_promedio:.2f}%")
                 st.metric("Margen Promedio", f"{margen_promedio.mean():.0f}%", f"{variacion_margen_promedio:.2f}%")
-                st.metric("Unidades Vendidas", f"{unidades_vendidas:,.0f}".replace(",", "."), f"{variacion_unidades_vendidas:.2f}%")
+                st.metric("Unidades Vendidas", f"{unidades_vendidas:,.0f}", f"{variacion_unidades_vendidas:.2f}%")
 
             with col2:
                 fig.set_size_inches(10,5)

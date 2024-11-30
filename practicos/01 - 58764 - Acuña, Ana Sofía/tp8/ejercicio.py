@@ -119,9 +119,9 @@ if archivo_cargado is not None:
 
             
             with col1:
-                st.metric(label="Precio Promedio", value=f"${precio_promedio:,.0f}".replace(",", "."), delta=f"{variacion_precio_promedio_anual:.2f}%")
-                st.metric(label="Margen Promedio", value=f"{margen_promedio:.0f}%".replace(",", "."), delta=f"{variacion_margen_promedio_anual:.2f}%")
-                st.metric(label="Unidades Vendidas", value=f"{unidades_vendidas:,.0f}".replace(",", "."), delta=f"{variacion_anual_unidades:.2f}%")
+                st.metric(label="Precio Promedio", value=f"${precio_promedio:,.2f}", delta=f"{variacion_precio_promedio_anual:.2f}%")
+                st.metric(label="Margen Promedio", value=f"{margen_promedio:.0f}%", delta=f"{variacion_margen_promedio_anual:.2f}%")
+                st.metric(label="Unidades Vendidas", value=f"{unidades_vendidas:,.0f}", delta=f"{variacion_anual_unidades:.2f}%")
 
             
             with col2:

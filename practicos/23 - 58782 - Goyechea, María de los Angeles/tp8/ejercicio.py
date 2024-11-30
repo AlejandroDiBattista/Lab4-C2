@@ -50,26 +50,26 @@ if archivo:
             resumen_anual["Precio_promedio"] = resumen_anual["Ingreso_total"] / resumen_anual["Unidades_vendidas"]
             resumen_anual["Margen_Promedio"] = (resumen_anual["Ingreso_total"] - resumen_anual["Costo_total"]) / resumen_anual["Ingreso_total"]
             resumen_anual["Unidades_Promedio"] = resumen_anual["Unidades_vendidas"]           
-            if len(resumen_anual) > 1:              
+            if len(resumen_anual) > 0:              
                 
-                variacion_precio = resumen_anual["Precio_promedio"].diff().iloc[1:] / resumen_anual["Precio_promedio"].iloc[:-1].values
+                variacion_precio = resumen_anual["Precio_promedio"].iloc[1:] / resumen_anual["Precio_promedio"].iloc[:-1].values
                 variacion_precio_Promedio = variacion_precio.mean() * 100
 
-                variacion_margen = resumen_anual["Margen_Promedio"].diff().iloc[1:] / resumen_anual["Margen_Promedio"].iloc[:-1].values
+                variacion_margen = resumen_anual["Margen_Promedio"].iloc[1:] / resumen_anual["Margen_Promedio"].iloc[:-1].values
                 variacion_margen_Promedio = variacion_margen.mean() * 100
 
-                variacion_unidades = resumen_anual["Unidades_Promedio"].diff().iloc[1:] / resumen_anual["Unidades_Promedio"].iloc[:-1].values
+                variacion_unidades = resumen_anual["Unidades_Promedio"].iloc[1:] / resumen_anual["Unidades_Promedio"].iloc[:-1].values
                 variacion_unidades_vendidas_Promedio = variacion_unidades.mean() *100
             else:                
                 variacion_precio_Promedio = variacion_margen_Promedio = variacion_unidades_vendidas_Promedio = 0
 
-            metricaA , metricaB = st.columns([1, 3])
+            metricaA , metricaB = st.columns([.25, .75])
 
             with metricaA :
                 st.subheader(f" {producto}")
-                st.metric("Precio Promedio", f"${resumen_anual["Precio_promedio"].mean():,.0f}", f"{variacion_precio_Promedio:.2f}%")
+                st.metric("Precio Promedio", f"${resumen_anual["Precio_promedio"].mean():.2f}", f"{variacion_precio_Promedio:.2f}%")
                 st.metric("Margen Promedio", f"{margen_Promedio*100:.0f} %", f"{variacion_margen_Promedio:.2f}%")
-                st.metric("Unidades Vendidas", f"{resumen_anual["Unidades_Promedio"].sum():,}", f"{variacion_unidades_vendidas_Promedio:.2f}%")
+                st.metric("Unidades Vendidas", f"{resumen_anual["Unidades_Promedio"].sum():.0f}", f"{variacion_unidades_vendidas_Promedio:.2f}%")
             
             ventas_mensuales = productoActual.groupby(['Año', 'Mes'])['Unidades_vendidas'].sum().reset_index()
             x = np.arange(len(ventas_mensuales))
