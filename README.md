@@ -33,6 +33,7 @@ Por último, las personas que están _libres_ son aquellas que han dejado de cur
  29. 58907  Nuñez, Walter Exequiel
  31. 58808  Rodríguez, Nahuel Federico
  33. 58942  Sánchez Ortiz, Hernán
+ 34. 59424  Selis, Daiana Betsabé
  35. 59450  Skibski, Ignacio
  36. 59451  Urueña, Karen Florencia
  37. 59160  Veneziano, Juan Ignacio
@@ -50,7 +51,6 @@ Por último, las personas que están _libres_ son aquellas que han dejado de cur
 ```
   5. 58731  Alvarez, Nicolás
  24. 55940  Gramajo, Elba Virginia Maria
- 34. 59424  Selis, Daiana Betsabé
 ```
 #### Libre
 ```
