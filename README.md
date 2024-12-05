@@ -19,6 +19,7 @@ Por último, las personas que están _libres_ son aquellas que han dejado de cur
   8. 58909  Argañaraz, Leonardo Ramiro
   9. 50665  Arias Olaiz, Marcos Ignacio
  10. 59078  Bazan, Bruno Gabriel
+ 12. 47121  Caram, Jesús Nicolás
  13. 58865  Chávez, Pedro Ismael
  14. 59234  Chocobar, Matías Sebastián
  15. 59268  Cordoba, Pedro Josue
@@ -41,7 +42,6 @@ Por último, las personas que están _libres_ son aquellas que han dejado de cur
 #### Promoción en suspenso
 ```
   4. 58952  Almiron, Maicol Leonel
- 12. 47121  Caram, Jesús Nicolás
  20. 58832  González, Adrián Leonel
  26. 55751  Jérez, Francisco David
  28. 55650  Moyano, Iván Eduardo
