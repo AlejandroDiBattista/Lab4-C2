@@ -1,14 +1,3 @@
-¡Ya estan las notas finales!
-
-Hay una novedad: el sistema no permite ingresar la _aprobación directa_ a quienes no están al día con las cuotas.
-
-Lo que voy a hacer es mantener la _promoción en suspenso_ para quienes estén en esta condición. Van a figurar en los registros como _regulares_, pero cuando regularicen su situación y se presenten a rendir, bastará con que me busquen y me muestren este mensaje. En ese caso, se les reconocerá la promoción directamente, sin necesidad de realizar la defensa del trabajo.
-
-Las personas que están en condición de _regular_ deberán presentarse a rendir, lo cual consistirá en la defensa del segundo parcial.
-
-Por último, las personas que están _libres_ son aquellas que han dejado de cursar.
-
-
 #### Promocionado
 ```
   1. 58764  Acuña, Ana Sofía
